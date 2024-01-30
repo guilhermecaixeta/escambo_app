@@ -44,31 +44,31 @@ services:
       - escamboapp_network_shared
 
   # Memcached service
-  memcached:
-    image: memcached:1.5-alpine
-    ports:
-      - 11211:11211
-    networks:
-      - escamboapp_network_shared
+  # memcached:
+  #   image: memcached:1.5-alpine
+  #   ports:
+  #     - 11211:11211
+  #   networks:
+  #     - escamboapp_network_shared
 
   # RabbitMQ service
-  rabbitmq:
-    image: rabbitmq:3-management
-    ports:
-      - 5672:5672
-      - 15672:15672
-    networks:
-      - escamboapp_network_shared
+  # rabbitmq:
+  #   image: rabbitmq:3-management
+  #   ports:
+  #     - 5672:5672
+  #     - 15672:15672
+  #   networks:
+  #     - escamboapp_network_shared
 
   # Redis service
-  redis:
-    image: redis:4.0.10-alpine
-    ports:
-      - 6379:6379
-    volumes:
-      - escamboapp_redis_data:/data
-    networks:
-      - escamboapp_network_shared
+  # redis:
+  #   image: redis:4.0.10-alpine
+  #   ports:
+  #     - 6379:6379
+  #   volumes:
+  #     - escamboapp_redis_data:/data
+  #   networks:
+  #     - escamboapp_network_shared
 
 volumes:
   escamboapp_mysql_data:

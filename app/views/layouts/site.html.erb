@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Site</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'site_stylesheet', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'site', 'data-turbolinks-track': 'reload' %>    
+  </head>
+  <body>
+    <main>
+      <%= yield %>
+    </main>
+  </body>
+</html>
