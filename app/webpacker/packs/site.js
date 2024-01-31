@@ -1,3 +1,2 @@
-require("bootstrap");
-// Customs
-require("../src/customs");
+// require("bootstrap");
+require("startbootstrap-shop-homepage/src/js/scripts");

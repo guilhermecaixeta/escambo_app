@@ -12,7 +12,7 @@ environment.plugins.prepend(
     jQuery: "jquery",
     jquery: "jquery",
     "window.Tether": "tether",
-    Popper: ["popper.js/core", "default"] // for Bootstrap 4
+    Popper: ["@popperjs/core", "default" ] // for Bootstrap 5
   })
 );
 

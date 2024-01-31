@@ -1,0 +1,12 @@
+pt-BR:
+  layout:
+    buttons:
+      logout: Sair
+      login: Entrar
+      save: Salvar
+      back: Voltar
+    links:
+      return_to_login: Retornar ao login
+      reset_password: Definir novo password
+      remember_me: Lembre-se de mim
+      forgot_password: Esqueceu a senha?

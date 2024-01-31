@@ -1,13 +1,20 @@
 Rails.application.routes.draw do
-  namespace :site do
-    get 'home/index'
-  end
+
+  get 'backoffice', to: 'backoffice/dashboard#index'
+
   namespace :backoffice do
-    get 'dashboard/index'
+    resources :categories, except: [:show, :destroy]
+    get 'dashboard', to: 'dashboard#index'
   end
+
+  namespace :site do
+    get 'home', to: 'home#index'
+  end
+
   devise_for :admins
   devise_for :members
-  get 'site/home/index'
+
+  get 'site/home'
   root 'site/home#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

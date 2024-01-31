@@ -1,0 +1,12 @@
+en:
+  layout:
+    buttons:
+      logout: Logout
+      login: Login
+      save: Save
+      back: Back
+    links:
+      return_to_login: Return to login
+      reset_password: Reset Password
+      remember_me: Remember me
+      forgot_password: Forgot Password?

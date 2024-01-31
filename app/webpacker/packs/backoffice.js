@@ -1,13 +1,32 @@
-// This file is automatically compiled by Webpack, along with any other files
-// present in this directory. You"re encouraged to place your actual application logic in
-// a relevant structure within app/javascript and only use these pack files to reference
-// that code so it"ll be compiled.
+require('bootstrap');
+require("startbootstrap-sb-admin/scripts");
+require("@fortawesome/fontawesome-free/js/all.min.js");
 
-require("@fortawesome/fontawesome-free/js/all");
-require("startbootstrap-sb-admin/src/assets/img/error-404-monochrome.svg");
-require("startbootstrap-sb-admin/src/js/scripts");
-require("chart.js");
-require("chartjs-chart-matrix");
-require("chartjs-plugin-datalabels");
-require("circles.js");
-require("datatables");
+import Chart from 'chart.js/auto';
+import { DataTable } from 'simple-datatables.min.js';
+
+document.addEventListener('turbolinks:load', () => {
+    if (!document.getElementById('line_chart')) {
+        return;
+    }
+
+    var ctx = document.getElementById('line_chart').getContext('2d');
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            // labels: JSON.parse(ctx.canvas.dataset.labels),
+            labels: ["Jan", "Feb", "Mar"],
+            datasets: [{
+                // data: JSON.parse(ctx.canvas.dataset.data),
+                data: [10, 25, 5]
+            }]
+        }
+    });
+});
+
+document.addEventListener('readystatechange', () => {
+});
+
+// $(document).ready(function () {
+//     new DataTable('#datatablesSimple');
+// });

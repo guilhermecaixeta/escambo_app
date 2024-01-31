@@ -7,7 +7,7 @@
 // Scripts
 // 
 
-window.addEventListener('DOMContentLoaded', event => {
+window.addEventListener('turbolinks:load', event => {
 
     // Toggle the side navigation
     const sidebarToggle = document.body.querySelector('#sidebarToggle');
@@ -22,5 +22,4 @@ window.addEventListener('DOMContentLoaded', event => {
             localStorage.setItem('sb|sidebar-toggle', document.body.classList.contains('sb-sidenav-toggled'));
         });
     }
-
 });
