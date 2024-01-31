@@ -24,9 +24,6 @@ document.addEventListener('turbolinks:load', () => {
     });
 });
 
-document.addEventListener('readystatechange', () => {
-});
-
 // $(document).ready(function () {
 //     new DataTable('#datatablesSimple');
 // });
