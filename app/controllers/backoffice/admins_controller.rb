@@ -2,7 +2,11 @@ class Backoffice::AdminsController < BackofficeController
   before_action :set_admin, only: [:edit, :update, :destroy]
 
   def index
-    @admins = Admin.all.order(:id)
+    @admins = if current_admin.full_access?
+        Admin.all.order(:id)
+      else
+        Admin.filter_by_role(:restrict_access).order(:id)
+      end
   end
 
   def new
@@ -51,7 +55,7 @@ class Backoffice::AdminsController < BackofficeController
   end
 
   def destroy
-    admin_email = @admin.email
+    admin_name = @admin.name
 
     respond_to do |format|
       if @admin.destroy
@@ -59,7 +63,7 @@ class Backoffice::AdminsController < BackofficeController
           redirect_to backoffice_admins_path,
           notice: t('layout.action_text.deleted',
                     object_name: Admin.model_name.human,
-                    name: admin_email,
+                    name: admin_name,
                     :gender => :n)}
         format.json { head :no_content }
       else
@@ -76,6 +80,6 @@ class Backoffice::AdminsController < BackofficeController
   end
 
   def admin_params
-    params.require(:admin).permit(:email, :password, :password_confirmation)
+    params.require(:admin).permit(:name, :email, :password, :password_confirmation)
   end
 end

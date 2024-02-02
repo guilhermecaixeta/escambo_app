@@ -10,10 +10,10 @@ class Backoffice::CategoriesController < BackofficeController
   end
 
   def create
-    @category = Category.new(category_params)
+    @category = CategoryService.create(category_params)
 
     respond_to do |format|
-      if @category.save
+      if @category.valid?
         format.html {
           redirect_to backoffice_categories_path,
           notice: t('layout.action_text.created', object_name: Category.model_name.human, :gender => :f)

@@ -11,4 +11,10 @@ pt-BR:
       category:
         description: Descrição
       admin:
+        name: Nome
         password: Senha
+        password_confirmation: Confirmação de Senha
+        role: Tipo de Acesso
+      admin/role:
+        full_access: "Acesso total"
+        restrict_access: "Acesso Restrito"

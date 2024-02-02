@@ -5,7 +5,11 @@
       <% if @admin.errors.any? %>
         <div class="alert alert-danger alert-dismissible fade show">
           <% @admin.errors.full_messages.each do |message| %>
-            <%= message %>
+            <ul>
+              <li>
+                <%= message %>
+              </li>
+            </ul>
           <% end %>
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
@@ -16,15 +20,35 @@
         </div>
         <div class="card-body">
           <div class="form-floating mb-3">
-            <%= f.email_field :email, class: "form-control", placeholder: "#{Admin.model_name.human}", type: "email", autofocus: "autofocus" %>
+            <%= f.text_field :name, 
+              class: "form-control", 
+              placeholder: "#{Admin.human_attribute_name(:name)}", 
+              type: "name", 
+              autofocus: "autofocus" %>
+            <%= f.label :name %>
+          </div>
+          <div class="form-floating mb-3">
+            <%= f.email_field :email, 
+              class: "form-control", 
+              placeholder: "#{Admin.human_attribute_name(:email)}", 
+              type: "email", 
+              autofocus: "autofocus" %>
             <%= f.label :email %>
           </div>
           <div class="form-floating mb-3">
-            <%= f.password_field :password, class: "form-control", placeholder: "#{Admin.model_name.human}", type: "password", autofocus: "autofocus" %>
+            <%= f.password_field :password, 
+              class: "form-control", 
+              placeholder: "#{Admin.human_attribute_name(:password)}", 
+              type: "password", 
+              autofocus: "autofocus" %>
             <%= f.label :password %>
           </div>
           <div class="form-floating mb-3">
-            <%= f.email_field :password_confirmation, class: "form-control", placeholder: "#{Admin.model_name.human}", type: "password", autofocus: "autofocus" %>
+            <%= f.email_field :password_confirmation, 
+                class: "form-control", 
+                placeholder: "#{Admin.human_attribute_name(:password_confirmation)}", 
+                type: "password", 
+                autofocus: "autofocus" %>
             <%= f.label :password_confirmation %>
           </div>
         </div>

@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 current_datetime = DateTime.now
+puts "Adding categories"
 Category.upsert_all([
   {id: 1, description: "Animais e acessórios", created_at: current_datetime, updated_at: current_datetime},
   {id: 2, description: "Esportes", created_at: current_datetime, updated_at: current_datetime},
@@ -19,3 +20,14 @@ Category.upsert_all([
   {id: 9, description: "Imóveis", created_at: current_datetime, updated_at: current_datetime},
   {id: 10, description: "Empregos e negócios", created_at: current_datetime, updated_at: current_datetime}
 ])
+puts "All categories were added!"
+
+puts "Adding admin master"
+Admin.create(
+  name: "Admin master",
+  email: "admin@admin.com",
+  password: "123456",
+  password_confirmation: "123456",
+  role: 0)
+
+puts "Admin master was added!"
