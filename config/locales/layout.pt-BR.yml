@@ -20,6 +20,8 @@ pt-BR:
       login: Entrar
       save: Salvar
       back: Voltar
+      confirmation_yes: Sim
+      confirmation_no: "Não"
     links:
       return_to_login: Retornar ao login
       reset_password: Definir novo password

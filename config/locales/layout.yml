@@ -20,6 +20,8 @@ en:
       login: Login
       save: Save
       back: Back
+      confirmation_yes: Yes
+      confirmation_no: No
     links:
       return_to_login: Return to login
       reset_password: Reset Password
