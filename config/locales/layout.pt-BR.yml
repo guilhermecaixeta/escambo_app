@@ -1,5 +1,20 @@
 pt-BR:
   layout:
+    text:
+      new: "@{f:Nova|m,n:Novo}"
+      updating: Atualizando
+      backoffice:
+        management:
+          title: Gerenciamento
+          users:
+            title: Usuários
+            new_user: Novo usuário
+            show_all: Exibir todos os usuários
+            delete_confirmation: "Deseja realmente excluir o usuário '%{name}'?"
+    action_text:
+      created: "%{object_name} @{f:criada|m,n:criado} com sucesso!"
+      updated: "%{object_name} @{f:atualizada|m,n:atualizado} com sucesso!"
+      deleted: "%{object_name} '@{%{name}}' @{f:excluída|m,n:excluído} com sucesso!"
     buttons:
       logout: Sair
       login: Entrar

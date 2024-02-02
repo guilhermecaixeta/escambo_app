@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# An example of post create file for a devcontainer
-
 # Source ASDF
 . /usr/local/asdf/asdf.sh
 
@@ -23,7 +21,7 @@ if [ -f Gemfile ]; then
     yarn install --check-files
 
     echo "Installing gems" 
-    gem install rails:6.0 htmlbeautifier solargraph sorbet:0.5.10187
+    gem install rails:6.0 htmlbeautifier solargraph sorbet:0.5.10187 rufo
 
     # echo "initializing tapioca"
     bundle exec tapioca init

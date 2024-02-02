@@ -1885,6 +1885,11 @@ boolbase@^1.0.0, boolbase@~1.0.0:
   resolved "https://registry.yarnpkg.com/boolbase/-/boolbase-1.0.0.tgz#68dff5fbe60c51eb37725ea9e3ed310dcc1e776e"
   integrity sha512-JZOSA7Mo9sNGB8+UjSgzdLtokWAky1zbztM3WRLCbZ70/3cTANmQmOdR7y2g+J0e2WXywy1yS468tY+IruqEww==
 
+bootbox@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/bootbox/-/bootbox-6.0.0.tgz#a5f1074faab38b881e79e009ea4d625c7e8c536d"
+  integrity sha512-+Calbj1v5UvxAXXDAHfoBlsx63Hcz1JqHaZdJ5EjIcOlkyAbZLCreVScx0Em6ZUvsMCqynuz/3nGDyd9FtFrNQ==
+
 bootstrap-icons@^1.11.3:
   version "1.11.3"
   resolved "https://registry.yarnpkg.com/bootstrap-icons/-/bootstrap-icons-1.11.3.tgz#03f9cb754ec005c52f9ee616e2e84a82cab3084b"
@@ -7317,6 +7322,13 @@ startbootstrap-shop-homepage@^5.0.6:
   version "5.0.6"
   resolved "https://registry.yarnpkg.com/startbootstrap-shop-homepage/-/startbootstrap-shop-homepage-5.0.6.tgz#f3f06afaf23d72ba43421638b0bc599f09accf0c"
   integrity sha512-B8TNIkJrc0iYCjrfgAolSopz1nek66gmhxkwCKP5zBX0axuF/OGae5z53bupgrlAOw1F4Cs6mkLVcw7K9G1exA==
+  dependencies:
+    bootstrap "5.2.3"
+
+startbootstrap-shop-item@^5.0.6:
+  version "5.0.6"
+  resolved "https://registry.yarnpkg.com/startbootstrap-shop-item/-/startbootstrap-shop-item-5.0.6.tgz#5df5ae3bbb52bf57643d5bc32b9e2053619bca9b"
+  integrity sha512-2u6+IC1znfs6G7rmigBLu8h0NUrtV7jlNDrAXj+k9ftMcMwSNkkU1HR8RFnDn0i+x+qZBrSbg6pA4YItikDWHg==
   dependencies:
     bootstrap "5.2.3"
 

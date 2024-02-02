@@ -1,6 +1,9 @@
 pt-BR:
   activerecord:
-    models: 
+    models:
+      admin:
+        one: Administrador
+        other: Administradores
       category:
         one: Categoria
         other: Categorias

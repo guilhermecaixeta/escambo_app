@@ -11,7 +11,7 @@ default: &default
 
   # Additional paths webpack should lookup modules
   # ['app/assets', 'engine/foo/app/assets']
-  resolved_paths: ['node_modules/jquery/dist', 'app/javascript/src', 'vendor/assets/js']
+  resolved_paths: ['node_modules/jquery/dist', 'app/webpacker/src', 'vendor/assets/js']
 
   # Reload manifest.json on all requests so we reload latest compiled packs
   cache_manifest: false
@@ -34,6 +34,7 @@ default: &default
     - .woff2
 
   extensions:
+    - .js.erb
     - .erb
     - .mjs
     - .js

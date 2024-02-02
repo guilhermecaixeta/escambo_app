@@ -8,6 +8,7 @@
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "4.3.0",
+    "bootbox": "^6.0.0",
     "bootstrap": "^5.3.2",
     "bootstrap-icons": "^1.11.3",
     "chart.js": "^4.4.1",
@@ -15,6 +16,7 @@
     "rails-erb-loader": "^5.5.2",
     "startbootstrap-sb-admin": "^7.0.7",
     "startbootstrap-shop-homepage": "^5.0.6",
+    "startbootstrap-shop-item": "^5.0.6",
     "turbolinks": "^5.2.0"
   },
   "version": "0.1.0",
