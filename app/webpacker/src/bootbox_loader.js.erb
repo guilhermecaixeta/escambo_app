@@ -12,11 +12,16 @@ Rails.confirm = function (message, element) {
                 className: 'btn-success'
             },
             cancel: {
-                label:  '<%= I18n.t("layout.buttons.confirmation_no") %>',
+                label: '<%= I18n.t("layout.buttons.confirmation_no") %>',
                 className: 'btn-danger'
             }
         },
-        callback: function (result) { }
+        callback: function (result) {
+            if (result) {
+                element.removeAttribute('data-confirm');
+                element.click();
+            }
+        }
     });
     return false;
 };

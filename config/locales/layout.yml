@@ -15,6 +15,7 @@ en:
       created: "%{object_name} created successfully!"
       updated: "%{object_name} updated successfully!"
       deleted: "%{object_name} '%{name}' delete successfully!"
+      not_authorized: You are not authorized to perform this action.
     buttons:
       logout: Logout
       login: Login
@@ -27,3 +28,10 @@ en:
       reset_password: Reset Password
       remember_me: Remember me
       forgot_password: Forgot Password?
+    mailing:
+      subject:
+        update: Your data has been updated
+      text:
+        update: To know more info about the update access your account on the link below.
+      buttons:
+        my_data: My data!

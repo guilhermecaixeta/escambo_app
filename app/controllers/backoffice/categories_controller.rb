@@ -1,3 +1,4 @@
+# typed: false
 class Backoffice::CategoriesController < BackofficeController
   before_action :set_category, only: [:edit, :update]
 
@@ -16,7 +17,7 @@ class Backoffice::CategoriesController < BackofficeController
       if @category.valid?
         format.html {
           redirect_to backoffice_categories_path,
-          notice: t('layout.action_text.created', object_name: Category.model_name.human, :gender => :f)
+                      notice: t("layout.action_text.created", object_name: Category.model_name.human, :gender => :f)
         }
         format.json { render :index, status: :created }
       else
@@ -30,12 +31,11 @@ class Backoffice::CategoriesController < BackofficeController
   end
 
   def update
-
     respond_to do |format|
       if @category.update(category_params)
         format.html {
           redirect_to backoffice_categories_path,
-          notice: t('layout.action_text.updated', object_name: Category.model_name.human, :gender => :f)
+                      notice: t("layout.action_text.updated", object_name: Category.model_name.human, :gender => :f)
         }
         format.json { render :index, status: :ok }
       else
@@ -46,12 +46,12 @@ class Backoffice::CategoriesController < BackofficeController
   end
 
   private
-    def set_category
-      @category = Category.find(params[:id])
-    end
 
-    def category_params
-      params.require(:category).permit(:description)
-    end
+  def set_category
+    @category = Category.find(params[:id])
+  end
 
+  def category_params
+    params.require(:category).permit(:description)
+  end
 end

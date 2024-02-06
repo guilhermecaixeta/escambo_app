@@ -1,0 +1,20 @@
+<div class="container">
+  <img class="ax-center my-10 w-24" src="https://assets.bootstrapemail.com/logos/light/square.png" />
+  <div class="card p-6 p-lg-10 space-y-4">
+    <h1 class="h3 fw-700">
+      <%= @admin.name %>
+    </h1>
+    <strong><%= t 'layout.mailing.subject.update' %></strong>
+    <p>
+      <%= t 'layout.mailing.text.update' %>
+    </p>
+    <%= link_to t('layout.mailing.buttons.my_data'), edit_backoffice_admin_url(@admin), class: "btn btn-primary p-3 fw-700" %>
+  </div>
+  <img class="ax-center mt-10 w-40" src="https://assets.bootstrapemail.com/logos/light/text.png" />
+  <div class="text-muted text-center my-6">
+    Footer example. <br>
+    Hip Corp. 1 Hip Street<br>
+    Gnarly State, 01234 USA <br>
+  </div>
+</div>
+</div>

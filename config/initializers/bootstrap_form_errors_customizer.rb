@@ -1,3 +1,4 @@
+# typed: false
 ActionView::Base.field_error_proc = proc do |html_tag, instance|
   is_label_tag = html_tag =~ /^<label/
   class_attr_index = html_tag.index 'class="'

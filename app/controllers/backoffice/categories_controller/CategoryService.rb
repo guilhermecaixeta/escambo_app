@@ -1,3 +1,4 @@
+# typed: true
 class Backoffice::CategoriesController::CategoryService
   attr_accessor :category
 

@@ -1,3 +1,4 @@
+# typed: true
 class Site::HomeController < ApplicationController
   layout "site"
 

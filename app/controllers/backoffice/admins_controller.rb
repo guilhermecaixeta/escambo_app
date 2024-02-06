@@ -1,28 +1,27 @@
+# typed: true
 class Backoffice::AdminsController < BackofficeController
   before_action :set_admin, only: [:edit, :update, :destroy]
 
   def index
-    @admins = if current_admin.full_access?
-        Admin.all.order(:id)
-      else
-        Admin.filter_by_role(:restrict_access).order(:id)
-      end
+    @admins = policy_scope(Admin)
   end
 
   def new
     @admin = Admin.new
+    authorize @admin, :check_admin?
   end
 
   def create
-    @admin = Admin.new(admin_params)
+    @admin = AdminService.create(admin_params)
 
     respond_to do |format|
-      if @admin.save
+      if @admin.valid?
         format.html {
           redirect_to backoffice_admins_path,
-          notice: t('layout.action_text.created',
-                    object_name: Admin.model_name.human,
-                    :gender => :n) }
+                      notice: t("layout.action_text.created",
+                                object_name: Admin.model_name.human,
+                                :gender => :n)
+        }
         format.json { render :index, status: :created }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -32,19 +31,15 @@ class Backoffice::AdminsController < BackofficeController
   end
 
   def edit
+    authorize @admin, :can_access
   end
 
   def update
-    if params['admin']['password'].blank? && params['admin']['password_confirm'].blank?
-      params['admin'].delete :password
-      params['admin'].delete :password_confirmation
-    end
-
     respond_to do |format|
-      if @admin.update(admin_params)
+      if AdminService.update(admin_params, @admin)
         format.html {
           redirect_to backoffice_admins_path,
-          notice: t('layout.action_text.updated', object_name: Admin.model_name.human, :gender => :n)
+                      notice: t("layout.action_text.updated", object_name: Admin.model_name.human, :gender => :n)
         }
         format.json { render :index, status: :ok }
       else
@@ -55,16 +50,18 @@ class Backoffice::AdminsController < BackofficeController
   end
 
   def destroy
+    authorize @admin, :check_admin?
     admin_name = @admin.name
 
     respond_to do |format|
       if @admin.destroy
         format.html {
           redirect_to backoffice_admins_path,
-          notice: t('layout.action_text.deleted',
-                    object_name: Admin.model_name.human,
-                    name: admin_name,
-                    :gender => :n)}
+                      notice: t("layout.action_text.deleted",
+                                object_name: Admin.model_name.human,
+                                name: admin_name,
+                                :gender => :n)
+        }
         format.json { head :no_content }
       else
         format.html { render :index, status: :unprocessable_entity }
@@ -80,6 +77,6 @@ class Backoffice::AdminsController < BackofficeController
   end
 
   def admin_params
-    params.require(:admin).permit(:name, :email, :password, :password_confirmation)
+    params.require(:admin).permit(policy(@admin.blank? ? Admin.new : @admin).permitted_attributes)
   end
 end

@@ -10,6 +10,7 @@ services:
       dockerfile: .devcontainer/Dockerfile
     ports:
       - "3000:3000"
+      - "1080:1080"
     volumes:
       - ..:/app:cached
       - $HOME/.ssh/:/home/vscode/.ssh/

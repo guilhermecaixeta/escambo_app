@@ -11,9 +11,9 @@
         <thead>
           <tr>
             <th scope="col" class="col-1">#</th>
-            <th scope="col" class="col-9"><%=Admin.human_attribute_name("name")%></th>
-            <th scope="col" class="col-9"><%=Admin.human_attribute_name("email")%></th>
-            <th scope="col" class="col-9"><%=Admin.human_attribute_name("role")%></th>
+            <th scope="col" class="col-9"><%= Admin.human_attribute_name("name") %></th>
+            <th scope="col" class="col-9"><%= Admin.human_attribute_name("email") %></th>
+            <th scope="col" class="col-9"><%= Admin.human_attribute_name("role") %></th>
             <th scope="col" class="col-2"></th>
           </tr>
         </thead>
@@ -21,29 +21,21 @@
           <% @admins.each do |admin| %>
             <tr>
               <td><%= admin.id %></td>
+              <td><%= admin.name %></td>
+              <td><%= admin.email %></td>
+              <td><%= Admin.human_attribute_name("role.#{admin.role}") %></td>
               <td>
-                <%= admin.name %>
-              </td>
-              <td>
-                <%= admin.email %>
-              </td>
-              <td>
-                <%= Admin.human_attribute_name("role.#{admin.role}") %>
-              </td>
-              <td>
-                <% unless current_admin.restrict_access? %>
-                  <%= link_to edit_backoffice_admin_path(admin), class: "btn btn-primary btn-circle" do %>
-                    <i class="fa fa-edit"></i>
-                  <% end %>
+                <%= link_to edit_backoffice_admin_path(admin), class: "btn btn-primary btn-circle" do %>
+                  <i class="fa fa-edit"></i>
                 <% end %>
-                <% if current_admin.email != admin.email && current_admin.full_access? %>
-                  <%= link_to backoffice_admin_path(admin), 
-                      method: :delete, 
-                      class:"btn btn-danger btn-circle", 
-                      data: { 
-                        confirm: t('layout.text.backoffice.management.users.delete_confirmation', name: admin.name)
-                      } do %>
-                    <i class="fa fa-times"></i>
+                <% if policy(current_admin).check_admin? %>
+                  <% if current_admin.email != admin.email %>
+                    <%= link_to( backoffice_admin_path(admin),
+                      method: :delete,
+                      class:"btn btn-danger btn-circle",
+                      data: { confirm: t('layout.text.backoffice.management.users.delete_confirmation', name: admin.name) }) do %>
+                      <i class="fa fa-times"></i>
+                    <% end %>
                   <% end %>
                 <% end %>
               </td>
@@ -52,8 +44,11 @@
         </tbody>
         <tfoot>
           <tr>
-            <th>#</th>
-            <th><%=Admin.human_attribute_name("email")%></th>
+            <th scope="col" class="col-1">#</th>
+            <th scope="col" class="col-9"><%= Admin.human_attribute_name("name") %></th>
+            <th scope="col" class="col-9"><%= Admin.human_attribute_name("email") %></th>
+            <th scope="col" class="col-9"><%= Admin.human_attribute_name("role") %></th>
+            <th scope="col" class="col-2"></th>
           </tr>
         </tfoot>
       </table>

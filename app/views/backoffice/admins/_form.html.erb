@@ -16,38 +16,53 @@
       <% end %>
       <div class="card mb-4">
         <div class="card-header">
-          <%= t 'layout.text.new' %> <%= Admin.model_name.human %>
+          <% if action_name == 'new' %>
+            <%= t 'layout.text.new' %>
+          <% else %>
+            <%= t 'layout.text.updating' %>
+          <% end %>
+          <%= Admin.model_name.human %>
         </div>
         <div class="card-body">
           <div class="form-floating mb-3">
-            <%= f.text_field :name, 
-              class: "form-control", 
-              placeholder: "#{Admin.human_attribute_name(:name)}", 
-              type: "name", 
+            <%= f.text_field :name,
+              class: "form-control",
+              placeholder: "#{Admin.human_attribute_name(:name)}",
+              type: "name",
               autofocus: "autofocus" %>
             <%= f.label :name %>
           </div>
+          <% if policy(@admin).check_admin? %>
+            <div class="form-check mb-3">
+              <%= f.label :role %>
+              <%= f.collection_radio_buttons(:role, options_for_role, :id, :description) do |b| %>
+                <div class="form-check">
+                  <%= b.label(class: "form-check-label") { b.radio_button(class: "form-check-input") + b.text } %>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
           <div class="form-floating mb-3">
-            <%= f.email_field :email, 
-              class: "form-control", 
-              placeholder: "#{Admin.human_attribute_name(:email)}", 
-              type: "email", 
+            <%= f.email_field :email,
+              class: "form-control",
+              placeholder: "#{Admin.human_attribute_name(:email)}",
+              type: "email",
               autofocus: "autofocus" %>
             <%= f.label :email %>
           </div>
           <div class="form-floating mb-3">
-            <%= f.password_field :password, 
-              class: "form-control", 
-              placeholder: "#{Admin.human_attribute_name(:password)}", 
-              type: "password", 
+            <%= f.password_field :password,
+              class: "form-control",
+              placeholder: "#{Admin.human_attribute_name(:password)}",
+              type: "password",
               autofocus: "autofocus" %>
             <%= f.label :password %>
           </div>
           <div class="form-floating mb-3">
-            <%= f.email_field :password_confirmation, 
-                class: "form-control", 
-                placeholder: "#{Admin.human_attribute_name(:password_confirmation)}", 
-                type: "password", 
+            <%= f.email_field :password_confirmation,
+                class: "form-control",
+                placeholder: "#{Admin.human_attribute_name(:password_confirmation)}",
+                type: "password",
                 autofocus: "autofocus" %>
             <%= f.label :password_confirmation %>
           </div>

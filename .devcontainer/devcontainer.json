@@ -19,7 +19,7 @@
     "3000": {
       "label": "Application",
       "onAutoForward": "notify",
-      "protocol": "https",
+      "protocol": "http",
       "elevateIfNeeded": true
     }
   },

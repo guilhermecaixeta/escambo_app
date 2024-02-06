@@ -10,11 +10,12 @@ pt-BR:
             title: Usuários
             new_user: Novo usuário
             show_all: Exibir todos os usuários
-            delete_confirmation: "Deseja realmente excluir o usuário '%{name}'?"
+            delete_confirmation: "Deseja realmente excluir o usuário <b>%{name}</b>?"
     action_text:
       created: "%{object_name} @{f:criada|m,n:criado} com sucesso!"
       updated: "%{object_name} @{f:atualizada|m,n:atualizado} com sucesso!"
       deleted: "%{object_name} '@{%{name}}' @{f:excluída|m,n:excluído} com sucesso!"
+      not_authorized: Você não está autorizado a executar essa ação
     buttons:
       logout: Sair
       login: Entrar
@@ -27,3 +28,10 @@ pt-BR:
       reset_password: Definir novo password
       remember_me: Lembre-se de mim
       forgot_password: Esqueceu a senha?
+    mailing:
+      subject:
+        update: Seus dados foram atualizados
+      text:
+        update: Para saber mais informações sobre, acesse sua conta no link abaixo.
+      buttons:
+        my_data: Meus dados!        

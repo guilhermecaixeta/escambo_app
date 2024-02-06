@@ -18,7 +18,7 @@ RUN mkdir -p "$APP_PATH" && \
   apt-get -y install --no-install-recommends \
   build-essential gnupg2 tar git zsh libssl-dev zlib1g-dev libyaml-dev curl libreadline-dev \
   postgresql-client libpq-dev openssh-client default-libmysqlclient-dev\
-  imagemagick libjpeg-dev libpng-dev libtiff-dev libwebp-dev libvips \
+  imagemagick libjpeg-dev libpng-dev libtiff-dev libwebp-dev libvips python-dev automake autoconf libtool \
   tzdata gifsicle \
   tmux \
   vim \
@@ -33,10 +33,22 @@ RUN git clone https://github.com/asdf-vm/asdf.git /usr/local/asdf && \
   chmod +x /etc/profile.d/asdf.sh && \
   chown -R vscode:vscode /usr/local/asdf
 
-RUN echo -e '\n. /usr/local/asdf/asdf.sh' >> /home/vscode/.bashrc && \
-  echo -e '\n. /usr/local/asdf/asdf.sh' >> /home/vscode/.zshrc && \
-  echo -e "\nexport PATH=\"/home/vscode/.gems/bin:\$PATH\"" >> /home/vscode/.bashrc && \
-  echo -e "\nexport PATH=\"/home/vscode/.gems/bin:\$PATH\"" >> /home/vscode/.zshrc
+### Install Brew
+# RUN useradd -m -s /bin/bash linuxbrew && \
+#     echo 'linuxbrew ALL=(ALL) NOPASSWD:ALL' >>/etc/sudoers
+
+# USER linuxbrew
+# RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" 
+
+# USER root
+# ENV PATH="/home/linuxbrew/.linuxbrew/bin:${PATH}"
+
+# RUN brew install watchman
+
+# RUN echo -e '\n. /usr/local/asdf/asdf.sh' >> /home/vscode/.bashrc && \
+#   echo -e '\n. /usr/local/asdf/asdf.sh' >> /home/vscode/.zshrc && \
+#   echo -e "\nexport PATH=\"/home/vscode/.gems/bin:\$PATH\"" >> /home/vscode/.bashrc && \
+#   echo -e "\nexport PATH=\"/home/vscode/.gems/bin:\$PATH\"" >> /home/vscode/.zshrc
 
 # # Set the user
 # USER app
@@ -66,4 +78,4 @@ RUN . /usr/local/asdf/asdf.sh && \
   gem install bundler -v "~> 2.3.26"
 
 ### Expose ports
-EXPOSE 3000 35729
+EXPOSE 3000 35729 1080
