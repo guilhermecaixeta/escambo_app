@@ -36,8 +36,8 @@ yarn-debug.log*
 .yarn-integrity
 
 // custom
-public/sb-admin
-sorbet
-public/e-shop
-public/sb-admin
-public/startbootstrap-sb-admin-gh-pages.zip
+/public/sb-admin
+/sorbet
+/public/e-shop
+/public/sb-admin
+/public/startbootstrap-sb-admin-gh-pages.zip
