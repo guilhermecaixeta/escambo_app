@@ -11,6 +11,10 @@ en:
             new_user: New User
             show_all: Show All
             delete_confirmation: "Do you really want to delete the user '%{name}'?"
+            send_email:
+              recipient: Recipient
+              title: "New message"
+              message: "Message"            
     action_text:
       created: "%{object_name} created successfully!"
       updated: "%{object_name} updated successfully!"
@@ -23,6 +27,9 @@ en:
       back: Back
       confirmation_yes: Yes
       confirmation_no: No
+      close: Close
+      email:
+        confirmation: "Send message"
     links:
       return_to_login: Return to login
       reset_password: Reset Password

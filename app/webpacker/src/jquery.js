@@ -1,4 +1,3 @@
 import jQuery from "jquery";
 
-window.jQuery = jQuery;
-window.$ = jQuery;
+window.$ = window.jQuery = jQuery;

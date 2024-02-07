@@ -2,7 +2,7 @@
 class Admin < ApplicationRecord
   enum role: [:full_access, :restrict_access]
 
-  validates_presence_of :name, :email
+  validates_presence_of :name
   validates :role, presence: true, on: :create
 
   # Filter users by role.

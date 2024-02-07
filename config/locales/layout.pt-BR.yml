@@ -11,6 +11,10 @@ pt-BR:
             new_user: Novo usuário
             show_all: Exibir todos os usuários
             delete_confirmation: "Deseja realmente excluir o usuário <b>%{name}</b>?"
+            send_email:
+              recipient: Destinatário
+              title: "Nova mensagem"
+              message: "Message"
     action_text:
       created: "%{object_name} @{f:criada|m,n:criado} com sucesso!"
       updated: "%{object_name} @{f:atualizada|m,n:atualizado} com sucesso!"
@@ -23,6 +27,9 @@ pt-BR:
       back: Voltar
       confirmation_yes: Sim
       confirmation_no: "Não"
+      close: Fechar
+      email:
+        confirmation: "Enviar mensagem"      
     links:
       return_to_login: Retornar ao login
       reset_password: Definir novo password

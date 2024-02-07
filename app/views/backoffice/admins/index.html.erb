@@ -25,6 +25,9 @@
               <td><%= admin.email %></td>
               <td><%= Admin.human_attribute_name("role.#{admin.role}") %></td>
               <td>
+                <%= link_to backoffice_message_new_path(message_id: admin.id), class: "btn btn-info btn-circle", remote: true, method: :post do %>
+                  <i class="fa fa-envelope"></i>
+                <% end %>
                 <%= link_to edit_backoffice_admin_path(admin), class: "btn btn-primary btn-circle" do %>
                   <i class="fa fa-edit"></i>
                 <% end %>
@@ -55,3 +58,4 @@
     </div>
   </div>
 </div>
+<%= render 'shared/backoffice/send_mail' %>
