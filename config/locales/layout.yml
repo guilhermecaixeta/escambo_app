@@ -38,7 +38,9 @@ en:
     mailing:
       subject:
         update: Your data has been updated
+        message_to: "%{user_from} sent a message to you"
       text:
         update: To know more info about the update access your account on the link below.
+        message_to: You received a new message 
       buttons:
         my_data: My data!

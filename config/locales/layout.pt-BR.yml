@@ -14,7 +14,7 @@ pt-BR:
             send_email:
               recipient: Destinatário
               title: "Nova mensagem"
-              message: "Message"
+              message: "Messagem"
     action_text:
       created: "%{object_name} @{f:criada|m,n:criado} com sucesso!"
       updated: "%{object_name} @{f:atualizada|m,n:atualizado} com sucesso!"
@@ -38,7 +38,9 @@ pt-BR:
     mailing:
       subject:
         update: Seus dados foram atualizados
+        message_to: "%{user_from} te enviou uma mensagem"
       text:
         update: Para saber mais informações sobre, acesse sua conta no link abaixo.
+        message_to: Você recebeu uma nova mensagem
       buttons:
         my_data: Meus dados!        

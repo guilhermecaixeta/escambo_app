@@ -5,22 +5,22 @@
         <h1 class="modal-title fs-5" id="sendMailModalLabel"><%= t 'layout.text.backoffice.management.users.send_email.title' %></h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
-        <form>
+      <%= form_with url: backoffice_message_index_path, remote: true do %>
+        <div class="modal-body">
           <div class="mb-3">
-            <label for="recipient-name" class="col-form-label"><%= t 'layout.text.backoffice.management.users.send_email.recipient' %>:</label>
-            <input type="text" class="form-control" id="recipient-name" autocomplete="off">
+            <%= label_tag(:recipient, t('layout.text.backoffice.management.users.send_email.recipient'),  class: "col-form-label", id: "recipient-name") %>
+            <%= text_field_tag(:recipient, "", class: "form-control", autocomplete: "off", id: "recipient-name", readonly: true) %>
           </div>
           <div class="mb-3">
-            <label for="message-text" class="col-form-label"><%= t 'layout.text.backoffice.management.users.send_email.message' %>:</label>
-            <textarea class="form-control" id="message-text"></textarea>
+            <%= label_tag(:message, t('layout.text.backoffice.management.users.send_email.message', class: "col-form-label", id: "message-text")) %>
+            <%= text_area_tag(:message, "", class: "form-control", id: "message-text") %>
           </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><%= t 'layout.buttons.close' %></button>
-        <button type="button" class="btn btn-primary"><%= t 'layout.buttons.email.confirmation' %></button>
-      </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><%= t 'layout.buttons.close' %></button>
+          <%= submit_tag t('layout.buttons.email.confirmation'), class: "btn btn-primary" %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

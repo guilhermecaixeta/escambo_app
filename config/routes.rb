@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   namespace :backoffice do
     resources :message, only: [:create] do
-      post "", action: :new, constraints: { id: /\d{1,}/ }, as: :new
+      post "", action: :new, constraints: { message_id: /\d{1,}/ }, as: :new
     end
 
     resources :categories, except: [:show, :destroy]

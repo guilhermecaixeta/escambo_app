@@ -1,11 +1,11 @@
-// document.getElementById("#sendMailModal").getElementById("#recipient-name").value = '<%= @admin.email %>';
 document.getElementById('sendMailModal')?.addEventListener('show.bs.modal', event => {
     const sendMailModal = document.getElementById('sendMailModal');
     // Update the modal's content.
     const modalBodyInput = sendMailModal.querySelector('.modal-body input')
 
-    // modalTitle.textContent = `New message to ${'<%= @admin.email %>'}`
     modalBodyInput.value = '<%= @admin.email %>';
   });
 
-new bootstrap.Modal('#sendMailModal').show(document.getElementById("sendMailModal"));
+var modal = new bootstrap.Modal('#sendMailModal');
+
+modal.show(document.getElementById("sendMailModal"));
