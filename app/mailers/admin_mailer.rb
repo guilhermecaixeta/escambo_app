@@ -5,17 +5,18 @@ class AdminMailer < ApplicationMailer
     bootstrap_mail(
       from: :from,
       to: @admin.email,
-      subject: "Seus dados foram alterados.")
+      subject: "Seus dados foram alterados.",
+    )
   end
 
-  def send_message_to(current_admin, recipient, message)
-    @current_admin = current_admin
-    @recipient = recipient
+  def send_message_to(from_name, from_email, to_name, to_email, message)
+    @to_name = to_name
     @message = message
 
     bootstrap_mail(
-      from: @current_admin.email,
-      to: @recipient,
-      subject: t('layout.mailing.subject.message_to', user_from: @current_admin.name))
+      from: from_email,
+      to: to_email,
+      subject: t("layout.mailing.subject.message_to", user_from: from_name),
+    )
   end
 end

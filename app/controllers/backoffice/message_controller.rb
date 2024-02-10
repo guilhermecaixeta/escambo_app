@@ -10,13 +10,18 @@ class Backoffice::MessageController < BackofficeController
   end
 
   def create
-    @current_admin = current_admin
-    @message = message_params[:message]
-    @recipient = Admin.find_by email: message_params[:recipient]
+    message = message_params[:message]
+    recipient = Admin.select(:name, :email).find_by email: message_params[:recipient]
 
-    AdminMailer.send_message_to(@current_admin, @recipient, @message).deliver_now
+    message_sent = MessageService.send_message current_admin.name, current_admin.email, recipient.name, recipient.email, message
 
-    redirect_to backoffice_admins_path, flash: { notice: "Mensagem enviada com sucesso!" }
+    if message_sent.success
+      flash[:notice] = message_sent.message
+    else
+      flash[:alert] = message_sent.message
+    end
+
+    redirect_to backoffice_admins_path
   end
 
   private

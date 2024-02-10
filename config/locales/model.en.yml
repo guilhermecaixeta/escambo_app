@@ -4,3 +4,13 @@ en:
       admin/role:
         full_access: "Full Access"
         restrict_access: "Restrict Access"
+  
+  errors:
+    messages:
+      message:
+        blank: "Message cannot be blank"
+        min_length: "The message should contains at least %{min_length} characters!"        
+      recipient:
+        same_as_user: "E-mail cannot be the same as the current user!"
+        blank: "Recipient cannot be blank!"
+

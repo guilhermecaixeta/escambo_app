@@ -42,5 +42,7 @@ pt-BR:
       text:
         update: Para saber mais informações sobre, acesse sua conta no link abaixo.
         message_to: Você recebeu uma nova mensagem
+        success_to_send: Mensagem enviada com sucesso!
+        error_to_send: Erro ao enviar mensagem, tente novamente dentro de alguns instantes!
       buttons:
         my_data: Meus dados!        

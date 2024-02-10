@@ -42,5 +42,7 @@ en:
       text:
         update: To know more info about the update access your account on the link below.
         message_to: You received a new message 
+        success_to_send: Success to send message!
+        error_to_send: Error to send message, try again in a few moments!
       buttons:
         my_data: My data!

@@ -18,3 +18,12 @@ pt-BR:
       admin/role:
         full_access: "Acesso total"
         restrict_access: "Acesso Restrito"
+
+  errors:
+    messages:
+      message:
+        blank: "Mensagem não pode ser em branco!"
+        min_length: "A mensagem deve conter no minímo %{min_length} caractéres!"
+      recipient:
+        same_as_user: "O e-mail não pode ser o mesmo do usuário!"
+        blank: "O destinátario não pode ser em branco!"

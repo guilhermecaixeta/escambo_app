@@ -21,11 +21,13 @@ class AdminPolicy < ApplicationPolicy
 
   class Scope < Scope
     def resolve
-      if user.full_access?
-        Admin.filter_by_role(nil).order(:id)
-      else
-        Admin.filter_by_role(:restrict_access).order(:id)
-      end
+      role = if user.full_access?
+          nil
+        else
+          :restrict_access
+        end
+
+      Admin.select(:id, :name, :email, :role).filter_by_role(role).order(:id)
     end
   end
 end
