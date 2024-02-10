@@ -1,14 +1,15 @@
 # typed: true
 class Backoffice::AdminsController < BackofficeController
   before_action :set_admin, only: [:edit, :update, :destroy]
+  before_action :validate_current_admin, only: [:index, :edit, :update]
 
   def index
     @admins = policy_scope(Admin)
   end
 
   def new
+    authorize Admin, :check_admin?
     @admin = Admin.new
-    authorize @admin, :check_admin?
   end
 
   def create
@@ -31,7 +32,6 @@ class Backoffice::AdminsController < BackofficeController
   end
 
   def edit
-    authorize @admin, :can_access
   end
 
   def update
@@ -72,11 +72,16 @@ class Backoffice::AdminsController < BackofficeController
 
   private
 
+  def validate_current_admin
+    authorize Admin, :can_access?
+  end
+
   def set_admin
     @admin = Admin.find(params[:id])
   end
 
   def admin_params
-    params.require(:admin).permit(policy(@admin.blank? ? Admin.new : @admin).permitted_attributes)
+    permitted_attributes = policy(@admin.blank? ? Admin.new : @admin).permitted_attributes
+    params.require(:admin).permit(permitted_attributes)
   end
 end

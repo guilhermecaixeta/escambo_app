@@ -3,12 +3,12 @@ class AdminPolicy < ApplicationPolicy
     user.full_access?
   end
 
-  def check_restrict?
-    user.restrict_access?
+  def can_access?
+    user.full_access? or user.restrict_access?
   end
 
-  def can_access
-    user.full_access? or user.restrict_access?
+  def message_permitted_attributes
+    [:authenticity_token, :commit, :recipient, :message]
   end
 
   def permitted_attributes

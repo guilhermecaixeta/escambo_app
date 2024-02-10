@@ -1,4 +1,6 @@
-class Backoffice::MessageController < ApplicationController
+class Backoffice::MessageController < BackofficeController
+  before_action :current_admin_can_send_message, only: [:new, :create]
+
   def new
     @admin = Admin.find(params[:message_id])
 
@@ -19,7 +21,11 @@ class Backoffice::MessageController < ApplicationController
 
   private
 
+  def current_admin_can_send_message
+    authorize Admin, :can_access?
+  end
+
   def message_params
-    params.permit(:recipient, :message)
+    params.permit(policy(Admin).message_permitted_attributes)
   end
 end

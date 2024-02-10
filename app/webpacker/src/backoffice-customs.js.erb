@@ -4,8 +4,8 @@ import { DataTable } from "simple-datatables.min.js";
 
 // based on this code https://stackoverflow.com/questions/799981/document-ready-equivalent-without-jquery
 var ready = fn => document.readyState !== 'loading' ?
-fn() :
-document.addEventListener('DOMContentLoaded', fn);
+    fn() :
+    document.addEventListener('DOMContentLoaded', fn);
 
 window.ready = ready;
 
@@ -17,7 +17,7 @@ document.addEventListener('turbolinks:load', () => {
             type: "line",
             data: {
                 // labels: JSON.parse(ctx.canvas.dataset.labels),
-                
+
                 labels: ["Jan", "Feb", "Mar"],
                 datasets: [{
                     // data: JSON.parse(ctx.canvas.dataset.data),
@@ -26,7 +26,7 @@ document.addEventListener('turbolinks:load', () => {
             }
         });
     }
-    
+
     if (document.getElementById("datatablesSimple")) {
         new DataTable("#datatablesSimple");
     }
@@ -34,7 +34,7 @@ document.addEventListener('turbolinks:load', () => {
 
 // Display errors in form when remote: 'true'.
 // To see more: https://github.com/turbolinks/turbolinks/issues/85#issuecomment-338784510
-document.addEventListener('ajax:complete',function (event) {
+document.addEventListener('ajax:complete', function (event) {
     var xhr = event.detail[0]
     if ((xhr.getResponseHeader('Content-Type') || '').substring(0, 9) === 'text/html') {
         var referrer = window.location.href
