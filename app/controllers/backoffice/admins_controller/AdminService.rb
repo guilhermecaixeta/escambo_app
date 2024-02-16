@@ -1,3 +1,4 @@
+# typed: true
 class Backoffice::AdminsController::AdminService
   def self.create(admin_params)
     @admin = Admin.new(admin_params)

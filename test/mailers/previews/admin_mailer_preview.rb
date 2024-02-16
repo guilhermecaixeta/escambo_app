@@ -1,3 +1,4 @@
+# typed: false
 class AdminMailerPreview < ActionMailer::Preview
   def on_update
     AdminMailer.on_update(Admin.first)

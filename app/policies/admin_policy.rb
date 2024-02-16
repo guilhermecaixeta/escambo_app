@@ -1,3 +1,4 @@
+# typed: false
 class AdminPolicy < ApplicationPolicy
   def check_admin?
     user.full_access?

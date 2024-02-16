@@ -1,3 +1,4 @@
+# typed: false
 class Backoffice::MessageController::MessageService
   def self.send_message(from_name, from_email, to_name, to_email, message)
     @errors = []
@@ -20,7 +21,7 @@ class Backoffice::MessageController::MessageService
     end
 
     begin
-      should_raise_error?
+      simulate_error?
 
       AdminMailer.send_message_to(from_name, from_email, to_name, to_email, message).deliver_now
       @message_sent.success = true
@@ -35,7 +36,7 @@ class Backoffice::MessageController::MessageService
 
   private
 
-  def self.should_raise_error?
+  def self.simulate_error?
     raise_error = [1..10].sample % 2 == 0
     puts "Should raise an error? #{raise_error ? "yes" : "no"}"
     if raise_error

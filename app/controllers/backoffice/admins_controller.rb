@@ -1,4 +1,4 @@
-# typed: true
+# typed: false
 class Backoffice::AdminsController < BackofficeController
   before_action :set_admin, only: [:edit, :update, :destroy]
   before_action :validate_current_admin, only: [:index, :edit, :update]

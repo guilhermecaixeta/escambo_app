@@ -1,3 +1,4 @@
+# typed: false
 class Backoffice::MessageController < BackofficeController
   before_action :current_admin_can_send_message, only: [:new, :create]
 

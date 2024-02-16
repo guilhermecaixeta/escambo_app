@@ -42,6 +42,15 @@ gem "font_awesome5_rails"
 # Authorize
 gem "pundit"
 
+# Application
+
+# This library provides integration of the money gem with Rails.
+# https://github.com/RubyMoney/money-rails
+gem "money-rails"
+
+#Image processing
+gem 'image_processing'
+
 source "https://rails-assets.org" do
 end
 

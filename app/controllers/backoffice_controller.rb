@@ -1,4 +1,4 @@
-# typed: strict
+# typed: true
 class BackofficeController < ApplicationController
   before_action :authenticate_admin!
 

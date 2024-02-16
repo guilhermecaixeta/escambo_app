@@ -1,3 +1,4 @@
+# typed: true
 class AdminMailer < ApplicationMailer
   def on_update(admin)
     @admin = admin
