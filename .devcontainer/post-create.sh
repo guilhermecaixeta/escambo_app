@@ -21,8 +21,11 @@ if [ -f Gemfile ]; then
     yarn install --check-files
 
     echo "Installing gems" 
-    gem install rails:6.0 htmlbeautifier solargraph sorbet:0.5.10187 rufo mailcatcher:2.6.0 tapioca:0.11.14
+    gem install rails:6.0 htmlbeautifier solargraph sorbet:0.5.10187 rufo tapioca:0.11.14
 
-    # echo "initializing tapioca"
+    echo "initializing sorbet"
+     bundle exec srb init
+
+    echo "initializing tapioca"
     bundle exec tapioca init
 fi

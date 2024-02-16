@@ -1,0 +1,8 @@
+FROM ruby
+
+RUN gem install mailcatcher --no-document
+
+CMD ["mailcatcher", "-f","-v", "--ip=0.0.0.0"]
+
+### Expose ports
+EXPOSE 1080 1025
