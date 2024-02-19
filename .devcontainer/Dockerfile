@@ -36,6 +36,23 @@ RUN git clone https://github.com/asdf-vm/asdf.git /usr/local/asdf && \
 # # Set the user
 # USER app
 
+## Install Brew
+RUN useradd -m -s /bin/bash linuxbrew && \
+    echo 'linuxbrew ALL=(ALL) NOPASSWD:ALL' >>/etc/sudoers
+
+USER linuxbrew
+RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" 
+
+USER root
+ENV PATH="/home/linuxbrew/.linuxbrew/bin:${PATH}"
+
+RUN brew install watchman
+
+RUN echo -e '\n. /usr/local/asdf/asdf.sh' >> /home/vscode/.bashrc && \
+  echo -e '\n. /usr/local/asdf/asdf.sh' >> /home/vscode/.zshrc && \
+  echo -e "\nexport PATH=\"/home/vscode/.gems/bin:\$PATH\"" >> /home/vscode/.bashrc && \
+  echo -e "\nexport PATH=\"/home/vscode/.gems/bin:\$PATH\"" >> /home/vscode/.zshrc
+
 COPY .tool-versions ./
 
 ### SHELL

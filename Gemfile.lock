@@ -400,6 +400,7 @@ DEPENDENCIES
   rails-i18n
   sass-rails (>= 6)
   solargraph
+  sorbet-static-and-runtime
   spring
   spring-watcher-listen (~> 2.0.0)
   tapioca
