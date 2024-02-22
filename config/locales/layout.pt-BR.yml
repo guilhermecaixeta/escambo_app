@@ -11,6 +11,9 @@ pt-BR:
             new_user: Novo usuário
             show_all: Exibir todos os usuários
             delete_confirmation: "Deseja realmente excluir o usuário <b>%{name}</b>?"
+            new_password_definition: Defina uma nova senha para sua conta
+            new_password: Nova senha
+            confirmation_password: Confirme sua senha
             send_email:
               recipient: Destinatário
               title: "Nova mensagem"
@@ -28,6 +31,7 @@ pt-BR:
       confirmation_yes: Sim
       confirmation_no: "Não"
       close: Fechar
+      password_change: Alterar senha 
       email:
         confirmation: "Enviar mensagem"      
     links:
@@ -37,9 +41,11 @@ pt-BR:
       forgot_password: Esqueceu a senha?
     mailing:
       subject:
-        update: Seus dados foram atualizados
+        user_created: Seu usuário está pronto!
+        user_updated: Seus dados foram atualizados!
         message_to: "%{user_from} te enviou uma mensagem"
       text:
+        create: "Your account has been created.\nTo access your account you should use the e-mail: %{user_email}.\nBefore accessing your account, please change your password using the link below."
         update: Para saber mais informações sobre, acesse sua conta no link abaixo.
         message_to: Você recebeu uma nova mensagem
         success_to_send: Mensagem enviada com sucesso!

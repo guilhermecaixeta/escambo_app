@@ -14,7 +14,7 @@ fi
 
 # If there's a Gemfile, then run `bundle install`
 if [ -f Gemfile ]; then
-    echo "installing bundle"
+    echo "running bundle"
     bundle install
 
     echo "yarn checking files"
@@ -26,7 +26,7 @@ if [ -f Gemfile ]; then
         debug ruby-lsp
 
     echo "initializing sorbet"
-     bundle exec srb init
+    bundle exec srb init
 
     echo "initializing tapioca"
     bundle exec tapioca init

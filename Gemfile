@@ -28,9 +28,6 @@ gem "jbuilder", "~> 2.7"
 gem "rails-i18n"
 # Enhances simple I18n backend in a way that it inflects translation data using pattern interpolation. https://rubydoc.info/gems/i18n-inflector/2.6.6/file/docs/USAGE
 gem "i18n-inflector"
-# Devise is a flexible authentication solution for Rails based on Warden. It:
-gem "devise"
-gem "devise-i18n"
 # The most popular HTML, CSS, and JavaScript framework for developing responsive, mobile first projects on the web. http://getbootstrap.com
 gem "bootstrap", ">= 5.0"
 # Bootstrap for emails https://bootstrapemail.com/docs/usage
@@ -39,8 +36,15 @@ gem "bootstrap-email"
 gem "bootsnap", ">= 1.4.2", require: false
 # Font awesome
 gem "font_awesome5_rails"
-# Authorize
+
+# Security
+# Devise is a flexible authentication solution for Rails based on Warden. It:
+gem "devise"
+gem "devise-i18n"
+# Pundit provides a set of helpers which guide you in leveraging regular Ruby classes and object oriented design patterns to build a straightforward, robust, and scalable authorization system.
 gem "pundit"
+# Very simple Roles library without any authorization enforcement supporting scope on resource object.
+# gem 'rolify'
 
 # Application
 

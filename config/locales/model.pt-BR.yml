@@ -1,23 +1,32 @@
 pt-BR:
   activerecord:
     models:
-      admin:
-        one: Administrador
-        other: Administradores
+      user:
+        one: Usuário
+        other: Usuários
       category:
         one: Categoria
         other: Categorias
+      permission:
+        one: Permissão
+        other: Permissões
     attributes:
+      role:
+        name: Nome
+      permission:
+        name: Nome
       category:
         description: Descrição
-      admin:
+      user:
         name: Nome
         password: Senha
         password_confirmation: Confirmação de Senha
-        role: Tipo de Acesso
-      admin/role:
-        full_access: "Acesso total"
-        restrict_access: "Acesso Restrito"
+        roles: Autorizações
+      member:
+        name: Nome
+        password: Senha
+        password_confirmation: Confirmação de Senha
+        roles: Autorizações
 
   errors:
     messages:

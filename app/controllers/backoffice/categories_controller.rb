@@ -1,57 +1,40 @@
 # typed: false
 class Backoffice::CategoriesController < BackofficeController
-  before_action :set_category, only: [:edit, :update]
-
   def index
-    @categories = Category.all.order(:id)
+    @objects = Category.order(:description)
   end
 
   def new
-    @category = Category.new
+    super
   end
 
   def create
-    @category = CategoryService.create(category_params)
-
-    respond_to do |format|
-      if @category.valid?
-        format.html {
-          redirect_to backoffice_categories_path,
-                      notice: t("layout.action_text.created", object_name: Category.model_name.human, :gender => :f)
-        }
-        format.json { render :index, status: :created }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @category.errors, status: :unprocessable_entity }
-      end
-    end
+    super
   end
 
   def edit
+    super
   end
 
   def update
-    respond_to do |format|
-      if @category.update(category_params)
-        format.html {
-          redirect_to backoffice_categories_path,
-                      notice: t("layout.action_text.updated", object_name: Category.model_name.human, :gender => :f)
-        }
-        format.json { render :index, status: :ok }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @category.errors, status: :unprocessable_entity }
-      end
-    end
+    super
   end
 
-  private
+  protected
 
-  def set_category
-    @category = Category.find(params[:id])
+  def get_default_path
+    backoffice_categories_path
   end
 
-  def category_params
+  def get_default_service
+    CategoryService
+  end
+
+  def get_controller_name
+    "#{super}/#{controller_name}"
+  end
+
+  def permitted_params
     params.require(:category).permit(:description)
   end
 end

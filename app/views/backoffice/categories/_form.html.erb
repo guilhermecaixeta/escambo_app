@@ -1,10 +1,10 @@
-<%= form_with(model: [:backoffice, @category], remote: true) do |f| %>
+<%= form_with(model: [:backoffice, @object], remote: true) do |f| %>
   <div class="row">
     <div class="col-3"></div>
     <div class="col-6">
-      <% if @category.errors.any? %>
+      <% if @object.errors.any? %>
         <div class="alert alert-danger alert-dismissible fade show">
-          <% @category.errors.full_messages.each do |message| %>
+          <% @object.errors.full_messages.each do |message| %>
             <%= message %>
           <% end %>
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>

@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def layout_by_resource
-    if devise_controller? && resource_name == :admin
+    if devise_controller? && resource_name == :user
       "backoffice_devise"
     else
       "application"
@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   end
 
   def user_not_authorized
-    flash[:alert] = t 'layout.action_text.not_authorized'
+    flash[:alert] = t "layout.action_text.not_authorized"
     redirect_back(fallback_location: root_path)
   end
 end

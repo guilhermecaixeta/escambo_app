@@ -11,6 +11,9 @@ en:
             new_user: New User
             show_all: Show All
             delete_confirmation: "Do you really want to delete the user '%{name}'?"
+            new_password_definition: Define a new password for your account
+            new_password: New password
+            confirmation_password: Confirm your password
             send_email:
               recipient: Recipient
               title: "New message"
@@ -28,6 +31,7 @@ en:
       confirmation_yes: Yes
       confirmation_no: No
       close: Close
+      password_change: Change password
       email:
         confirmation: "Send message"
     links:
@@ -37,10 +41,12 @@ en:
       forgot_password: Forgot Password?
     mailing:
       subject:
-        update: Your data has been updated
+        user_created: Your user is ready!
+        user_updated: Your data has been updated!
         message_to: "%{user_from} sent a message to you"
       text:
-        update: To know more info about the update access your account on the link below.
+        create: "Your account has been created.\nTo access your account you should use the e-mail: %{user_email}.\nBefore accessing your account, please change your password using the link below."
+        update: To know more info about the update, access your account on the link below.
         message_to: You received a new message 
         success_to_send: Success to send message!
         error_to_send: Error to send message, try again in a few moments!

@@ -1,10 +1,5 @@
 en:
-  activerecord:
-    attributes:
-      admin/role:
-        full_access: "Full Access"
-        restrict_access: "Restrict Access"
-  
+ 
   errors:
     messages:
       message:

@@ -1,9 +1,7 @@
 # typed: false
 class Backoffice::MessageController < BackofficeController
-  before_action :current_admin_can_send_message, only: [:new, :create]
-
   def new
-    @admin = Admin.find(params[:message_id])
+    @user = User.find(params[:message_id])
 
     respond_to do |format|
       format.js
@@ -12,9 +10,9 @@ class Backoffice::MessageController < BackofficeController
 
   def create
     message = message_params[:message]
-    recipient = Admin.select(:name, :email).find_by email: message_params[:recipient]
+    recipient = User.select(:name, :email).find_by email: message_params[:recipient]
 
-    message_sent = MessageService.send_message current_admin.name, current_admin.email, recipient.name, recipient.email, message
+    message_sent = MessageService.send_message current_user.name, current_user.email, recipient.name, recipient.email, message
 
     if message_sent.success
       flash[:notice] = message_sent.message
@@ -22,16 +20,16 @@ class Backoffice::MessageController < BackofficeController
       flash[:alert] = message_sent.message
     end
 
-    redirect_to backoffice_admins_path
+    redirect_to backoffice_users_path
+  end
+
+  def get_controller_name
+    "#{super}/#{controller_name}"
   end
 
   private
 
-  def current_admin_can_send_message
-    authorize Admin, :can_access?
-  end
-
   def message_params
-    params.permit(policy(Admin).message_permitted_attributes)
+    params.permit(MessagePolicy.new(current_user, get_controller_name).permitted_attributes)
   end
 end

@@ -1,4 +1,4 @@
-  
+
 <p class="lead">
   <%= Category.model_name.human(count: 2) %>
 </p>
@@ -16,7 +16,7 @@
           <tr>
             <th scope="col" class="col-1">#</th>
             <th scope="col" class="col-9">
-              <%=Category.human_attribute_name("description")%>
+              <%= Category.human_attribute_name("description") %>
             </th>
             <th scope="col" class="col-2"></th>
           </tr>
@@ -24,11 +24,11 @@
         <tfoot>
           <tr>
             <th>#</th>
-            <th><%=Category.human_attribute_name("description")%></th>
+            <th><%= Category.human_attribute_name("description") %></th>
           </tr>
         </tfoot>
         <tbody>
-          <% @categories.each do |category| %>
+          <% @objects.each do |category| %>
             <tr>
               <td><%= category.id %></td>
               <td><%= category.description %></td>
