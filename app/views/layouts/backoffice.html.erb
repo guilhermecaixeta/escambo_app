@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Backoffice</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="BackOffice pages">
+    <meta name="author" content="Guilherme Caixeta">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'backoffice', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'backoffice' %>
+  </head>
+  <body>
+    <%= render partial: 'shared/backoffice/navigation' %>
+    <main class="sb-nav-fixed">
+      <div id="layoutSidenav">
+        <%= render partial: 'shared/backoffice/aside_navigation' %>
+        <section id="layoutSidenav_content">
+          <div class="container-fluid px-4">
+            <% if notice %>
+              <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <%= notice %>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+            <% end %>
+            <% if alert %>
+              <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <%= alert %>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+            <% end %>
+            <%= yield %>
+          </div>
+          <%= render partial: 'shared/backoffice/footer' %>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>

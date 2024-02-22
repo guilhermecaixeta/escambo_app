@@ -1,0 +1,28 @@
+{
+  "name": "EscamboApp",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "escamboapp",
+  "workspaceFolder": "/app",
+  "customizations": {
+    "vscode": {
+      "extensions": ["Shopify.ruby", "sorbet.sorbet", "Cody Hoover.ruby-linter"]
+    }
+  },
+  // "remoteUser": "vscode",
+  "remoteUser": "root", // for wsl
+  "containerUser": "vscode",
+  "forwardPorts": [
+    3000,
+    5432
+  ],
+  "portsAttributes": {
+    "3000": {
+      "label": "Application",
+      "onAutoForward": "notify",
+      "protocol": "http",
+      "elevateIfNeeded": true
+    }
+  },
+  "initializeCommand": "ls",
+  "postCreateCommand": "chmod +x /app/.devcontainer/post-create.sh && /app/.devcontainer/post-create.sh"
+}

@@ -1,0 +1,92 @@
+# An example docker-compose.yml for run on devcontainer.
+
+version: "3.5"
+services:
+  # Primary application service
+  escamboapp:
+    user: "vscode:vscode"
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+    ports:
+      - 3000:3000
+    volumes:
+      - ..:/app:cached
+      - $HOME/.ssh/:/home/vscode/.ssh/
+    command: sleep infinity
+    networks:
+      - escamboapp_network_shared
+
+  # MySQL database service
+  mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: project_dev
+    ports:
+      - 3306:3306
+    volumes:
+      - escamboapp_mysql_data:/var/lib/mysql
+    networks:
+      - escamboapp_network_shared
+
+  # PostgreSQL database service
+  postgres:
+    image: postgres:12-alpine
+    volumes:
+      - escamboapp_postgres_data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    networks:
+      - escamboapp_network_shared
+  
+  # Mailcatcher service
+  mailcatcher:
+    image: schickling/mailcatcher
+    ports:
+      - 1080:1080
+    networks:
+      - escamboapp_network_shared
+
+  # Memcached service
+  # memcached:
+  #   image: memcached:1.5-alpine
+  #   ports:
+  #     - 11211:11211
+  #   networks:
+  #     - escamboapp_network_shared
+
+  # RabbitMQ service
+  # rabbitmq:
+  #   image: rabbitmq:3-management
+  #   ports:
+  #     - 5672:5672
+  #     - 15672:15672
+  #   networks:
+  #     - escamboapp_network_shared
+
+  # Redis service
+  # redis:
+  #   image: redis:4.0.10-alpine
+  #   ports:
+  #     - 6379:6379
+  #   volumes:
+  #     - escamboapp_redis_data:/data
+  #   networks:
+  #     - escamboapp_network_shared
+
+volumes:
+  escamboapp_mysql_data:
+    driver: local
+  escamboapp_postgres_data:
+    driver: local
+  escamboapp_redis_data:
+    driver: local
+
+networks:
+  escamboapp_network_shared:
+    external: true
+    name: escamboapp_network_shared

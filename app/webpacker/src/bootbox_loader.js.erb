@@ -1,0 +1,27 @@
+import bootbox from 'bootbox';
+import Rails from "@rails/ujs";
+
+window.bootbox = bootbox;
+
+Rails.confirm = function (message, element) {
+    bootbox.confirm({
+        message: message,
+        buttons: {
+            confirm: {
+                label: '<%= I18n.t("layout.buttons.confirmation_yes") %>',
+                className: 'btn-success'
+            },
+            cancel: {
+                label: '<%= I18n.t("layout.buttons.confirmation_no") %>',
+                className: 'btn-danger'
+            }
+        },
+        callback: function (result) {
+            if (result) {
+                element.removeAttribute('data-confirm');
+                element.click();
+            }
+        }
+    });
+    return false;
+};

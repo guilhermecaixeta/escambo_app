@@ -1,0 +1,54 @@
+pt-BR:
+  layout:
+    text:
+      new: "@{f:Nova|m,n:Novo}"
+      updating: Atualizando
+      backoffice:
+        management:
+          title: Gerenciamento
+          users:
+            title: Usuários
+            new_user: Novo usuário
+            show_all: Exibir todos os usuários
+            delete_confirmation: "Deseja realmente excluir o usuário <b>%{name}</b>?"
+            new_password_definition: Defina uma nova senha para sua conta
+            new_password: Nova senha
+            confirmation_password: Confirme sua senha
+            send_email:
+              recipient: Destinatário
+              title: "Nova mensagem"
+              message: "Messagem"
+    action_text:
+      created: "%{object_name} @{f:criada|m,n:criado} com sucesso!"
+      updated: "%{object_name} @{f:atualizada|m,n:atualizado} com sucesso!"
+      deleted: "%{object_name} '@{%{name}}' @{f:excluída|m,n:excluído} com sucesso!"
+      not_authorized: Você não está autorizado a executar essa ação
+    buttons:
+      logout: Sair
+      login: Entrar
+      save: Salvar
+      back: Voltar
+      confirmation_yes: Sim
+      confirmation_no: "Não"
+      close: Fechar
+      password_change: Alterar senha 
+      email:
+        confirmation: "Enviar mensagem"      
+    links:
+      return_to_login: Retornar ao login
+      reset_password: Definir novo password
+      remember_me: Lembre-se de mim
+      forgot_password: Esqueceu a senha?
+    mailing:
+      subject:
+        user_created: Seu usuário está pronto!
+        user_updated: Seus dados foram atualizados!
+        message_to: "%{user_from} te enviou uma mensagem"
+      text:
+        create: "Your account has been created.\nTo access your account you should use the e-mail: %{user_email}.\nBefore accessing your account, please change your password using the link below."
+        update: Para saber mais informações sobre, acesse sua conta no link abaixo.
+        message_to: Você recebeu uma nova mensagem
+        success_to_send: Mensagem enviada com sucesso!
+        error_to_send: Erro ao enviar mensagem, tente novamente dentro de alguns instantes!
+      buttons:
+        my_data: Meus dados!        

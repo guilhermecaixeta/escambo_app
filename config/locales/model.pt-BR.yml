@@ -1,0 +1,42 @@
+pt-BR:
+  activerecord:
+    models:
+      user:
+        one: Usuário
+        other: Usuários
+      category:
+        one: Categoria
+        other: Categorias
+      permission:
+        one: Permissão
+        other: Permissões
+      role:
+        one: Função
+        other: Funções
+    attributes:
+      role:
+        name: Nome
+        permissions: Permissões
+      permission:
+        name: Nome
+      category:
+        description: Descrição
+      user:
+        name: Nome
+        password: Senha
+        password_confirmation: Confirmação de Senha
+        roles: Autorizações
+      member:
+        name: Nome
+        password: Senha
+        password_confirmation: Confirmação de Senha
+        roles: Autorizações
+
+  errors:
+      validation:
+        default_roles: "O nome de uma autorização padrão não pode ser alterado"
+        blank: "Mensagem não pode ser em branco"
+        min_length: "A mensagem deve conter no minímo %{min_length} caractéres"
+        recipient:
+          same_as_user: "O e-mail não pode ser o mesmo do usuário"
+          blank: "O destinátario não pode ser em branco"
