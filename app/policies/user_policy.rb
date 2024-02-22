@@ -22,7 +22,11 @@ class UserPolicy < ApplicationPolicy
 
   class Scope < ApplicationPolicy::Scope
     def resolve
-      User.includes(:roles).select(:id, :name, :email).order(:id)
+      if UserPolicy.new(user, scope).has_read_and_write_permission?
+        User.joins(:roles).select(:id, :name, :email).order(:id)
+      else
+        User.joins(:roles).select(:id, :name, :email).where("roles.name != 'member'").order(:id)
+      end
     end
   end
 

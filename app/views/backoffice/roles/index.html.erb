@@ -4,6 +4,9 @@
 <div class="card mb-4">
   <div class="card-header">
     <%= Role.model_name.human(count: 2) %>
+    <%= link_to new_backoffice_role_path, class: "btn btn-primary btn-circle float-end" do %>
+      <i class="fa fa-plus"></i>
+    <% end %>
   </div>
   <div class="card-body">
     <div class="table-responsive w-auto">
@@ -12,6 +15,7 @@
           <tr>
             <th scope="col" class="col-1">#</th>
             <th scope="col" class="col-9"><%= Role.human_attribute_name("name") %></th>
+            <th scope="col" class="col-9"><%= Role.human_attribute_name("permissions") %></th>
             <th scope="col" class="col-2"></th>
           </tr>
         </thead>
@@ -20,12 +24,8 @@
             <tr>
               <td><%= role.id %></td>
               <td><%= role.name %></td>
+              <td><%= role.permissions.map{|permission| permission.name}.join(', ') %></td>
               <td>
-                <% if role.id != 1 or role.id != 2 %>
-                  <%= link_to backoffice_message_new_path(message_id: role.id), class: "btn btn-info btn-circle", remote: true, method: :post do %>
-                    <i class="fa fa-envelope"></i>
-                  <% end %>
-                <% end %>
                 <% if policy(current_user).can_read_and_write? %>
                   <%= link_to edit_backoffice_role_path(role), class: "btn btn-primary btn-circle" do %>
                     <i class="fa fa-edit"></i>
@@ -39,6 +39,7 @@
           <tr>
             <th scope="col" class="col-1">#</th>
             <th scope="col" class="col-9"><%= Role.human_attribute_name("name") %></th>
+            <th scope="col" class="col-9"><%= Role.human_attribute_name("permissions") %></th>
             <th scope="col" class="col-2"></th>
           </tr>
         </tfoot>

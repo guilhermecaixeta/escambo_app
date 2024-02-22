@@ -1,7 +1,7 @@
 # typed: false
 module Backoffice::UsersHelper
   # The role options
-  def options_for_role
+  def role_options
     Role.select(:id, :name).all
   end
 end

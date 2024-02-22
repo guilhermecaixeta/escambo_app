@@ -25,12 +25,12 @@
               <td><%= user.email %></td>
               <td><%= user.roles.map{|role| role.name}.join(', ') %></td>
               <td>
-                <% if current_user.email != user.email %>
-                  <%= link_to backoffice_message_new_path(message_id: user.id), class: "btn btn-info btn-circle", remote: true, method: :post do %>
-                    <i class="fa fa-envelope"></i>
-                  <% end %>
-                <% end %>
                 <% if policy(current_user).can_read_and_write? %>
+                  <% if current_user.email != user.email %>
+                    <%= link_to backoffice_message_new_path(message_id: user.id), class: "btn btn-info btn-circle", remote: true, method: :post do %>
+                      <i class="fa fa-envelope"></i>
+                    <% end %>
+                  <% end %>
                   <%= link_to edit_backoffice_user_path(user), class: "btn btn-primary btn-circle" do %>
                     <i class="fa fa-edit"></i>
                   <% end %>

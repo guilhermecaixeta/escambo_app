@@ -32,4 +32,9 @@ class Backoffice::RolesController < BackofficeController
   def get_controller_name
     "#{super}/#{controller_name}"
   end
+
+  def permitted_params
+    permitted_attributes = RolePolicy.new(current_user, get_controller_name).permitted_attributes
+    params.require(controller_name.classify.underscore.to_sym).permit(permitted_attributes)
+  end
 end

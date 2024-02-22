@@ -2,14 +2,7 @@
   <div class="row">
     <div class="col-3"></div>
     <div class="col-6">
-      <% if @object.errors.any? %>
-        <div class="alert alert-danger alert-dismissible fade show">
-          <% @object.errors.full_messages.each do |message| %>
-            <%= message %>
-          <% end %>
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-      <% end %>
+      <%= render 'shared/backoffice/errors' %>
       <div class="card mb-4 ">
         <div class="card-header">
           <%= t 'layout.text.new', :gender => :f %> <%= Category.model_name.human %>
