@@ -28,6 +28,11 @@
 #
 # To learn more, please read the Rails Internationalization guide
 # available at https://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  i18n:
+    inflections:
+      gender:
+        f: "f"
+        m: "m"
+        n: "n"
+        default: n

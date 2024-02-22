@@ -1,7 +1,7 @@
 # Note: You must restart bin/webpack-dev-server for changes to take effect
 
 default: &default
-  source_path: app/javascript
+  source_path: app/webpacker
   source_entry_path: packs
   public_root_path: public
   public_output_path: packs
@@ -11,13 +11,13 @@ default: &default
 
   # Additional paths webpack should lookup modules
   # ['app/assets', 'engine/foo/app/assets']
-  resolved_paths: []
+  resolved_paths: ['node_modules/jquery/dist', 'app/webpacker/src', 'vendor/assets/js']
 
   # Reload manifest.json on all requests so we reload latest compiled packs
   cache_manifest: false
 
   # Extract and emit a css file
-  extract_css: false
+  extract_css: true
 
   static_assets_extensions:
     - .jpg
@@ -34,6 +34,8 @@ default: &default
     - .woff2
 
   extensions:
+    - .js.erb
+    - .erb
     - .mjs
     - .js
     - .sass

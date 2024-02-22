@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="EscamboApp" />
+    <meta name="author" content="Guilherme Caixeta" />
+    <title>EscamboApp</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'site', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'site', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+    <main>
+      <%= render partial: "shared/site/navigation"%>
+      <%= yield %>
+      <%= render partial: "shared/site/footer"%>
+    </main>
+  </body>
+</html>

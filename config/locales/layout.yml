@@ -1,0 +1,54 @@
+en:
+  layout:
+    text:
+      new: New
+      update: Updating
+      backoffice:
+        management:
+          title: Management
+          users:
+            title: Users
+            new_user: New User
+            show_all: Show All
+            delete_confirmation: "Do you really want to delete the user '%{name}'?"
+            new_password_definition: Define a new password for your account
+            new_password: New password
+            confirmation_password: Confirm your password
+            send_email:
+              recipient: Recipient
+              title: "New message"
+              message: "Message"            
+    action_text:
+      created: "%{object_name} created successfully!"
+      updated: "%{object_name} updated successfully!"
+      deleted: "%{object_name} '%{name}' delete successfully!"
+      not_authorized: You are not authorized to perform this action.
+    buttons:
+      logout: Logout
+      login: Login
+      save: Save
+      back: Back
+      confirmation_yes: Yes
+      confirmation_no: No
+      close: Close
+      password_change: Change password
+      email:
+        confirmation: "Send message"
+    links:
+      return_to_login: Return to login
+      reset_password: Reset Password
+      remember_me: Remember me
+      forgot_password: Forgot Password?
+    mailing:
+      subject:
+        user_created: Your user is ready!
+        user_updated: Your data has been updated!
+        message_to: "%{user_from} sent a message to you"
+      text:
+        create: "Your account has been created.\nTo access your account you should use the e-mail: %{user_email}.\nBefore accessing your account, please change your password using the link below."
+        update: To know more info about the update, access your account on the link below.
+        message_to: You received a new message 
+        success_to_send: Success to send message!
+        error_to_send: Error to send message, try again in a few moments!
+      buttons:
+        my_data: My data!
