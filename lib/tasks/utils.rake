@@ -123,7 +123,7 @@ namespace :utils do
 
   desc "Adds the permissions to roles"
   task add_permissions_to_roles: :environment do
-    roles = Role.where(name: ["administrator", "operator", "member"])
+    roles = Role.where(name: Rails.configuration.default_roles.map { |r| r[:name] })
     permissions = Permission.all
 
     if permissions.nil? or permissions.empty?
@@ -131,31 +131,46 @@ namespace :utils do
     end
 
     puts "Adding default permissions to roles"
-    admin_role = roles.filter { |role| role.name == "administrator" }.first
+    admin_role = roles.filter {
+      |role|
+      role.name == Rails.configuration.default_roles.find { |r| r[:is_admin] }[:name]
+    }.first
     permissions.each do |permission|
       admin_role.permissions << permission
     end
 
-    operator_role = roles.filter { |role| role.name == "operator" }.first
-    permissions.filter { |permission| permission.name.match?(/(?:backoffice\/(categories|message))|(.*:read)/) }.each do |permission|
+    operator_role = roles.filter {
+      |role|
+      role.name == Rails.configuration.default_roles.find { |r| r[:is_opt] }[:name]
+    }.first
+    permissions.filter {
+      |permission|
+      permission.name.match?(/(?:backoffice\/(categories|message))|(.*:read)/)
+    }.each do |permission|
       operator_role.permissions << permission
     end
 
-    member_role = roles.filter { |role| role.name == "member" }.first
-    permissions.filter { |permission| permission.name.match?(/(site\/home:(read|write))/) }.each do |permission|
+    member_role = roles.filter {
+      |role|
+      role.name == Rails.configuration.default_roles.find { |r| r[:is_member] }[:name]
+    }.first
+    permissions.filter {
+      |permission|
+      permission.name.match?(/(site\/home:(read|write))/)
+    }.each do |permission|
       member_role.permissions << permission
     end
 
-    admin_role.save!
-    operator_role.save!
-    member_role.save!
+    admin_role.save!(validate: false)
+    operator_role.save!(validate: false)
+    member_role.save!(validate: false)
     puts "Permissions added to roles"
   end
 
   desc "Adds the defaut user: admin master"
   task add_default_user: :environment do
     current_datetime = DateTime.now
-    role = Role.select(:id).find_by(name: "administrator")
+    role = Role.select(:id).find_by(name: Rails.configuration.default_roles.find { |r| r[:is_admin] }[:name])
     puts "Adding admin master"
     admin = User.create(
       name: "Admin master",
