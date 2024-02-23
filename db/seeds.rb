@@ -27,10 +27,9 @@ end
 
 if Role.all.empty?
   puts "Adding default roles"
-  Role.upsert_all([
-    { name: "administrator", created_at: current_datetime, updated_at: current_datetime },
-    { name: "operator", created_at: current_datetime, updated_at: current_datetime },
-    { name: "member", created_at: current_datetime, updated_at: current_datetime },
-  ])
+  roles = Rails.configuration.default_roles.map do |role|
+    { name: role[:name], created_at: current_datetime, updated_at: current_datetime }
+  end
+  Role.upsert_all(roles)
   puts "All roles were added!"
 end
