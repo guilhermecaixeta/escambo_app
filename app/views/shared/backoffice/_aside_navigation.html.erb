@@ -19,10 +19,6 @@
         </a>
         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
           <nav class="sb-sidenav-menu-nested nav">
-            <% if policy(current_user).can_read_and_write? %>
-              <%= link_to t('layout.text.backoffice.management.users.new_user'), new_backoffice_user_path, class: "nav-link" %>
-            <% end %>
-
             <% if policy(current_user).can_read? %>
               <%= link_to t('layout.text.backoffice.management.users.show_all'), backoffice_users_path, class: "nav-link" %>
             <% end %>

@@ -34,7 +34,7 @@ pt-BR:
 
   errors:
       validation:
-        default_roles: "O nome de uma autorização padrão não pode ser alterado"
+        default_roles: "Autorização padrão não pode ser alterada"
         blank: "Mensagem não pode ser em branco"
         min_length: "A mensagem deve conter no minímo %{min_length} caractéres"
         recipient:
