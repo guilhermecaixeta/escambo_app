@@ -17,7 +17,11 @@ en:
             send_email:
               recipient: Recipient
               title: "New message"
-              message: "Message"            
+              message: "Message"
+          members:
+            title: Members
+            show_all: Show all 
+            send_new_password_definition: Send new password definition            
     action_text:
       created: "%{object_name} created successfully!"
       updated: "%{object_name} updated successfully!"

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     end
 
     resources :categories, except: [:show, :destroy]
+    resources :members, except: [:show, :create, :new, :destroy]
     resources :users, except: [:show]
     resources :roles, except: [:show]
     resources :permissions, only: [:index]
@@ -19,7 +20,7 @@ Rails.application.routes.draw do
   end
 
   devise_for :users, skip: [:registrations]
-  devise_for :members
+  # devise_for :members
 
   get "site/home"
   root "site/home#index"
