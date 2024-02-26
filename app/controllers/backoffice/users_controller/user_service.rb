@@ -1,7 +1,7 @@
 # typed: true
 class Backoffice::UsersController::UserService
   extend T::Sig
-  sig { params(params: User).returns(User) }
+  sig { params(params: T.untyped).returns(User) }
   def self.create(params)
     @user = User.new(params)
 
@@ -12,7 +12,7 @@ class Backoffice::UsersController::UserService
     @user
   end
 
-  sig { params(params: T.untyped, user: User).returns(T::Boolean) }
+  sig { params(params: T.untyped, user: User).returns(User) }
   def self.update(params, user)
     @user = user
     password = params["password"]
@@ -23,8 +23,13 @@ class Backoffice::UsersController::UserService
       params.delete(:password_confirmation)
     end
 
-    result = @user.update(params)
-    UserMailer.on_update(@user).deliver_now
-    return result
+    @user.assign_attributes(params)
+
+    if @user.valid?
+      @user.save!
+      UserMailer.on_update(@user).deliver_now
+    end
+
+    @user
   end
 end

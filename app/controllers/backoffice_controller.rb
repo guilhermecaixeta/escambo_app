@@ -48,7 +48,7 @@ class BackofficeController < ApplicationController
 
   def update
     respond_to do |format|
-      if get_default_service.update(permitted_params, @object)
+      if get_default_service.update(permitted_params, @object).valid?
         format.html {
           redirect_to get_default_path,
                       notice: t("layout.action_text.updated", object_name: default_class.model_name.human, :gender => :n)
@@ -107,8 +107,6 @@ class BackofficeController < ApplicationController
     permitted_attributes = policy(current_user).permitted_attributes
     params.require(controller_name.classify.underscore.to_sym).permit(permitted_attributes)
   end
-
-  private
 
   def default_class
     controller_name.classify.constantize
