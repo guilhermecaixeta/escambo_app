@@ -10,20 +10,21 @@ namespace :utils do
     puts "Adding permissions #{%x(rails utils:add_permissions_if_dont_exists)}"
     puts "Adding permissions to roles #{%x(rails utils:add_permissions_to_roles)}"
     puts "Adding default user #{%x(rails utils:add_default_user)}"
-    puts "Adding users #{%x(rails utils:users_generator)}"
-    puts "Adding advertisements #{%x(rails utils:ad_generator)}"
+    puts "Adding admins\n #{%x(rails utils:admins_generator)}"
+    puts "Adding member\n #{%x(rails utils:members_generator)}"
+    puts "Adding advertisements #{%x(rails utils:ads_generator)}"
     puts "Adding images to advertisements #{%x(rails utils:add_image_to_ads)}"
   end
 
-  desc "Generate users"
-  task users_generator: :environment do
-    number_of_users = 50
-    roles = Role.all
+  desc "Generate admins"
+  task admins_generator: :environment do
+    number_of_users = 10
+    roles = Role.where.not(name: Rails.configuration.default_roles.find { |r| r[:is_member] }[:name]).all
 
-    puts "Generating #{number_of_users} users"
+    puts "Generating #{number_of_users} admins"
     utc_now = DateTime::now
     number_of_users.times do
-      user = User.create!(
+      user = Admin.create!(
         name: Faker::Name.name,
         email: Faker::Internet.email,
         password: "123456",
@@ -35,11 +36,34 @@ namespace :utils do
       user.skip_confirmation!
       user.skip_confirmation_notification!
     end
-    puts "Users generated"
+    puts "Admins generated"
+  end
+
+  desc "Generate members"
+  task members_generator: :environment do
+    number_of_users = 50
+    member_role = Role.find_by(name: Rails.configuration.default_roles.find { |r| r[:is_member] }[:name])
+
+    puts "Generating #{number_of_users} members"
+    utc_now = DateTime::now
+    number_of_users.times do
+      user = Member.create!(
+        name: Faker::Name.name,
+        email: Faker::Internet.email,
+        password: "123456",
+        password_confirmation: "123456",
+        confirmed_at: utc_now,
+        role_ids: [member_role.id],
+      )
+
+      user.skip_confirmation!
+      user.skip_confirmation_notification!
+    end
+    puts "Admins generated"
   end
 
   desc "Generate advertisements"
-  task ad_generator: :environment do
+  task ads_generator: :environment do
     number_of_ads = 100
     utc_now = DateTime::now
     categories = Category.all
@@ -53,9 +77,9 @@ namespace :utils do
         id: index,
         title: Faker::Commerce.product_name,
         description: Faker::Lorem.sentence(word_count: 3, supplemental: true, random_words_to_add: 4),
-        price_cents: Faker::Commerce.price(range: 10..10000.0, as_string: true),
-        category_id: categories.sample.id,
-        member_id: members.sample.id,
+        price_cents: Faker::Commerce.price(range: 10..19999.99, as_string: true),
+        category_id: categories.shuffle.sample.id,
+        user_id: members.shuffle.sample.id,
         created_at: utc_now,
         updated_at: utc_now,
       }
@@ -172,7 +196,7 @@ namespace :utils do
     current_datetime = DateTime.now
     role = Role.select(:id).find_by(name: Rails.configuration.default_roles.find { |r| r[:is_admin] }[:name])
     puts "Adding admin master"
-    admin = User.create(
+    admin = Admin.create(
       name: "Admin master",
       email: "admin@admin.com",
       password: "123456",

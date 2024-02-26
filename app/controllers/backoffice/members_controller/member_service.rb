@@ -2,13 +2,10 @@
 class Backoffice::MembersController::MemberService
   extend T::Sig
 
-  sig { params(params: T::Array[Symbol], member: User).returns(User) }
+  sig { params(params: T.untyped, member: Member).returns(Member) }
 
-  def update(params, member)
+  def self.update(params, member)
     @member = member
-
-    params.delete(:password)
-    params.delete(:password_confirmation)
 
     @member.assign_attributes(params)
 

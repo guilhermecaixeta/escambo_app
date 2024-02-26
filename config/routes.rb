@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
     resources :categories, except: [:show, :destroy]
     resources :members, except: [:show, :create, :new, :destroy]
-    resources :users, except: [:show]
+    resources :admins, except: [:show]
     resources :roles, except: [:show]
     resources :permissions, only: [:index]
     get "dashboard", to: "dashboard#index"

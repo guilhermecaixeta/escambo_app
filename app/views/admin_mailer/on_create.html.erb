@@ -2,13 +2,15 @@
   <img class="ax-center my-10 w-24" src="https://assets.bootstrapemail.com/logos/light/square.png" />
   <div class="card p-6 p-lg-10 space-y-4">
     <h1 class="h3 fw-700">
-      <%= @user.name %>
+      <%= @admin.name %>
     </h1>
-    <strong><%= t 'layout.mailing.subject.update' %></strong>
+    <strong><%= t 'layout.mailing.subject.admin_created' %></strong>
     <p>
-      <%= t 'layout.mailing.text.update' %>
+      <%= t 'layout.mailing.text.create', admin_email: @admin.email %>
     </p>
-    <%= link_to t('layout.mailing.buttons.my_data'), edit_backoffice_user_url(@user), class: "btn btn-primary p-3 fw-700" %>
+    <p>
+      <%= link_to t('layout.backoffice.management.admins.new_password'), edit_admin_password_url(@resource, reset_password_token: @token) %>
+    </p>
   </div>
   <img class="ax-center mt-10 w-40" src="https://assets.bootstrapemail.com/logos/light/text.png" />
   <div class="text-muted text-center my-6">
@@ -16,5 +18,4 @@
     Hip Corp. 1 Hip Street<br>
     Gnarly State, 01234 USA <br>
   </div>
-</div>
 </div>

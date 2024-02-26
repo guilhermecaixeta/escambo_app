@@ -1,6 +1,6 @@
 class Backoffice::MembersController < BackofficeController
   def index
-    @objects = MemberPolicy::Scope.new(default_class, get_controller_name).resolve()
+    super
   end
 
   def edit
@@ -19,13 +19,5 @@ class Backoffice::MembersController < BackofficeController
 
   def get_default_path
     backoffice_members_path
-  end
-
-  def get_default_service
-    MemberService
-  end
-
-  def default_class
-    User
   end
 end

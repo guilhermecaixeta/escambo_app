@@ -1,9 +1,9 @@
 pt-BR:
   activerecord:
     models:
-      user:
-        one: Usuário
-        other: Usuários
+      admin:
+        one: Administrador
+        other: Administradores
       category:
         one: Categoria
         other: Categorias
@@ -24,7 +24,7 @@ pt-BR:
         name: Nome
       category:
         description: Descrição
-      user:
+      admin:
         name: Nome
         password: Senha
         password_confirmation: Confirmação de Senha

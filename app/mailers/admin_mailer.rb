@@ -1,31 +1,31 @@
 # typed: true
-class UserMailer < ApplicationMailer
+class AdminMailer < ApplicationMailer
   extend T::Sig
 
-  sig { params(user: User, token: String).void }
+  sig { params(admin: Admin, token: String).void }
 
-  def on_create(user, token)
-    @user = user
+  def on_create(admin, token)
+    @admin = admin
     @token = T.let(token, T.nilable(String))
 
     bootstrap_mail(
-      to: @user[:email],
-      subject: t("layout.mailing.subject.user_created"),
+      to: @admin[:email],
+      subject: t("layout.mailing.subject.admin_created"),
     )
   end
 
-  sig { params(user: User).returns(T.untyped) }
+  sig { params(admin: Admin).returns(T.untyped) }
 
-  def on_update(user)
-    @user = T.let(user, T.nilable(User))
+  def on_update(admin)
+    @admin = T.let(admin, T.nilable(Admin))
 
-    if @user.nil?
-      raise "User cannot be null"
+    if @admin.nil?
+      raise "Admin cannot be null"
     end
 
     bootstrap_mail(
-      to: @user[:email],
-      subject: t("layout.mailing.subject.user_updated"),
+      to: @admin[:email],
+      subject: t("layout.mailing.subject.admin_updated"),
     )
   end
 
@@ -45,7 +45,7 @@ class UserMailer < ApplicationMailer
     bootstrap_mail(
       from: from_email,
       to: to_email,
-      subject: t("layout.mailing.subject.message_to", user_from: from_name),
+      subject: t("layout.mailing.subject.message_to", admin_from: from_name),
     )
   end
 end

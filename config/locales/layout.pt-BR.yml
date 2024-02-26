@@ -4,10 +4,10 @@ pt-BR:
       new: "@{f:Nova|m,n:Novo}"
       updating: Atualizando
       backoffice:
+        show_all: Mostrar todos
         management:
           title: Gerenciamento
           users:
-            title: Operadores
             new_user: Novo usuário
             delete_confirmation: "Deseja realmente excluir o usuário <b>%{name}</b>?"
             new_password_definition: Defina uma nova senha para sua conta
@@ -18,9 +18,10 @@ pt-BR:
               title: "Nova mensagem"
               message: "Messagem"
           members:
-            title: Membros
-            show_all: Exibir todos 
             send_new_password_definition: Enviar nova definição de password
+        authorization:
+          title: Accessos
+
     action_text:
       created: "%{object_name} @{f:criada|m,n:criado} com sucesso!"
       updated: "%{object_name} @{f:atualizada|m,n:atualizado} com sucesso!"
