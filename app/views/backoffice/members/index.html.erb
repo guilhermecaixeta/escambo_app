@@ -4,11 +4,6 @@
 <div class="card mb-4">
   <div class="card-header">
     <%= Member.model_name.human(count: 2) %>
-    <% if policy(current_user).can_read_and_write? %>
-      <%= link_to new_backoffice_user_path, class: "btn btn-primary btn-circle float-end" do %>
-        <i class="fa fa-plus"></i>
-      <% end %>
-    <% end %>
   </div>
   <div class="card-body">
     <div class="table-responsive w-auto">

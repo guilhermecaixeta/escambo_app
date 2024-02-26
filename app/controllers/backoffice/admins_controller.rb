@@ -1,5 +1,5 @@
 # typed: false
-class Backoffice::UsersController < BackofficeController
+class Backoffice::AdminsController < BackofficeController
   def index
     super
   end
@@ -31,10 +31,6 @@ class Backoffice::UsersController < BackofficeController
   end
 
   def get_default_path
-    backoffice_users_path
-  end
-
-  def get_default_service
-    UserService
+    backoffice_admins_path
   end
 end

@@ -20,37 +20,37 @@
         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
           <nav class="sb-sidenav-menu-nested nav">
             <% if policy(current_user).can_read? %>
-              <%= link_to t('layout.text.backoffice.management.users.title'), backoffice_users_path, class: "nav-link" %>
-              <%= link_to t('layout.text.backoffice.management.members.title'), backoffice_members_path, class: "nav-link" %>
+              <%= link_to Admin.model_name.human(count: 2), backoffice_admins_path, class: "nav-link" %>
+              <%= link_to Member.model_name.human(count: 2), backoffice_members_path, class: "nav-link" %>
             <% end %>
           </nav>
         </div>
         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
           <div class="sb-nav-link-icon"><i class="fa-solid fa-shield-halved"></i></div>
-          Acessos
+          <%= t 'layout.text.backoffice.authorization.title' %>
           <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
         </a>
         <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
           <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-              Autorização
+              <%= Role.model_name.human %>
               <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
             </a>
             <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
               <nav class="sb-sidenav-menu-nested nav">
                 <% if policy(current_user).can_read? %>
-                  <%= link_to t('layout.text.backoffice.management.roles.show_all'), backoffice_roles_path, class: "nav-link" %>
+                  <%= link_to t('layout.text.backoffice.show_all'), backoffice_roles_path, class: "nav-link" %>
                 <% end %>
               </nav>
             </div>
             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
-              Permissão
+              <%= Permission.model_name.human %>
               <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
             </a>
             <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
               <nav class="sb-sidenav-menu-nested nav">
                 <% if policy(current_user).can_read? %>
-                  <%= link_to t('layout.text.backoffice.management.permissions.show_all'), backoffice_permissions_path, class: "nav-link" %>
+                  <%= link_to t('layout.text.backoffice.show_all'), backoffice_permissions_path, class: "nav-link" %>
                 <% end %>
               </nav>
             </div>
