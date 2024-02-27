@@ -1,6 +1,7 @@
 pt-BR:
   layout:
     text:
+      app_name: EscamboApp
       new: "@{f:Nova|m,n:Novo}"
       updating: Atualizando
       backoffice:

@@ -45,7 +45,7 @@ class AdminMailer < ApplicationMailer
     bootstrap_mail(
       from: from_email,
       to: to_email,
-      subject: t("layout.mailing.subject.message_to", admin_from: from_name),
+      subject: t("layout.mailing.subject.message_to", user_from: from_name),
     )
   end
 end

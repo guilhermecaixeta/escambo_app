@@ -4,7 +4,7 @@
 <div class="card mb-4">
   <div class="card-header">
     <%= Admin.model_name.human(count: 2) %>
-    <% if policy(current_user).can_read_and_write? %>
+    <% if policy(current_admin).can_read_and_write? %>
       <%= link_to new_backoffice_admin_path, class: "btn btn-primary btn-circle float-end" do %>
         <i class="fa fa-plus"></i>
       <% end %>
@@ -30,8 +30,8 @@
               <td><%= user.email %></td>
               <td><%= user.roles.map{|role| role.name}.join(', ') %></td>
               <td>
-                <% if policy(current_user).can_read_and_write? %>
-                  <% if current_user.email != user.email %>
+                <% if policy(current_admin).can_read_and_write? %>
+                  <% if current_admin.email != user.email %>
                     <%= link_to backoffice_message_new_path(message_id: user.id), class: "btn btn-info btn-circle", remote: true, method: :post do %>
                       <i class="fa fa-envelope"></i>
                     <% end %>
@@ -39,7 +39,7 @@
                   <%= link_to edit_backoffice_admin_path(user), class: "btn btn-primary btn-circle" do %>
                     <i class="fa fa-edit"></i>
                   <% end %>
-                  <% if current_user.email != user.email %>
+                  <% if current_admin.email != user.email %>
                     <%= link_to( backoffice_admin_path(user),
                       method: :delete,
                       class:"btn btn-danger btn-circle",

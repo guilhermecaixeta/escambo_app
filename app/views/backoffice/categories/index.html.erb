@@ -32,7 +32,7 @@
               <td><%= category.id %></td>
               <td><%= category.description %></td>
               <td>
-                <% if policy(current_user).can_read_and_write? %>
+                <% if policy(current_admin).can_read_and_write? %>
                   <%= link_to edit_backoffice_category_path(category), class: "btn btn-primary btn-circle" do %>
                     <i class="fa fa-edit"></i>
                   <% end %>

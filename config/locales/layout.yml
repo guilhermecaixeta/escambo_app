@@ -1,6 +1,7 @@
 en:
   layout:
     text:
+      app_name: EscamboApp
       new: New
       update: Updating
       backoffice:
