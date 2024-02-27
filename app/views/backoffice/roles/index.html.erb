@@ -26,7 +26,7 @@
               <td><%= role.name %></td>
               <td><%= role.permissions.map{|permission| permission.name}.join(', ') %></td>
               <td>
-                <% if policy(current_user).can_read_and_write? and !Rails.configuration.default_roles.any? { |r| r[:name] == role.name } %>
+                <% if policy(current_admin).can_read_and_write? and !Rails.configuration.default_roles.any? { |r| r[:name] == role.name } %>
                   <%= link_to edit_backoffice_role_path(role), class: "btn btn-primary btn-circle" do %>
                     <i class="fa fa-edit"></i>
                   <% end %>

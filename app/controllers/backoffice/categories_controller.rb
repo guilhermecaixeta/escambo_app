@@ -1,7 +1,7 @@
 # typed: false
 class Backoffice::CategoriesController < BackofficeController
   def index
-    @objects = Category.order(:description)
+    super
   end
 
   def new
@@ -26,15 +26,7 @@ class Backoffice::CategoriesController < BackofficeController
     backoffice_categories_path
   end
 
-  def get_default_service
-    CategoryService
-  end
-
-  def get_controller_name
-    "#{super}/#{controller_name}"
-  end
-
   def permitted_params
-    params.require(:category).permit(:description)
+    params.require(:category).permit()
   end
 end

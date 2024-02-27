@@ -1,17 +1,17 @@
 # typed: true
 class BackofficeController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_admin!
   before_action :user_can_read, only: [:index]
   before_action :user_can_write, only: [:new, :create, :edit, :update, :destroy]
   before_action :get_instance, only: [:edit, :update, :destroy]
   layout "backoffice"
 
   def policy(user)
-    UserPolicy.new(user, get_controller_name)
+    UserPolicy.new(user, controller_name)
   end
 
-  def policy_class
-    UserPolicy
+  def pundit_user
+    current_admin
   end
 
   protected
@@ -82,7 +82,7 @@ class BackofficeController < ApplicationController
   end
 
   def get_controller_name
-    "backoffice"
+    controller_path
   end
 
   def user_can_read

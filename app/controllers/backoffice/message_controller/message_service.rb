@@ -38,7 +38,7 @@ class Backoffice::MessageController::MessageService
     begin
       simulate_error?
 
-      UserMailer.send_message_to(from_name, from_email, to_name, to_email, message).deliver_now
+      AdminMailer.send_message_to(from_name, from_email, to_name, to_email, message).deliver_now
 
       @message_sent[:success] = true
       @message_sent[:message] = I18n.t "layout.mailing.text.success_to_send"
@@ -55,7 +55,7 @@ class Backoffice::MessageController::MessageService
   sig { void }
   def self.simulate_error?
     raise_error = [1..10].sample % 2 == 0
-    puts "Should raise an error? #{raise_error ? "yes" : "no"}"
+    Rails.logger.debug "Should raise an error? #{raise_error ? "yes" : "no"}"
     if raise_error
       raise "Email could not be sent, check the logs for more details!"
     end

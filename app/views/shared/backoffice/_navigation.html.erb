@@ -20,7 +20,7 @@
         <li><a class="dropdown-item" href="#!">Activity Log</a></li>
         <li><hr class="dropdown-divider" /></li>
         <li>
-          <%= link_to destroy_user_session_path, method: :delete, class: "dropdown-item" do %>
+          <%= link_to destroy_admin_session_path, method: :delete, class: "dropdown-item" do %>
             <i class="fa fa-sign-out fa-fw"></i>
             <%= t 'layout.buttons.logout' %>
           <% end %>

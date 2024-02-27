@@ -19,8 +19,8 @@ Rails.application.routes.draw do
     get "home", to: "home#index"
   end
 
-  devise_for :users, skip: [:registrations]
-  # devise_for :members
+  devise_for :admins, skip: [:registrations]
+  devise_for :members
 
   get "site/home"
   root "site/home#index"
