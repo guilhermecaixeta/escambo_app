@@ -2,17 +2,17 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="sendMailModalLabel"><%= t 'layout.text.backoffice.management.users.send_email.title' %></h1>
+        <h1 class="modal-title fs-5" id="sendMailModalLabel"><%= t 'layout.text.backoffice.management.admins.send_email.title' %></h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <%= form_with url: backoffice_message_index_path, remote: true do %>
         <div class="modal-body">
           <div class="mb-3">
-            <%= label_tag(:recipient, t('layout.text.backoffice.management.users.send_email.recipient'),  class: "col-form-label", id: "recipient-name") %>
+            <%= label_tag(:recipient, t('layout.text.backoffice.management.admins.send_email.recipient'),  class: "col-form-label", id: "recipient-name") %>
             <%= text_field_tag(:recipient, "", class: "form-control", autocomplete: "off", id: "recipient-name", readonly: true) %>
           </div>
           <div class="mb-3">
-            <%= label_tag(:message, t('layout.text.backoffice.management.users.send_email.message', class: "col-form-label", id: "message-text")) %>
+            <%= label_tag(:message, t('layout.text.backoffice.management.admins.send_email.message', class: "col-form-label", id: "message-text")) %>
             <%= text_area_tag(:message, "", class: "form-control", id: "message-text") %>
           </div>
         </div>

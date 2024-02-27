@@ -6,8 +6,7 @@ en:
       backoffice:
         management:
           title: Management
-          users:
-            title: Users
+          admins:
             new_user: New User
             show_all: Show All
             delete_confirmation: "Do you really want to delete the user '%{name}'?"
@@ -17,7 +16,9 @@ en:
             send_email:
               recipient: Recipient
               title: "New message"
-              message: "Message"            
+              message: "Message"
+          members:
+            send_new_password_definition: Send new password definition            
     action_text:
       created: "%{object_name} created successfully!"
       updated: "%{object_name} updated successfully!"

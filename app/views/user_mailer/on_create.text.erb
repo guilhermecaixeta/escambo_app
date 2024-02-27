@@ -1,6 +1,0 @@
-<%= @user.name %>
-===================================================================================================================================
-<%= t 'layout.mailing.subject.user_created' %>
-<%= t 'layout.mailing.text.create', user_email: @user.email %>
-===================================================================================================================================
-<%= link_to t('layout.backoffice.management.users.new_password'), edit_user_password_url(@resource, reset_password_token: @token) %>

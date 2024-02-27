@@ -1,9 +1,9 @@
 pt-BR:
   activerecord:
     models:
-      user:
-        one: Usuário
-        other: Usuários
+      admin:
+        one: Administrador
+        other: Administradores
       category:
         one: Categoria
         other: Categorias
@@ -13,6 +13,9 @@ pt-BR:
       role:
         one: Função
         other: Funções
+      member:
+        one: Membro
+        other: Membros
     attributes:
       role:
         name: Nome
@@ -21,7 +24,7 @@ pt-BR:
         name: Nome
       category:
         description: Descrição
-      user:
+      admin:
         name: Nome
         password: Senha
         password_confirmation: Confirmação de Senha
@@ -33,10 +36,12 @@ pt-BR:
         roles: Autorizações
 
   errors:
-      validation:
-        default_roles: "Autorização padrão não pode ser alterada"
-        blank: "Mensagem não pode ser em branco"
-        min_length: "A mensagem deve conter no minímo %{min_length} caractéres"
+      messages:
+        member_email_cannot_be_changed: "de member não pode ser alterado"
+        member_roles_cannot_be_changed: "de membro não podem ser alteradas"
+        default_roles: "padrão não pode ser alterada"
+        blank: "não pode ser em branco"
+        min_length: "deve conter no minímo %{min_length} caractéres"
         recipient:
           same_as_user: "O e-mail não pode ser o mesmo do usuário"
           blank: "O destinátario não pode ser em branco"
