@@ -15,9 +15,9 @@ pt-BR:
             new_password: Nova senha
             confirmation_password: Confirme sua senha
             send_email:
-              recipient: Destinatário
               title: "Nova mensagem"
-              message: "Messagem"
+              recipient: Destinatário
+              message: "Mensagem"
           members:
             send_new_password_definition: Enviar nova definição de password
         authorization:

@@ -4,7 +4,6 @@
 class Members::SessionsController < Devise::SessionsController
   # GET /resource/sign_in
   def new
-    @errors = []
     self.resource = resource_class.new(sign_in_params)
     clean_up_passwords(resource)
     yield resource if block_given?
@@ -22,11 +21,10 @@ class Members::SessionsController < Devise::SessionsController
       yield resource if block_given?
       respond_with resource, location: after_sign_in_path_for(resource)
     else
-      error_key = warden.message.nil? ? "invalid" : warden.message
-      @errors = [t("devise.failure.#{error_key}", authentication_keys: "email")]
+      self.resource = resource_class.new(sign_in_params)
+      flash[:alert] = [t("devise.failure.#{warden.message.nil? ? "invalid" : warden.message}",
+                         authentication_keys: "email")]
       respond_to do |format|
-        format.html { render :new }
-        format.json { render json: @errors, status: :unauthorized }
         format.js { render :new, status: :unauthorized }
       end
     end

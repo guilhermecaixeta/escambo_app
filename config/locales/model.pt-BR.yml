@@ -43,4 +43,3 @@ pt-BR:
         message_min_length: "deve conter no minímo %{min_length} caractéres"
         recipient:
           same_as_user: "O e-mail não pode ser o mesmo do usuário"
-          blank: "O destinátario não pode ser em branco"

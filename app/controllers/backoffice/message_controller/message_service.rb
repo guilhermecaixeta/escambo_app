@@ -19,7 +19,8 @@ class Backoffice::MessageController::MessageService
     end
 
     if message.blank?
-      @errors.push("Mensagem " + I18n.t("errors.messages.blank"))
+      @errors.push("#{I18n.t("layout.text.backoffice.management.users.send_email.message")}
+                    #{I18n.t("errors.messages.blank")}")
     end
     if !message.blank? && message.length < 2
       @errors.push(I18n.t "errors.messages.message_min_length", min_length: 2)
@@ -28,7 +29,8 @@ class Backoffice::MessageController::MessageService
       @errors.push(I18n.t "errors.messages.recipient.same_as_user")
     end
     if to_email.blank?
-      @errors.push("Recipiente " + I18n.t("errors.messages.recipient.blank"))
+      @errors.push("#{I18n.t("layout.text.backoffice.management.users.send_email.recipient")}
+                    #{I18n.t("errors.messages.blank")}")
     end
     if @errors.any?
       @message_sent[:message] = @errors.join("\n")

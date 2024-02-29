@@ -1,2 +1,2 @@
-document.getElementById("app_modal_title").innerHTML = '<%= t "layout.text.site.authentication.login" %>';
-document.getElementById("app_modal_body").innerHTML = '<%= j render "shared/backoffice/mailing_modal", locals: { admin: @admin } %>';
+document.getElementById("app_modal_title").innerHTML = '<%= t "layout.text.backoffice.management.users.send_email.title" %>';
+document.getElementById("app_modal_body").innerHTML = '<%= j render "shared/backoffice/mailing_modal", locals: { recipient: @recipient } %>';

@@ -2,7 +2,6 @@
 class Backoffice::MessageController < BackofficeController
   def new
     @recipient = Admin.find(params[:message_id])
-    @modal_name = "#sendMailModal"
     respond_to do |format|
       format.js
     end

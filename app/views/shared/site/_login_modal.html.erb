@@ -1,6 +1,6 @@
-<% if @errors.any? %>
+<% if alert && alert.any? %>
   <div class="alert alert-danger alert-dismissible fade show">
-    <% @errors.each do |message| %>
+    <% alert.each do |message| %>
       <ul>
         <li>
           <%= message %>

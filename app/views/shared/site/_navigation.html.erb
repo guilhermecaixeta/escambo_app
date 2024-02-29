@@ -17,25 +17,25 @@
           </ul>
         </li>
       </ul>
-      <form class="d-flex">
+      <form class="d-flex me-4">
         <button class="btn btn-outline-dark" type="submit">
           <i class="bi-cart-fill me-1"></i>
           Cart
           <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
         </button>
       </form>
-      <% unless member_signed_in? %>
-        <div class="d-flex ms-4">
+      <div class="d-flex p-2">
+        <% unless member_signed_in? %>
           <%= link_to "Login",
                       new_member_session_path,
-                      class: "btn btn-info btn-circle",
+                      class: "btn",
                       data: {"bs-toggle": "modal", "bs-target": "#app_modal" },
                       remote: true %>
-        </div>
-      <% else %>
-        <div class="d-flex ms-4">
+        <% else %>
           <div class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><%= current_member.name %></a>
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <%= current_member.name %>
+            </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li>
                 <%= link_to destroy_member_session_path, method: :delete, class: "dropdown-item" do %>
@@ -47,8 +47,8 @@
               <li><a class="dropdown-item" href="#!">Profile</a></li>
             </ul>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </nav>
