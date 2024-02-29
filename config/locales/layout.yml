@@ -19,7 +19,10 @@ en:
               title: "New message"
               message: "Message"
           members:
-            send_new_password_definition: Send new password definition            
+            send_new_password_definition: Send new password definition
+      site:
+        authentication:
+          login: Login
     action_text:
       created: "%{object_name} created successfully!"
       updated: "%{object_name} updated successfully!"

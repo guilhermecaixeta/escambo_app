@@ -1,4 +1,4 @@
-# typed: false
+# typed: true
 class AdminPolicy < UserPolicy
   extend T::Sig
 
@@ -10,7 +10,7 @@ class AdminPolicy < UserPolicy
 
   class Scope < ApplicationPolicy::Scope
     def resolve
-      Admin.left_outer_joins(:roles).select(:id, :name, :email).distinct.order(:id)
+      Admin.left_outer_joins(:roles).select(:id, :name, :email).distinct.order(:name)
     end
   end
 end

@@ -25,8 +25,4 @@ class Backoffice::CategoriesController < BackofficeController
   def get_default_path
     backoffice_categories_path
   end
-
-  def permitted_params
-    params.require(:category).permit()
-  end
 end

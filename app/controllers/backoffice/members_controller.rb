@@ -1,3 +1,4 @@
+# typed: false
 class Backoffice::MembersController < BackofficeController
   def index
     super

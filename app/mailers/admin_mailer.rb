@@ -1,4 +1,4 @@
-# typed: true
+# typed: strict
 class AdminMailer < ApplicationMailer
   extend T::Sig
 

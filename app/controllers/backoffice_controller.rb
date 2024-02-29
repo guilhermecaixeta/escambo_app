@@ -1,4 +1,4 @@
-# typed: true
+# typed: false
 class BackofficeController < ApplicationController
   before_action :authenticate_admin!
   before_action :user_can_read, only: [:index]
@@ -81,6 +81,11 @@ class BackofficeController < ApplicationController
     end
   end
 
+  def get_default_path
+  end
+
+  private
+
   def get_controller_name
     controller_path
   end
@@ -99,11 +104,7 @@ class BackofficeController < ApplicationController
 
   def get_default_service
     class_name = default_class_name
-    constant_class = "Backoffice::#{class_name.pluralize}Controller::#{class_name}Service".constantize
-    constant_class
-  end
-
-  def get_default_path
+    "Backoffice::#{class_name.pluralize}Controller::#{class_name}Service".constantize
   end
 
   def permitted_params
@@ -118,8 +119,6 @@ class BackofficeController < ApplicationController
   def get_current_class_policy
     "#{default_class_name}Policy".constantize
   end
-
-  private
 
   def default_class_name
     controller_name.classify

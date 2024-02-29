@@ -22,7 +22,9 @@ pt-BR:
             send_new_password_definition: Enviar nova definição de password
         authorization:
           title: Accessos
-
+      site:
+        authentication:
+          login: Conectar 
     action_text:
       created: "%{object_name} @{f:criada|m,n:criado} com sucesso!"
       updated: "%{object_name} @{f:atualizada|m,n:atualizado} com sucesso!"

@@ -1,5 +1,6 @@
+# typed: true
 class Backoffice::PermissionsController < BackofficeController
   def index
-    @permissions = Permission.all
+    super
   end
 end

@@ -13,8 +13,7 @@
                 class: "form-control",
                 placeholder: "#{Role.human_attribute_name(:name)}",
                 type: "text",
-                autofocus: "autofocus",
-                readonly: action_name == "update" && !["administrator", "operator", "member"].include?(@object.name) %>
+                autofocus: "autofocus" %>
             <%= f.label :name %>
           </div>
           <div class="form-check mb-3">

@@ -1,7 +1,7 @@
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container px-4 px-lg-5">
-    <a class="navbar-brand" href="#!">Start Bootstrap</a>
+    <%= link_to t('layout.text.app_name'), root_path, class: "navbar-brand" %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
@@ -24,6 +24,31 @@
           <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
         </button>
       </form>
+      <% unless member_signed_in? %>
+        <div class="d-flex ms-4">
+          <%= link_to "Login",
+                      new_member_session_path,
+                      class: "btn btn-info btn-circle",
+                      data: {"bs-toggle": "modal", "bs-target": "#app_modal" },
+                      remote: true %>
+        </div>
+      <% else %>
+        <div class="d-flex ms-4">
+          <div class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><%= current_member.name %></a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li>
+                <%= link_to destroy_member_session_path, method: :delete, class: "dropdown-item" do %>
+                  <i class="fa fa-sign-out fa-fw"></i>
+                  <%= t 'layout.buttons.logout' %>
+                <% end %>
+              </li>
+              <li><hr class="dropdown-divider" /></li>
+              <li><a class="dropdown-item" href="#!">Profile</a></li>
+            </ul>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
 </nav>

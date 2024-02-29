@@ -2,15 +2,8 @@ import { read } from "@popperjs/core";
 import Chart from "chart.js/auto";
 import { DataTable } from "simple-datatables.min.js";
 
-// based on this code https://stackoverflow.com/questions/799981/document-ready-equivalent-without-jquery
-var ready = fn => document.readyState !== 'loading' ?
-    fn() :
-    document.addEventListener('turbolinks:load', fn);
-
-window.ready = ready;
-
 // Loads the charts on the dashboard. example will be removed!
-ready(() => {
+on_load(() => {
     if (document.getElementById("line_chart")) {
         let ctx = document.getElementById("line_chart").getContext("2d");
         new Chart(ctx, {

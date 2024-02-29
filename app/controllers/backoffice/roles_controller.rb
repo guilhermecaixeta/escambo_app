@@ -1,3 +1,4 @@
+# typed: false
 class Backoffice::RolesController < BackofficeController
   def index
     super

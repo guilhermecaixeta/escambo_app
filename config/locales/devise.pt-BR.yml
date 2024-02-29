@@ -3,30 +3,30 @@
 pt-BR:
   devise:
     confirmations:
-      confirmed: "Your email address has been successfully confirmed."
-      send_instructions: "You will receive an email with instructions for how to confirm your email address in a few minutes."
+      confirmed: "Seu e-mail foi confirmado com sucesso."
+      send_instructions: "Você receberá um e-mail com as instruções para como confirmar seu endereço de e-mail em alguns minutos."
       send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions for how to confirm your email address in a few minutes."
     failure:
-      already_authenticated: "You are already signed in."
+      already_authenticated: "Você já está autenticado."
       inactive: "Sua conta ainda não está ativa."
       invalid: "%{authentication_keys} ou senha inválidos."
       locked: "Sua conta está bloqueada."
       last_attempt: "Você tem mais uma tentativa antes da sua conta ser bloqueada."
       not_found_in_database: "'%{authentication_keys}' não cadastrado."
       timeout: "Sua sessão expirou. Por favor entre novamente."
-      unauthenticated: "You need to sign in or sign up before continuing."
-      unconfirmed: "You have to confirm your email address before continuing."
+      unauthenticated: "Você precisa se conectar ou cadastrar antes de prosseguir."
+      unconfirmed: "Você precisa confirmar seu e-mail antes de prosseguir."
     mailer:
       confirmation_instructions:
-        subject: "Confirmation instructions"
+        subject: "Instruções de Confirmação"
       reset_password_instructions:
-        subject: "Reset password instructions"
+        subject: "Instruções de redefinição de senha"
       unlock_instructions:
         subject: "Unlock instructions"
       email_changed:
-        subject: "Email Changed"
+        subject: "Email alterado"
       password_change:
-        subject: "Password Changed"
+        subject: "Senha alterada"
     omniauth_callbacks:
       failure: "Could not authenticate you from %{kind} because \"%{reason}\"."
       success: "Successfully authenticated from %{kind} account."
