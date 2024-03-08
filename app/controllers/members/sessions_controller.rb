@@ -9,6 +9,7 @@ class Members::SessionsController < Devise::SessionsController
     yield resource if block_given?
     respond_with(resource, serialize_options(resource)) do |format|
       format.js
+      format.html { render :new }
     end
   end
 
@@ -22,10 +23,12 @@ class Members::SessionsController < Devise::SessionsController
       respond_with resource, location: after_sign_in_path_for(resource)
     else
       self.resource = resource_class.new(sign_in_params)
-      flash[:alert] = [t("devise.failure.#{warden.message.nil? ? "invalid" : warden.message}",
-                         authentication_keys: "email")]
+      errors = t("devise.failure.#{warden.message.nil? ? "invalid" : warden.message}",
+                 authentication_keys: "E-mail")
+      flash[:alert] = errors
       respond_to do |format|
         format.js { render :new, status: :unauthorized }
+        format.html { render :new, status: :unauthorized }
       end
     end
   end

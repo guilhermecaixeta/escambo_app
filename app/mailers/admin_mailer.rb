@@ -10,7 +10,7 @@ class AdminMailer < ApplicationMailer
 
     bootstrap_mail(
       to: @admin[:email],
-      subject: t("layout.mailing.subject.admin_created"),
+      subject: t("layout.message.subject.admin_created"),
     )
   end
 
@@ -25,7 +25,7 @@ class AdminMailer < ApplicationMailer
 
     bootstrap_mail(
       to: @admin[:email],
-      subject: t("layout.mailing.subject.admin_updated"),
+      subject: t("layout.message.subject.admin_updated"),
     )
   end
 
@@ -45,7 +45,7 @@ class AdminMailer < ApplicationMailer
     bootstrap_mail(
       from: from_email,
       to: to_email,
-      subject: t("layout.mailing.subject.message_to", user_from: from_name),
+      subject: t("layout.message.subject.message_to", user_from: from_name),
     )
   end
 end

@@ -43,10 +43,10 @@ class Backoffice::MessageController::MessageService
       AdminMailer.send_message_to(from_name, from_email, to_name, to_email, message).deliver_now
 
       @message_sent[:success] = true
-      @message_sent[:message] = I18n.t "layout.mailing.text.success_to_send"
+      @message_sent[:message] = I18n.t "layout.message.text.success_to_send"
     rescue Exception => e
       Rails.logger.error "Error to send message: #{e}"
-      @message_sent[:message] = I18n.t "layout.mailing.text.error_to_send"
+      @message_sent[:message] = I18n.t "layout.message.text.error_to_send"
     ensure
       return @message_sent
     end

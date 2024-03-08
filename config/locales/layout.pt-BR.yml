@@ -4,6 +4,7 @@ pt-BR:
       app_name: EscamboApp
       new: "@{f:Nova|m,n:Novo}"
       updating: Atualizando
+      logged_as: Conectado com
       backoffice:
         show_all: Mostrar todos
         management:
@@ -11,9 +12,6 @@ pt-BR:
           users:
             new_user: Novo usuário
             delete_confirmation: "Deseja realmente excluir o usuário <b>%{name}</b>?"
-            new_password_definition: Defina uma nova senha para sua conta
-            new_password: Nova senha
-            confirmation_password: Confirme sua senha
             send_email:
               title: "Nova mensagem"
               recipient: Destinatário
@@ -22,31 +20,20 @@ pt-BR:
             send_new_password_definition: Enviar nova definição de password
         authorization:
           title: Accessos
-      site:
-        authentication:
-          login: Conectar 
     action_text:
       created: "%{object_name} @{f:criada|m,n:criado} com sucesso!"
       updated: "%{object_name} @{f:atualizada|m,n:atualizado} com sucesso!"
       deleted: "%{object_name} '@{%{name}}' @{f:excluída|m,n:excluído} com sucesso!"
       not_authorized: Você não está autorizado a executar essa ação
     buttons:
-      logout: Sair
-      login: Entrar
       save: Salvar
       back: Voltar
       confirmation_yes: Sim
       confirmation_no: "Não"
       close: Fechar
-      password_change: Alterar senha 
       email:
-        confirmation: "Enviar mensagem"      
-    links:
-      return_to_login: Retornar ao login
-      reset_password: Definir novo password
-      remember_me: Lembre-se de mim
-      forgot_password: Esqueceu a senha?
-    mailing:
+        confirmation: "Enviar mensagem"
+    message:
       subject:
         user_created: Seu usuário está pronto!
         user_updated: Seus dados foram atualizados!

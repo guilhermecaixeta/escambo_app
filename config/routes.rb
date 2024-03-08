@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     end
 
     resources :categories, except: [:show, :destroy]
-    resources :members, except: [:show, :create, :new, :destroy]
+    resources :members, only: [:index, :update, :edit]
     resources :admins, except: [:show]
     resources :roles, except: [:show]
     resources :permissions, only: [:index]

@@ -35,10 +35,8 @@ class BackofficeController < ApplicationController
                                 object_name: default_class.model_name.human,
                                 :gender => :n)
         }
-        format.json { render :index, status: :created }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @object.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -53,10 +51,8 @@ class BackofficeController < ApplicationController
           redirect_to get_default_path,
                       notice: t("layout.action_text.updated", object_name: default_class.model_name.human, :gender => :n)
         }
-        format.json { render :index, status: :ok }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @object.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -73,12 +69,18 @@ class BackofficeController < ApplicationController
                                 name: default_name,
                                 :gender => :n)
         }
-        format.json { head :no_content }
       else
         format.html { render :index, status: :unprocessable_entity }
-        format.json { render json: @object.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def user_can_read
+    authorize get_controller_name, :has_read_permission?, policy_class: UserPolicy
+  end
+
+  def user_can_write
+    authorize get_controller_name, :has_read_and_write_permission?, policy_class: UserPolicy
   end
 
   def get_default_path
@@ -88,14 +90,6 @@ class BackofficeController < ApplicationController
 
   def get_controller_name
     controller_path
-  end
-
-  def user_can_read
-    authorize get_controller_name, :has_read_permission?, policy_class: UserPolicy
-  end
-
-  def user_can_write
-    authorize get_controller_name, :has_read_and_write_permission?, policy_class: UserPolicy
   end
 
   def get_instance

@@ -2,6 +2,20 @@
 
 pt-BR:
   devise:
+    title:
+      new_password: Recuperação de Senha
+      login: Entrar
+      edit_password: Nova senha
+    text:
+      new_password: Entre com seu endereço de e-mail e nós enviaremos um link para redefinir sua senha.
+    buttons:
+        login: Login
+        logout: Logout
+        reset_password: Redefinir senha
+        change_password: Alterar Senha
+        return_to_login: Retornar ao login
+        remember_me: Lembre-se de mim
+        forgot_password: Esqueceu a senha?
     confirmations:
       confirmed: "Seu e-mail foi confirmado com sucesso."
       send_instructions: "Você receberá um e-mail com as instruções para como confirmar seu endereço de e-mail em alguns minutos."
@@ -58,7 +72,7 @@ pt-BR:
       already_confirmed: "was already confirmed, please try signing in"
       confirmation_period_expired: "needs to be confirmed within %{period}, please request a new one"
       expired: "has expired, please request a new one"
-      not_found: "not found"
+      not_found: "não encontrado"
       not_locked: "was not locked"
       not_saved:
         one: "1 error prohibited this %{resource} from being saved:"
