@@ -7,9 +7,11 @@
           <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
           Dashboard
         <% end %>
-        <%= link_to backoffice_categories_path, class: "nav-link" do %>
-          <div class="sb-nav-link-icon"><i class="fas fa-th-list"></i></div>
-          <%= Category.model_name.human(count: 2) %>
+        <% if policy_for(current_admin, Backoffice::CategoriesController.controller_path).can_read? %>
+          <%= link_to backoffice_categories_path, class: "nav-link" do %>
+            <div class="sb-nav-link-icon"><i class="fas fa-th-list"></i></div>
+            <%= Category.model_name.human(count: 2) %>
+          <% end %>
         <% end %>
         <div class="sb-sidenav-menu-heading"><%= t 'layout.text.backoffice.management.title' %></div>
         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
@@ -19,8 +21,10 @@
         </a>
         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
           <nav class="sb-sidenav-menu-nested nav">
-            <% if policy(current_admin).can_read? %>
+            <% if policy_for(current_admin, Backoffice::AdminsController.controller_path).can_read? %>
               <%= link_to Admin.model_name.human(count: 2), backoffice_admins_path, class: "nav-link" %>
+            <% end %>
+            <% if policy_for(current_admin, Backoffice::MembersController.controller_path).can_read? %>
               <%= link_to Member.model_name.human(count: 2), backoffice_members_path, class: "nav-link" %>
             <% end %>
           </nav>
@@ -38,7 +42,7 @@
             </a>
             <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
               <nav class="sb-sidenav-menu-nested nav">
-                <% if policy(current_admin).can_read? %>
+                <% if policy_for(current_admin, Backoffice::RolesController.controller_path).can_read? %>
                   <%= link_to t('layout.text.backoffice.show_all'), backoffice_roles_path, class: "nav-link" %>
                 <% end %>
               </nav>
@@ -49,7 +53,7 @@
             </a>
             <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
               <nav class="sb-sidenav-menu-nested nav">
-                <% if policy(current_admin).can_read? %>
+                <% if policy_for(current_admin, Backoffice::PermissionsController.controller_path).can_read? %>
                   <%= link_to t('layout.text.backoffice.show_all'), backoffice_permissions_path, class: "nav-link" %>
                 <% end %>
               </nav>
@@ -68,7 +72,7 @@
       </div>
     </div>
     <div class="sb-sidenav-footer">
-      <div class="small">Logged in as:</div>
+      <div class="small"><%= t "layout.text.logged_as" %>:</div>
       <%= current_admin.name %>
     </div>
   </nav>

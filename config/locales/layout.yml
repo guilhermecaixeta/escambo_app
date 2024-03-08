@@ -4,6 +4,7 @@ en:
       app_name: EscamboApp
       new: New
       update: Updating
+      logged_as: Logged in as
       backoffice:
         management:
           title: Management
@@ -19,29 +20,21 @@ en:
               title: "New message"
               message: "Message"
           members:
-            send_new_password_definition: Send new password definition            
+            send_new_password_definition: Send new password definition
     action_text:
       created: "%{object_name} created successfully!"
       updated: "%{object_name} updated successfully!"
       deleted: "%{object_name} '%{name}' delete successfully!"
       not_authorized: You are not authorized to perform this action.
     buttons:
-      logout: Logout
-      login: Login
       save: Save
       back: Back
       confirmation_yes: Yes
       confirmation_no: No
       close: Close
-      password_change: Change password
       email:
         confirmation: "Send message"
-    links:
-      return_to_login: Return to login
-      reset_password: Reset Password
-      remember_me: Remember me
-      forgot_password: Forgot Password?
-    mailing:
+    message:
       subject:
         user_created: Your user is ready!
         user_updated: Your data has been updated!

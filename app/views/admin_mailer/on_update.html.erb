@@ -4,11 +4,11 @@
     <h1 class="h3 fw-700">
       <%= @admin.name %>
     </h1>
-    <strong><%= t 'layout.mailing.subject.update' %></strong>
+    <strong><%= t 'layout.message.subject.update' %></strong>
     <p>
-      <%= t 'layout.mailing.text.update' %>
+      <%= t 'layout.message.text.update' %>
     </p>
-    <%= link_to t('layout.mailing.buttons.my_data'), edit_backoffice_admin_url(@admin), class: "btn btn-primary p-3 fw-700" %>
+    <%= link_to t('layout.message.buttons.my_data'), edit_backoffice_admin_url(@admin), class: "btn btn-primary p-3 fw-700" %>
   </div>
   <img class="ax-center mt-10 w-40" src="https://assets.bootstrapemail.com/logos/light/text.png" />
   <div class="text-muted text-center my-6">

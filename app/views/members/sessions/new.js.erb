@@ -1,0 +1,2 @@
+document.getElementById("app_modal_title").innerHTML = '<%= t "layout.text.authentication.login" %>';
+document.getElementById("app_modal_body").innerHTML = '<%= j render "shared/devise/login_modal", locals: { member: resource } %>';

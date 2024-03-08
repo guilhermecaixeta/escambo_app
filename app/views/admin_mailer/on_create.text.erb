@@ -1,6 +1,6 @@
 <%= @admin.name %>
 ===================================================================================================================================
-<%= t 'layout.mailing.subject.admin_created' %>
-<%= t 'layout.mailing.text.create', admin_email: @admin.email %>
+<%= t 'layout.message.subject.admin_created' %>
+<%= t 'layout.message.text.create', admin_email: @admin.email %>
 ===================================================================================================================================
 <%= link_to t('layout.backoffice.management.admins.new_password'), edit_admin_password_url(@resource, reset_password_token: @token) %>

@@ -1,3 +1,4 @@
+# typed: true
 module Backoffice::MembersHelper
 
   def role_options_for_members
