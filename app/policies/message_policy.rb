@@ -1,4 +1,4 @@
-# typed: true
+# typed: strict
 class MessagePolicy < ApplicationPolicy
   extend T::Sig
 

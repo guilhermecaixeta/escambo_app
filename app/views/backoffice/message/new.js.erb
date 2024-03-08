@@ -1,20 +1,2 @@
-ready(() => {
-  const modal = new bootstrap.Modal('#sendMailModal');
-  showModal(modal);
-  updateModal(modal);
-});
-
-
-function showModal(modal) {
-  document.getElementById('sendMailModal')?.addEventListener('show.bs.modal', event => {
-    const sendMailModal = document.getElementById('sendMailModal');
-    // Update the modal's content.
-    const modalBodyInput = sendMailModal.querySelector('.modal-body input')
-
-    modalBodyInput.value = '<%= @user.email %>';
-  });
-
-  modal.show(document.getElementById("sendMailModal"));
-}
-
-function updateModal(modal) { }
+document.getElementById("app_modal_title").innerHTML = '<%= t "layout.text.backoffice.management.users.send_email.title" %>';
+document.getElementById("app_modal_body").innerHTML = '<%= j render "shared/backoffice/message_modal", locals: { recipient: @recipient } %>';

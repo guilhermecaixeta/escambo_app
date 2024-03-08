@@ -1,0 +1,31 @@
+<%= form_with model: @member, url: session_path("member"), remote: true do |f| %>
+  <% flash.each do |key, message| %>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <%= message %>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  <% end %>
+  <div class="modal-body">
+    <div class="form-floating mb-3">
+      <%= f.email_field :email, class: "form-control", placeholder: "E-mail", type: "email", autofocus: "autofocus" %>
+      <%= f.label :email %>
+    </div>
+    <div class="form-floating mb-3">
+      <%= f.password_field :password, class: "form-control", placeholder: "Password", type: "password", autofocus: "autofocus" %>
+      <%= f.label :password %>
+    </div>
+    <% if devise_mapping.rememberable? %>
+      <div class="form-check mb-3">
+        <%= f.check_box :remember_me, class: "form-check-input" %>
+        <%= f.label :remember_me, class: "form-check-label" %>
+      </div>
+    <% end %>
+    <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
+      <%= link_to t('devise.buttons.forgot_password'),  new_member_password_path, class: "small" %>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><%= t 'layout.buttons.close' %></button>
+    <%= f.submit t('devise.buttons.login'), class: "btn btn-primary" %>
+  </div>
+<% end %>

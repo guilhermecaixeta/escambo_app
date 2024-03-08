@@ -1,7 +1,10 @@
 # typed: true
 class Backoffice::CategoriesController::CategoryService
+  extend T::Sig
+
   attr_accessor :category
 
+  sig { params(params: T.untyped).returns(Category) }
   def self.create(params)
     category = Category.new(params)
 
@@ -12,8 +15,15 @@ class Backoffice::CategoriesController::CategoryService
     category
   end
 
+  sig { params(params: T.untyped, category: Category).returns(Category) }
   def self.update(params, category)
-    category.update(params)
+    category.assign_attributes(params)
+
+    if category.valid?
+      category.save!
+    end
+
+    category
   end
 
   def self.destroy(category)

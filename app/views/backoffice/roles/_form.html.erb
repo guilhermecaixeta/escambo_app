@@ -1,39 +1,24 @@
-<%= form_with(model: [:backoffice, @object], remote: true) do |f| %>
-  <div class="row">
-    <div class="col-3"></div>
-    <div class="col-6">
-      <%= render 'shared/backoffice/errors' %>
-      <div class="card mb-4 ">
-        <div class="card-header">
-          <%= t 'layout.text.new', :gender => :f %> <%= Role.model_name.human %>
-        </div>
-        <div class="card-body">
-          <div class="form-floating mb-3">
-            <%= f.text_field :name,
+<% content_for :card_header do %>
+  <%= t 'layout.text.new', :gender => :f %> <%= Role.model_name.human %>
+<% end %>
+<% content_for :card_body do %>
+  <%= form_with(model: [:backoffice, @object], remote: true, id: "backoffice_form") do |f| %>
+    <div class="form-floating mb-3">
+      <%= f.text_field :name,
                 class: "form-control",
                 placeholder: "#{Role.human_attribute_name(:name)}",
                 type: "text",
-                autofocus: "autofocus",
-                readonly: action_name == "update" && !["administrator", "operator", "member"].include?(@object.name) %>
-            <%= f.label :name %>
-          </div>
-          <div class="form-check mb-3">
-            <%= f.label :roles %>
-            <%= f.collection_check_boxes(:permission_ids, permission_options, :id, :name)  do |b| %>
-              <div class="form-check">
-                <%= b.label(class: "form-check-label") { b.check_box(class: "form-check-input") + b.text } %>
-              </div>
-            <% end %>
-          </div>
-        </div>
-        <div class="card-footer">
-          <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-            <%= link_to t('layout.buttons.back'), backoffice_roles_path, class: "btn btn-secondary" %>
-            <%= f.submit t('layout.buttons.save'), class: "btn btn-primary" %>
-          </div>
-        </div>
-      </div>
+                autofocus: "autofocus" %>
+      <%= f.label :name %>
     </div>
-    <div class="col-3"></div>
-  </div>
+    <div class="form-check mb-3">
+      <%= f.label :roles %>
+      <%= f.collection_check_boxes(:permission_ids, permission_options, :id, :name)  do |b| %>
+        <div class="form-check">
+          <%= b.label(class: "form-check-label") { b.check_box(class: "form-check-input") + b.text } %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 <% end %>
+<%= render partial: "shared/backoffice/base_form", locals: {back_button_path: backoffice_roles_path, form_id: "backoffice_form"} %>

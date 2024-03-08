@@ -1,3 +1,4 @@
+# typed: true
 class RolePolicy < ApplicationPolicy
   def permitted_attributes
     [:name, permission_ids: []]
@@ -5,7 +6,7 @@ class RolePolicy < ApplicationPolicy
 
   class Scope < ApplicationPolicy::Scope
     def resolve
-      Role.order(:name)
+      Role.order(:created_at)
     end
   end
 end

@@ -4,9 +4,9 @@
     <h1 class="h3 fw-700">
       <%= @admin.name %>
     </h1>
-    <strong><%= t 'layout.mailing.subject.admin_created' %></strong>
+    <strong><%= t 'layout.message.subject.admin_created' %></strong>
     <p>
-      <%= t 'layout.mailing.text.create', admin_email: @admin.email %>
+      <%= t 'layout.message.text.create', admin_email: @admin.email %>
     </p>
     <p>
       <%= link_to t('layout.backoffice.management.admins.new_password'), edit_admin_password_url(@resource, reset_password_token: @token) %>

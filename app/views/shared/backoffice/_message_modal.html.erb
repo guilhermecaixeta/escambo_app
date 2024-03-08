@@ -1,0 +1,22 @@
+<% if alert %>
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <%= alert %>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<% end %>
+<%= form_with url: backoffice_message_index_path, remote: true do %>
+  <div class="modal-body">
+    <div class="mb-3">
+      <%= label_tag(:recipient, t('layout.text.backoffice.management.users.send_email.recipient'),  class: "col-form-label", id: "recipient-name") %>
+      <%= text_field_tag(:recipient, @recipient.email, class: "form-control", autocomplete: "off", id: "recipient-name", readonly: true) %>
+    </div>
+    <div class="mb-3">
+      <%= label_tag(:message, t('layout.text.backoffice.management.users.send_email.message', class: "col-form-label", id: "message-text")) %>
+      <%= text_area_tag(:message, "", class: "form-control", id: "message-text") %>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><%= t 'layout.buttons.close' %></button>
+    <%= submit_tag t('layout.buttons.email.confirmation'), class: "btn btn-primary" %>
+  </div>
+<% end %>

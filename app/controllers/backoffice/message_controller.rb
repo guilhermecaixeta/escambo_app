@@ -1,35 +1,33 @@
 # typed: false
 class Backoffice::MessageController < BackofficeController
   def new
-    @user = User.find(params[:message_id])
-
+    @recipient = Admin.find(params[:message_id])
     respond_to do |format|
       format.js
     end
   end
 
   def create
-    message = message_params[:message]
-    recipient = User.select(:name, :email).find_by email: message_params[:recipient]
+    message = params[:message]
+    @recipient = Admin.select(:name, :email).find_by email: params[:recipient]
 
-    message_sent = MessageService.send_message current_user.name, current_user.email, recipient.name, recipient.email, message
+    message_sent = MessageService.send_message current_admin.name,
+                                               current_admin.email,
+                                               @recipient.name,
+                                               @recipient.email,
+                                               message
 
     if message_sent.success
       flash[:notice] = message_sent.message
+      redirect_to backoffice_admins_path
     else
       flash[:alert] = message_sent.message
+      respond_to do |format|
+        format.js {
+          render :new,
+                 status: :unprocessable_entity
+        }
+      end
     end
-
-    redirect_to backoffice_admins_path
-  end
-
-  def get_controller_name
-    "#{super}/#{controller_name}"
-  end
-
-  private
-
-  def message_params
-    params.permit(MessagePolicy.new(current_user, get_controller_name).permitted_attributes)
   end
 end
