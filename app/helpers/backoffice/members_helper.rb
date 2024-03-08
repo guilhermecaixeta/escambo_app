@@ -1,2 +1,2 @@
-
-
+module Backoffice::MembersHelper
+end
