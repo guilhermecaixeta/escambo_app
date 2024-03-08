@@ -9,7 +9,7 @@ namespace :utils do
     puts "Seeding DB #{%x(rails db:seed)}"
     puts "Adding permissions #{%x(rails utils:add_permissions_if_dont_exists)}"
     puts "Adding permissions to roles #{%x(rails utils:add_permissions_to_roles)}"
-    puts "Adding default user #{%x(rails utils:add_default_user)}"
+    puts "Adding default user #{%x(rails utils:add_default_users)}"
     puts "Adding admins\n #{%x(rails utils:admins_generator)}"
     puts "Adding member\n #{%x(rails utils:members_generator)}"
     puts "Adding advertisements #{%x(rails utils:ads_generator)}"
@@ -109,34 +109,23 @@ namespace :utils do
   desc "Adds the permissions if they doesn't exist and check if a newer permissions has appeared"
   task add_permissions_if_dont_exists: :environment do
     puts "Checking permissions"
-    controllers = Rails.application.routes.routes
-      .map { |r| r.defaults[:controller] }
-      .uniq
-      .filter { |c| !c.nil? and !c.blank? and !c.match?(/(rails|active|action|(devise\/(confirmations|registrations|passwords))).*/) }
+    default_permissions = Rails.configuration.default_permissions
 
     existing_permissions = Permission.all
 
     if existing_permissions.any?
-      controllers.delete_if do |controller|
-        existing_permissions.any? do |permission|
-          permission.name.include?(controller)
-        end
+      default_permissions.delete_if do |authorization|
+        existing_permissions.any? { |permission| permission.name.match?(authorization) }
       end
     end
 
-    if controllers.any?
-      puts "There is #{controllers.count} permissions to be added"
+    if default_permissions.any?
+      puts "There is #{default_permissions.count} permissions to be added"
       puts "Adding permissions"
       current_datetime = DateTime.now
       upsert_permissions = []
-      [:read, :write].each do |action|
-        controllers.each do |controller|
-          if (controller.match?(/(message|sessions)/) and action == :read) or
-             (controller.match?(/backoffice\/(dashboard|permissions|home)/) and action == :write)
-            next
-          end
-          upsert_permissions << { name: "#{controller}:#{action.to_s}", created_at: current_datetime, updated_at: current_datetime }
-        end
+      default_permissions.each do |auth|
+        upsert_permissions << { name: auth, created_at: current_datetime, updated_at: current_datetime }
       end
       Permission.upsert_all(upsert_permissions)
       puts "All permissions were added!"
@@ -148,64 +137,58 @@ namespace :utils do
   desc "Adds the permissions to roles"
   task add_permissions_to_roles: :environment do
     roles = Role.where(name: Rails.configuration.default_roles.map { |r| r[:name] })
-    permissions = Permission.all
+    existing_permissions = Permission.all
 
-    if permissions.nil? or permissions.empty?
-      raise "Permissions cannot be empty"
+    if existing_permissions.nil? or existing_permissions.empty?
+      raise "permissions cannot be empty"
     end
 
     puts "Adding default permissions to roles"
-    admin_role = roles.filter {
-      |role|
-      role.name == Rails.configuration.default_roles.find { |r| r[:is_admin] }[:name]
-    }.first
-    permissions.each do |permission|
-      admin_role.permissions << permission
+    roles.each do |role|
+      default_role = Rails.configuration.default_roles.find { |r| r[:name] == role.name }
+      existing_permissions.each do |existing_permission|
+        next if default_role[:except_permissions].any?(existing_permission.name)
+        next if !default_role[:permissions].any? do |default_permission|
+          default_permission.match?(/(\*|#{existing_permission.name})/)
+        end
+
+        role.permissions << existing_permission
+      end
+      role.save!(validate: false)
     end
 
-    operator_role = roles.filter {
-      |role|
-      role.name == Rails.configuration.default_roles.find { |r| r[:is_opt] }[:name]
-    }.first
-    permissions.filter {
-      |permission|
-      permission.name.match?(/(?:backoffice\/(categories|message))|(.*:read)/)
-    }.each do |permission|
-      operator_role.permissions << permission
-    end
-
-    member_role = roles.filter {
-      |role|
-      role.name == Rails.configuration.default_roles.find { |r| r[:is_member] }[:name]
-    }.first
-    permissions.filter {
-      |permission|
-      permission.name.match?(/(site\/home:(read|write))/)
-    }.each do |permission|
-      member_role.permissions << permission
-    end
-
-    admin_role.save!(validate: false)
-    operator_role.save!(validate: false)
-    member_role.save!(validate: false)
     puts "Permissions added to roles"
   end
 
   desc "Adds the defaut user: admin master"
-  task add_default_user: :environment do
+  task add_default_users: :environment do
     current_datetime = DateTime.now
-    role = Role.select(:id).find_by(name: Rails.configuration.default_roles.find { |r| r[:is_admin] }[:name])
     puts "Adding admin master"
+    admin_role = Role.select(:id).find_by(name: Rails.configuration.default_roles.find { |r| r[:is_admin] }[:name])
     admin = Admin.create(
       name: "Admin master",
       email: "admin@admin.com",
       password: "123456",
       password_confirmation: "123456",
       confirmed_at: current_datetime,
-      role_ids: [role.id],
+      role_ids: [admin_role.id],
     )
     admin.skip_confirmation!
     admin.skip_confirmation_notification!
     puts "Admin master was added!"
+
+    puts "Adding default member"
+    member_role = Role.select(:id).find_by(name: Rails.configuration.default_roles.find { |r| r[:is_member] }[:name])
+    member = Member.create(
+      name: "Default Member",
+      email: "member.default@acme.com",
+      password: "123456",
+      password_confirmation: "123456",
+      confirmed_at: current_datetime,
+      role_ids: [member_role.id],
+    )
+    member.skip_confirmation!
+    member.skip_confirmation_notification!
+    puts "Default member was added!"
   end
 end
