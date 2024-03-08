@@ -8,25 +8,16 @@ services:
     build:
       context: ..
       dockerfile: .devcontainer/Dockerfile
+      args:
+        - RUBY_VERSION=2.7.7
+        - NODE_JS_VERSION=14.18.2
+        - BUNDLE_VERSION=2.3.26       
     ports:
       - 3000:3000
     volumes:
       - ..:/app:cached
       - $HOME/.ssh/:/home/vscode/.ssh/
     command: sleep infinity
-    networks:
-      - escamboapp_network_shared
-
-  # MySQL database service
-  mysql:
-    image: mysql:5.7
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: project_dev
-    ports:
-      - 3306:3306
-    volumes:
-      - escamboapp_mysql_data:/var/lib/mysql
     networks:
       - escamboapp_network_shared
 
@@ -79,12 +70,12 @@ services:
   #     - escamboapp_network_shared
 
 volumes:
-  escamboapp_mysql_data:
-    driver: local
+  # escamboapp_mysql_data:
+  #   driver: local
   escamboapp_postgres_data:
     driver: local
-  escamboapp_redis_data:
-    driver: local
+  # escamboapp_redis_data:
+  #   driver: local
 
 networks:
   escamboapp_network_shared:
