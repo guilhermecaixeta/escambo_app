@@ -1,0 +1,16 @@
+pt-BR:
+  site:
+    navigation_bar:
+      about: Sobre
+      home: Home
+      shop: Shop
+      all_products: Todos os produtos
+      popular_items: Mais populares
+      new_arrivals: Recém-chegados
+      cart: Carrinho 
+    aside_menu:
+      title: Opções de Perfil
+    ads:
+      title: "Meus Anúncios"
+    dashboard:
+      title: "Dashboards"

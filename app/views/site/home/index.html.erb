@@ -3,7 +3,7 @@
   <div class="container-fluid px-4 px-lg-5 my-5">
     <div class="text-center text-white">
       <h1 class="display-4 fw-bolder"><%= t 'layout.text.app_name' %></h1>
-      <p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
+      <p class="lead fw-normal text-white-50 mb-0"><%= t 'layout.text.sub_title_app' %></p>
     </div>
   </div>
 </header>
@@ -27,19 +27,19 @@
             <div class="col mb-5">
               <div class="card h-100">
                 <!-- Product image-->
-                <%= image_tag item.picture.variant(resize_to_limit: [450, 300]), class: "card-img-top" %>
+                <%= image_tag(item.picture.variant(resize: "450x300!"), class: "card-img-top") %>
                 <!-- Product details-->
                 <div class="card-body p-4">
                   <div class="text-center">
                     <!-- Product name-->
                     <h5 class="fw-bolder"><%= item.title %></h5>
                     <!-- Product price-->
-                    <%= humanized_money_with_symbol item.price_cents %>
+                    <%= humanized_money_with_symbol item.price %>
                   </div>
                 </div>
                 <!-- Product actions-->
                 <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                  <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
+                  <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#"><%= t 'layout.action_text.view_options' %></a></div>
                 </div>
               </div>
             </div>

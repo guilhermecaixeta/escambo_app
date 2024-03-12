@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="EscamboApp" />
-    <meta name="author" content="Guilherme Caixeta" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="EscamboApp">
+    <meta name="author" content="Guilherme Caixeta">
     <title>EscamboApp</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -13,12 +13,12 @@
     <%= javascript_pack_tag 'site', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
+      <%= render partial: "shared/site/navigation" %>
     <main>
-      <%= render partial: "shared/site/navigation"%>
       <div id="main-container">
         <%= yield %>
       </div>
-      <%= render partial: "shared/site/footer"%>
     </main>
+      <%= render partial: "shared/site/footer" %>
   </body>
 </html>

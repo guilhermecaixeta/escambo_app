@@ -1,0 +1,1 @@
+require("startbootstrap-simple-sidebar/src/js/scripts");

@@ -1,4 +1,4 @@
-<div class="d-flex flex-row w-xxl-50  w-xl-50 w-lg-50 w-md-75 w-sm-100 align-items-center mx-auto my-auto">
+<div class="d-flex flex-row pt-3 w-xxl-80  w-xl-80 w-lg-80 w-md-80 w-sm-100 align-items-center mx-auto my-auto">
   <div class="d-flex flex-column flex-fill justify-content-between">
     <%= render 'shared/errors' %>
     <div class="card mb-4">
@@ -14,8 +14,8 @@
           <input type="submit"
                  name="commit"
                  class="btn btn-primary"
-                 value=<%=  t action_name == "new" || action_name == "create" ? "helpers.submit.create" : "helpers.submit.update" %>
-                 data-disable-with=<%=  t action_name == "new" || action_name == "create" ? "helpers.submit.create" : "helpers.submit.update" %>
+                 value=<%= t action_name == "new" || action_name == "create" ? "helpers.submit.create" : "helpers.submit.update" %>
+                 data-disable-with=<%= t action_name == "new" || action_name == "create"? "helpers.submit.create" : "helpers.submit.update" %>
                  form=<%= form_id %>
           />
         </div>

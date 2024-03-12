@@ -22,6 +22,7 @@ en:
           members:
             send_new_password_definition: Send new password definition
     action_text:
+      view_options: View Options
       created: "%{object_name} created successfully!"
       updated: "%{object_name} updated successfully!"
       deleted: "%{object_name} '%{name}' delete successfully!"
