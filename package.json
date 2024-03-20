@@ -17,6 +17,7 @@
     "startbootstrap-sb-admin": "^7.0.7",
     "startbootstrap-shop-homepage": "^5.0.6",
     "startbootstrap-shop-item": "^5.0.6",
+    "startbootstrap-simple-sidebar": "^6.0.6",
     "turbolinks": "^5.2.0"
   },
   "version": "0.1.0",

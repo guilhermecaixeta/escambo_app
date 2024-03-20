@@ -1,0 +1,45 @@
+<%= content_for :card_header do %>
+  <%= Advertisement.model_name.human(count: 2) %>
+<% end %>
+<%= content_for :card_body do %>
+  <%= form_with(model: [:site, :profile, @object], remote: true, id: "site_form", multipart: true) do |f| %>
+    <div class="mb-3">
+      <%= f.label :title, class: "form-label" %>
+      <%= f.text_field :title, class: "form-control" %>
+    </div>
+    <div class="mb-3">
+      <%= f.label :description, class: "form-label" %>
+      <%= f.text_area :description, class: "form-control" %>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
+        <%= f.label :finish_date, class: "form-label" %>
+        <%= f.date_field :finish_date, class: "form-control" %>
+      </div>
+      <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
+        <%= f.label :category, class: "form-label" %>
+        <%= f.collection_select :category_id,
+                              Category.all,
+                              :id,
+                              :description,
+                               {}, { class: "form-select" } %>
+      </div>
+      <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
+        <%= f.label :price, class: "form-label" %>
+        <div class="input-group">
+          <div class="input-group-text"><%= currency_symbol %></div>
+          <%= f.text_field :price, class: "form-control" %>
+        </div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <%= f.label :picture, class: "form-label" %>
+      <%= f.file_field :picture, class: "form-control" %>
+      <% if @object.picture.attached? %>
+        <div class="card w-xl-25 w-lg-25 w-md-50 w-sm-100 mb-3 pt-3 mt-3">
+        <%= image_tag @object.picture.variant(resize: "450x300!"), class: "img-fluid card-img-top rounded mb-3 pt-3" %>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>
+<%= render partial: "shared/site/base_form", locals: {back_button_path: site_profile_advertisements_path, form_id: "site_form"} %>
