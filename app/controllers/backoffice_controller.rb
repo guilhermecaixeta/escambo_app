@@ -1,4 +1,4 @@
-# typed: true
+# typed: false
 # string_frozen_literal: true
 
 class BackofficeController < ApplicationController

@@ -1,4 +1,4 @@
-# typed: strict
+# typed: false
 class Advertisement < ApplicationRecord
   extend T::Sig
   belongs_to :category

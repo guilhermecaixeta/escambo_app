@@ -1,4 +1,4 @@
-# typed: true
+# typed: strict
 # string_frozen_literal: true
 
 class Site::Profile::AdvertisementsController::AdvertisementService
@@ -6,7 +6,12 @@ class Site::Profile::AdvertisementsController::AdvertisementService
 
   sig { params(params: T.untyped, current_member: Member).returns(Advertisement) }
   def self.create(params, current_member)
-    @advertisement = Advertisement.new(params)
+    @advertisement = T.let(Advertisement.new(params), T.nilable(Advertisement))
+
+    if @advertisement.nil?
+      fail "Cannot create an advertisement with the informed params"
+    end
+
     @advertisement.user = current_member
 
     if @advertisement.valid?
@@ -18,7 +23,12 @@ class Site::Profile::AdvertisementsController::AdvertisementService
 
   sig { params(params: T.untyped, advertisement: Advertisement).returns(Advertisement) }
   def self.update(params, advertisement)
-    @advertisement = advertisement
+    @advertisement = T.let(advertisement, T.nilable(Advertisement))
+
+    if @advertisement.nil?
+      fail "Cannot create an advertisement with the informed params"
+    end
+
     @advertisement.assign_attributes(params)
 
     if @advertisement.valid?
