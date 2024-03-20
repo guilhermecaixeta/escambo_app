@@ -19,6 +19,8 @@ ARG BUNDLE_VERSION
 ENV APP_PATH /app
 ENV PATH /home/vscode/.asdf/shims:/home/vscode/.asdf/bin:$PATH
 ENV ASDF_DATA_DIR /usr/local/asdf
+ENV RUBY_VERSION ${RUBY_VERSION}
+ENV NODE_JS_VERSION ${NODE_JS_VERSION}
 
 ### Install all dependencies you need for your project here
 RUN mkdir -p "$APP_PATH" && \
@@ -69,10 +71,10 @@ SHELL ["/bin/bash", "-lc"]
 ### Install Ruby and Node.js using asdf
 RUN asdf plugin add ruby
 RUN asdf plugin add nodejs
-RUN asdf install ruby $RUBY_VERSION
-RUN asdf install nodejs $NODE_JS_VERSION
-RUN asdf global ruby $RUBY_VERSION
-RUN asdf global nodejs $NODE_JS_VERSION
+RUN asdf install ruby ${RUBY_VERSION}
+RUN asdf install nodejs ${NODE_JS_VERSION}
+RUN asdf global ruby ${RUBY_VERSION}
+RUN asdf global nodejs ${NODE_JS_VERSION}
 
 # Change ownership of ASDF installations
 RUN chown -R vscode:vscode /usr/local/asdf
