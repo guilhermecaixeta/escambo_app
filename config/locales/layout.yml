@@ -21,6 +21,8 @@ en:
               message: "Message"
           members:
             send_new_password_definition: Send new password definition
+      site:
+        related_products: Related products
     action_text:
       view_options: View Options
       created: "%{object_name} created successfully!"

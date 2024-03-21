@@ -1,18 +1,10 @@
-<!-- Header-->
-<header class="bg-dark py-5">
-  <div class="container-fluid px-4 px-lg-5 my-5">
-    <div class="text-center text-white">
-      <h1 class="display-4 fw-bolder"><%= t 'layout.text.app_name' %></h1>
-      <p class="lead fw-normal text-white-50 mb-0"><%= t 'layout.text.sub_title_app' %></p>
-    </div>
-  </div>
-</header>
+<%= render partial: 'shared/site/header_index' %>
 <!-- Section-->
-<section class="py-5">
+<section class="py-5" id="index_main_section">
   <div class="container-fluid px-4 px-lg-5 mt-5">
     <div class="row">
-      <div class="col-2">
-        <p class="lead">
+      <div class="col-3">
+        <p class="lead text-center">
           <%= Category.model_name.human(count: 2) %>
         </p>
         <div class="list-group overflow-auto">
@@ -21,7 +13,7 @@
           <% end %>
         </div>
       </div>
-      <div class="col">
+      <div class="col-9">
         <div class="row gx-2 row-cols-md-3 row-cols-lg-6 row-cols-xl-9 row-cols-xxl-12 justify-content-center">
           <% for item in @ads %>
             <div class="col mb-3">
@@ -32,14 +24,18 @@
                 <div class="card-body p-4">
                   <div class="text-center">
                     <!-- Product name-->
-                    <h5 class="fw-bolder"><%= item.title %></h5>
+                    <h5 class="fw-bolder">
+                      <%= link_to item.title, site_advertisement_path(item), class: "btn", remote: true %>
+                    </h5>
                     <!-- Product price-->
                     <%= humanized_money_with_symbol item.price %>
                   </div>
                 </div>
                 <!-- Product actions-->
                 <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                  <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#"><%= t 'layout.action_text.view_options' %></a></div>
+                  <div class="text-center">
+                    <%= link_to t('layout.action_text.view_options'), site_advertisement_path(item), class: "btn btn-outline-dark mt-auto", remote: true %>
+                  </div>
                 </div>
               </div>
             </div>
@@ -49,4 +45,3 @@
     </div>
   </div>
 </section>
-<%= render partial: "shared/modal" %>

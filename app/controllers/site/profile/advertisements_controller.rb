@@ -10,6 +10,11 @@ class Site::Profile::AdvertisementsController < Site::ProfileController
 
   def new
     @object = Advertisement.new
+
+    respond_to do |format|
+      format.js
+      format.html
+    end
   end
 
   def create
@@ -17,6 +22,12 @@ class Site::Profile::AdvertisementsController < Site::ProfileController
 
     respond_to do |format|
       if @object.valid?
+        format.js {
+          redirect_to site_profile_advertisements_path,
+                      notice: t("layout.action_text.created",
+                                object_name: Advertisement.model_name.human,
+                                :gender => :n)
+        }
         format.html {
           redirect_to site_profile_advertisements_path,
                       notice: t("layout.action_text.created",
@@ -30,6 +41,9 @@ class Site::Profile::AdvertisementsController < Site::ProfileController
   end
 
   def edit
+    respond_to do |format|
+      format.js
+    end
   end
 
   def update
