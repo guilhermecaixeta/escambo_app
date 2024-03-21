@@ -1,29 +1,29 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "members/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
+<% content_for :card_body do %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <div class="mb-3">
+        <%= f.label :name, class: "form-label" %>
+        <%= f.email_field :name, autofocus: true, autocomplete: "name", class: "form-control" %>
+      </div>
+      <div class="mb-3">
+        <%= f.label :email, class: "form-label" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+      </div>
+      <div class="mb-3">
+        <%= f.label :password %>
+        <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+        <% if @minimum_password_length %>
+          <em class="form-text">(<%= t 'devise.text.min_password', value: @minimum_password_length %>)</em>
+        <% end %>
+      </div>
+      <div class="mb-3">
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+      </div>
+      <div class="d-flex align-items-center justify-content-between mt-4 mb-3">
+        <%= f.submit t('devise.buttons.create_account'), class: "btn btn-primary" %>
+        <%= link_to t('layout.buttons.back'), site_home_path, class: "btn btn-secondary" %>
+      </div>
+    <% end %>
+    <%= render "members/shared/links" %>
 <% end %>
-
-<%= render "members/shared/links" %>
+<%= render partial: 'shared/devise/template', locals: { header_title: t('devise.title.sign_up') } %>

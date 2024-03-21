@@ -37,7 +37,8 @@
       <%= f.file_field :picture, class: "form-control" %>
       <% if @object.picture.attached? %>
         <div class="card w-xl-25 w-lg-25 w-md-50 w-sm-100 mb-3 pt-3 mt-3">
-        <%= image_tag @object.picture.variant(resize: "450x300!"), class: "img-fluid card-img-top rounded mb-3 pt-3" %>
+          <%= image_tag @object.picture.variant(resize: "700x400!"), class: "img-fluid card-img-top rounded mb-3 pt-3" %>
+        </div>
       <% end %>
     </div>
   <% end %>

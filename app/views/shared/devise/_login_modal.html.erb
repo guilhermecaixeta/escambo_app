@@ -21,11 +21,12 @@
       </div>
     <% end %>
     <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
+      <%= link_to t('devise.buttons.create_account'),  new_member_registration_path, class: "small" %>
       <%= link_to t('devise.buttons.forgot_password'),  new_member_password_path, class: "small" %>
     </div>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><%= t 'layout.buttons.close' %></button>
     <%= f.submit t('devise.buttons.login'), class: "btn btn-primary" %>
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><%= t 'layout.buttons.close' %></button>
   </div>
 <% end %>
