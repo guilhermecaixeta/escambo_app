@@ -23,7 +23,7 @@ if [ -f Gemfile ]; then
     echo "Installing gems" 
     gem install rails:6.0 htmlbeautifier solargraph \
         sorbet:0.5.10187 rufo tapioca:0.11.14 foreman \
-        debug ruby-lsp
+        debug ruby-lsp rdbg
 
     echo "initializing sorbet"
     bundle exec srb init

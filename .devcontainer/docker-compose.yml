@@ -9,9 +9,9 @@ services:
       context: ..
       dockerfile: .devcontainer/Dockerfile
       args:
-        - RUBY_VERSION=2.7.7
-        - NODE_JS_VERSION=14.18.2
-        - BUNDLE_VERSION=2.3.26       
+        - RUBY_VERSION=${RUBY_VERSION}
+        - NODE_JS_VERSION=${NODE_JS_VERSION}
+        - BUNDLE_VERSION=${BUNDLE_VERSION}       
     ports:
       - 3000:3000
     volumes:
@@ -24,13 +24,13 @@ services:
   # PostgreSQL database service
   postgres:
     image: postgres:12-alpine
+    env_file:
+      - path: ./postgres_devcontainer.env
+        required: true    
     volumes:
       - escamboapp_postgres_data:/var/lib/postgresql/data
     ports:
-      - 5432:5432
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+      - ${POSTGRES_PORT}:5432
     networks:
       - escamboapp_network_shared
   
@@ -42,40 +42,9 @@ services:
     networks:
       - escamboapp_network_shared
 
-  # Memcached service
-  # memcached:
-  #   image: memcached:1.5-alpine
-  #   ports:
-  #     - 11211:11211
-  #   networks:
-  #     - escamboapp_network_shared
-
-  # RabbitMQ service
-  # rabbitmq:
-  #   image: rabbitmq:3-management
-  #   ports:
-  #     - 5672:5672
-  #     - 15672:15672
-  #   networks:
-  #     - escamboapp_network_shared
-
-  # Redis service
-  # redis:
-  #   image: redis:4.0.10-alpine
-  #   ports:
-  #     - 6379:6379
-  #   volumes:
-  #     - escamboapp_redis_data:/data
-  #   networks:
-  #     - escamboapp_network_shared
-
 volumes:
-  # escamboapp_mysql_data:
-  #   driver: local
   escamboapp_postgres_data:
     driver: local
-  # escamboapp_redis_data:
-  #   driver: local
 
 networks:
   escamboapp_network_shared:

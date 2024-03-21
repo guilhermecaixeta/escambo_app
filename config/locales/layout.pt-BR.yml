@@ -2,9 +2,10 @@ pt-BR:
   layout:
     text:
       app_name: EscamboApp
+      sub_title_app: "Seu e-commerce de gatos"
       new: "@{f:Nova|m,n:Novo}"
       updating: Atualizando
-      logged_as: Conectado com
+      logged_as: Conectado como
       backoffice:
         show_all: Mostrar todos
         management:
@@ -17,7 +18,7 @@ pt-BR:
               recipient: Destinatário
               message: "Mensagem"
           members:
-            send_new_password_definition: Enviar nova definição de password
+            send_new_password_definition: Enviar nova definição de senha
         authorization:
           title: Accessos
     action_text:
@@ -26,6 +27,7 @@ pt-BR:
       deleted: "%{object_name} '@{%{name}}' @{f:excluída|m,n:excluído} com sucesso!"
       not_authorized: Você não está autorizado a executar essa ação
     buttons:
+      view_options: Ver opções
       save: Salvar
       back: Voltar
       confirmation_yes: Sim

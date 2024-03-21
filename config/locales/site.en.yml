@@ -1,0 +1,17 @@
+en:
+  site:
+    navigation_bar:
+      about: Sobre
+      home: Home
+      shop: Shop
+      all_products: All products
+      popular_items: Popular Items
+      new_arrivals: New Arrivals
+      cart: Cart
+    aside_manu:
+      title: Profile Options
+    ads:
+      title: "My Advertisements"
+    dashboard:
+      title: "Dashboards"
+  

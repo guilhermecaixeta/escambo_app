@@ -1,7 +1,5 @@
 # typed: strict
 Rails.application.routes.draw do
-  get "backoffice", to: "backoffice/dashboard#index"
-
   namespace :backoffice do
     resources :message, only: [:create] do
       post "", action: :new, constraints: { message_id: /\d{1,}/ }, as: :new
@@ -12,11 +10,15 @@ Rails.application.routes.draw do
     resources :admins, except: [:show]
     resources :roles, except: [:show]
     resources :permissions, only: [:index]
-    get "dashboard", to: "dashboard#index"
+    resources :dashboard, only: [:index]
   end
 
   namespace :site do
-    get "home", to: "home#index"
+    resources :home, only: [:index], controller: "home"
+    namespace :profile do
+      resources :dashboard, only: [:index]
+      resources :advertisements, except: [:show]
+    end
   end
 
   devise_for :admins, skip: [:registrations]
