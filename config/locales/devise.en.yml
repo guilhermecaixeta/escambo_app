@@ -6,16 +6,20 @@ en:
       new_password: Password Recovery
       login: Login
       edit_password: New Password
+      sign_up: Sign up
     text:
       new_password: Enter your email address and we will send you a link to reset your password.
+      min_password: "%{value} characters minimum"
     buttons:
         login: Login
         logout: Logout        
+        create_account: Create Account
         return_to_login: Return to login
         reset_password: Reset Password
         change_password: Change Password
         remember_me: Remember me
-        forgot_password: Forgot Password?   
+        forgot_password: Forgot Password?
+        confirmation_instructions_not_received: Didn't receive confirmation instructions?
     confirmations:
       confirmed: "Your email address has been successfully confirmed."
       send_instructions: "You will receive an email with instructions for how to confirm your email address in a few minutes."

@@ -22,9 +22,9 @@
         </div>
       </div>
       <div class="col">
-        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+        <div class="row gx-2 row-cols-md-3 row-cols-lg-6 row-cols-xl-9 row-cols-xxl-12 justify-content-center">
           <% for item in @ads %>
-            <div class="col mb-5">
+            <div class="col mb-3">
               <div class="card h-100">
                 <!-- Product image-->
                 <%= image_tag(item.picture.variant(resize: "450x300!"), class: "card-img-top") %>

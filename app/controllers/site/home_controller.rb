@@ -4,6 +4,6 @@ class Site::HomeController < ApplicationController
 
   def index
     @categories = Category.all.order(:id)
-    @ads = Advertisement.new_arrivals(6)
+    @ads = Advertisement.new_arrivals(12)
   end
 end
