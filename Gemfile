@@ -53,10 +53,10 @@ gem "pundit"
 gem "money-rails"
 
 #Image processing
-gem 'image_processing'
+gem "image_processing"
 
 # The static type checker
-gem 'sorbet-static-and-runtime'
+gem "sorbet-static-and-runtime"
 
 source "https://rails-assets.org" do
 end
