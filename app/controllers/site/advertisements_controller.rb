@@ -14,7 +14,6 @@ class Site::AdvertisementsController < SiteController
   end
 
   private
-
   def load_advertisetment
     @advertisement = Advertisement.find(params[:id])
   end

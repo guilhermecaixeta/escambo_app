@@ -9,11 +9,11 @@
           <%= link_to t('site.navigation_bar.home'), site_home_path, class: "nav-link text-secondary active", "aria-current": "page" %>
         </li>
         <li class="nav-item">
-          <%= link_to t('site.navigation_bar.shop'), site_home_path, class: "nav-link text-secondary", "aria-current": "page" %>
+          <%= link_to t('site.navigation_bar.about'), site_home_path, class: "nav-link text-secondary", "aria-current": "page" %>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-secondary" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <%= t('site.navigation_bar.about') %>
+            <%= t('site.navigation_bar.shop') %>
           </a>
           <ul class="dropdown-menu bg-dark " aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item text-secondary" href="#!"><%= t 'site.navigation_bar.all_products' %></a></li>
@@ -44,8 +44,8 @@
             </a>
             <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
               <li>
-                <%= link_to site_profile_dashboard_index_path, class: "dropdown-item text-secondary" do %>
-                  Profile
+                <%= link_to site_profile_member_profile_path(current_member), class: "dropdown-item text-secondary" do %>
+                  <%= t 'layout.buttons.profile' %>
                 <% end %>
               </li>
               <li>

@@ -5,6 +5,13 @@ en:
       new: New
       update: Updating
       logged_as: Logged in as
+      dashboard:
+        one: Dashboard
+        other: Dashboards
+        most_accessed_category_title: Most accessed categories
+        most_accessed_advertisement_title: Most accessed advertisements
+        no_statistic: There is no statistics to see here!
+        access_total_label: Total Accesses      
       backoffice:
         management:
           title: Management
@@ -30,6 +37,7 @@ en:
       deleted: "%{object_name} '%{name}' delete successfully!"
       not_authorized: You are not authorized to perform this action.
     buttons:
+      profile: Profile
       save: Save
       back: Back
       confirmation_yes: Yes

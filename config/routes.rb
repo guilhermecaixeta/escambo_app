@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     namespace :profile do
       resources :dashboard, only: [:index]
       resources :advertisements, except: [:show]
+      resources :member_profile, only: [:show, :edit, :update]
     end
   end
 

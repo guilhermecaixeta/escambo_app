@@ -6,6 +6,13 @@ pt-BR:
       new: "@{f:Nova|m,n:Novo}"
       updating: Atualizando
       logged_as: Conectado como
+      dashboard:
+        one: Dashboard
+        other: Dashboards
+        most_accessed_category_title: Categorias mais acessadas
+        most_accessed_advertisement_title: Anúncios mais acessados
+        no_statistic: Não há estatistícas disponíveis!
+        access_total_label: Acessos Totais      
       backoffice:
         show_all: Mostrar todos
         management:
@@ -29,6 +36,7 @@ pt-BR:
       deleted: "%{object_name} '@{%{name}}' @{f:excluída|m,n:excluído} com sucesso!"
       not_authorized: Você não está autorizado a executar essa ação
     buttons:
+      profile: Perfil
       view_options: Ver opções
       save: Salvar
       back: Voltar
