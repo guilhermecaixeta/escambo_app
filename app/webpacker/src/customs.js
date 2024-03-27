@@ -1,3 +1,7 @@
+import { DataTable } from "simple-datatables.min.js";
+import { read } from "@popperjs/core";
+import Chart from "chart.js/auto";
+
 // Display errors in form when remote: 'true'.
 // To see more: https://github.com/turbolinks/turbolinks/issues/85#issuecomment-338784510
 // https://stackoverflow.com/questions/57935148/rails-6-form-with-remote-true-and-turbolinks-not-showing-flash-after-redirect
@@ -16,4 +20,13 @@ var on_load = fn => document.readyState !== 'loading' ?
     fn() :
     document.addEventListener('turbolinks:load', fn);
 
+window.DataTable = DataTable;
+window.Chart = Chart;
+window.read = read;
 window.on_load = on_load;
+
+on_load(() => {
+    if (document.getElementById("datatablesSimple")) {
+        new DataTable("#datatablesSimple");
+    }
+});

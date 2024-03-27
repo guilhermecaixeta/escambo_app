@@ -1,0 +1,7 @@
+<ol class="breadcrumb mb-4">
+  <% controller_path.split("/").each do |single| %>
+    <li class="breadcrumb-item <%= controller_name == single ? "active" : "" %>">
+      <%= single %>
+    </li>
+  <% end %>
+</ol>
