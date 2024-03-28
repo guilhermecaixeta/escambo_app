@@ -12,10 +12,12 @@
   <% end %>
   <% for item in @advertisements %>
     <div class="col-lg-2 col-md-3 col-sm-6 mb-4">
-      <div class="card h-100">
-        <%= image_tag(
+      <div class="card">
+        <% if item.picture.attached? %>
+          <%= image_tag(
           item.picture.variant(resize: "700x400!"),
           class: "card-img-top") %>
+        <% end %>
         <div class="card-body">
           <h4 class="card-title">
             <% if policy(current_member).can_read_and_write? && item.finish_date >= DateTime::now.to_date %>
@@ -24,7 +26,9 @@
               <%= item.title %>
             <% end %>
           </h4>
-          <p class="card-text"><%= item.description.html_safe %></p>
+          <p class="card-text text-truncate">
+            <%= item.description %>
+          </p>
         </div>
       </div>
     </div>

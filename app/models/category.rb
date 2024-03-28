@@ -1,6 +1,7 @@
 # typed: strict
 
 class Category < ApplicationRecord
+  has_many :advertisements
   validates_presence_of :description
 
   scope :most_seem_categories, -> {

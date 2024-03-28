@@ -155,7 +155,6 @@ namespace :dev do
       existing_permissions.each do |existing_permission|
         next if role.permissions.any? do |permission_role| permission_role.name == existing_permission.name end
         next if default_role[:except_permissions].any? do |exception|
-          puts "role #{role.name} has except permission #{exception} match? #{existing_permission.name} #{%r{\A#{exception}}.match?(existing_permission.name)}"
           %r{\A#{exception}}.match?(existing_permission.name)
         end
         next unless default_role[:permissions].any? do |default_permission|

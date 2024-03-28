@@ -1,7 +1,7 @@
 # typed: false
 class Advertisement < ApplicationRecord
   extend T::Sig
-  belongs_to :category
+  belongs_to :category, counter_cache: :advertisements_count
   belongs_to :user
   visitable :ahoy_visit
 
@@ -18,6 +18,13 @@ class Advertisement < ApplicationRecord
   has_one_attached :picture
 
   scope :new_arrivals, ->(size = 10) { before_finish_date.limit(size).order(created_at: :desc) }
+  scope :by_category_description, ->(category_description, size = 10) {
+          before_finish_date
+            .joins("JOIN categories on categories.id = category_id")
+            .where("categories.description = :category_description", { category_description: category_description })
+            .limit(size)
+            .order(created_at: :desc)
+        }
   scope :related_items, ->(id, category_id, size = 10) {
           before_finish_date
             .where("id != :id AND category_id = :category_id", { id: id, category_id: category_id })
