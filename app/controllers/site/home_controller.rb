@@ -1,5 +1,5 @@
 # typed: true
-class Site::HomeController < ApplicationController
+class Site::HomeController < SiteController
   layout "site"
 
   def index

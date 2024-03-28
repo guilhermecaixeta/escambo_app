@@ -154,7 +154,9 @@ namespace :dev do
       default_role = Rails.configuration.default_roles.find { |r| r[:name] == role.name }
       existing_permissions.each do |existing_permission|
         next if role.permissions.any? do |permission_role| permission_role.name == existing_permission.name end
-        next if default_role[:except_permissions].any?(existing_permission.name)
+        next if default_role[:except_permissions].any? do |exception|
+          %r{\A#{exception}}.match?(existing_permission.name)
+        end
         next unless default_role[:permissions].any? do |default_permission|
           default_permission.match?(/(\*|#{existing_permission.name})/)
         end

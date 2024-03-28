@@ -1,0 +1,47 @@
+<script language="javascript" type="text/javascript">
+if (document.getElementById("backoffice_bar_chart")) {
+        let backoffice_bar_chart_context = document.getElementById("backoffice_bar_chart").getContext("2d");
+
+        new Chart(backoffice_bar_chart_context, {
+            type: "bar",
+            data: {
+                labels: <%= @most_seem_categories.map {| category | category.category_description}.to_json.html_safe %>,
+                datasets: [{
+                    label: '<%= t "layout.text.dashboard.access_total_label" %>',
+                    lineTension: 0.3,
+                    backgroundColor: "rgba(2,117,216,0.2)",
+                    borderColor: "rgba(2,117,216,1)",
+                    pointRadius: 5,
+                    pointBackgroundColor: "rgba(2,117,216,1)",
+                    pointBorderColor: "rgba(255,255,255,0.8)",
+                    pointHoverRadius: 5,
+                    pointHoverBackgroundColor: "rgba(2,117,216,1)",
+                    pointHitRadius: 50,
+                    pointBorderWidth: 2,
+                    data: <%= @most_seem_categories.map {| category | category.total_accesses}.to_json %>
+                }]
+            },
+            options: {
+                legend: {
+                  display: false
+                }
+              }
+        });
+    }
+
+  if (document.getElementById("backoffice_pie_chart")) {
+        let backoffice_pie_chart_context = document.getElementById("backoffice_pie_chart").getContext("2d");
+        new Chart(
+            backoffice_pie_chart_context,
+            {
+                type: "pie",
+                data: {
+                    labels: <%= @most_seem_advertisements.map {| advertisement | advertisement.advertisement_title}.to_json.html_safe %>,
+                    datasets: [{
+                        backgroundColor: <%= @most_seem_advertisements.map {| advertisement | "##{Digest::MD5.hexdigest(advertisement.advertisement_title)[0..5]}"}.to_json.html_safe %>,
+                        data: <%= @most_seem_advertisements.map {| advertisement | advertisement.total_accesses}.to_json %>
+            }]
+            }
+        });
+  }
+</script>

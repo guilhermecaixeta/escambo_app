@@ -1,6 +1,7 @@
 <p class="lead">
   <%= Role.model_name.human(count: 2) %>
 </p>
+<%= render partial: "shared/backoffice/bread_crumb" %>
 <div class="card mb-4">
   <div class="card-header">
     <%= Role.model_name.human(count: 2) %>
@@ -14,8 +15,8 @@
         <thead>
           <tr>
             <th scope="col" class="col-1">#</th>
-            <th scope="col" class="col-9"><%= Role.human_attribute_name("name") %></th>
-            <th scope="col" class="col-9"><%= Role.human_attribute_name("permissions") %></th>
+            <th scope="col" class="col-2"><%= Role.human_attribute_name("name") %></th>
+            <th scope="col" class="col-6"><%= Role.human_attribute_name("permissions") %></th>
             <th scope="col" class="col-2"></th>
           </tr>
         </thead>
@@ -36,12 +37,6 @@
           <% end %>
         </tbody>
         <tfoot>
-          <tr>
-            <th scope="col" class="col-1">#</th>
-            <th scope="col" class="col-9"><%= Role.human_attribute_name("name") %></th>
-            <th scope="col" class="col-9"><%= Role.human_attribute_name("permissions") %></th>
-            <th scope="col" class="col-2"></th>
-          </tr>
         </tfoot>
       </table>
     </div>

@@ -1,0 +1,44 @@
+<h1 class="mt-4">
+  <%= t 'layout.text.dashboard', count: 2 %>
+</h1>
+<ol class="breadcrumb mb-4">
+  <li class="breadcrumb-item active">
+    <%= t 'layout.text.dashboard', count: 1 %>
+  </li>
+</ol>
+<div class="row">
+  <div class="col-6">
+    <div class="card mb-4">
+      <div class="card-header">
+        <i class="fas fa-chart-area me-1"></i>
+        <%= t 'layout.text.dashboard.most_accessed_category_title' %>
+      </div>
+      <div class="card-body">
+        <% if @most_seem_categories.any? %>
+          <canvas id="site_bar_chart" width="100%" height="50"></canvas>
+        <% else %>
+          <h5 class="card-title">
+            <%= t 'layout.text.dashboard.no_statistic' %>
+          </h5>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="col-6">
+    <div class="card mb-4">
+      <div class="card-header">
+        <i class="fas fa-chart-bar me-1"></i>
+        <%= t 'layout.text.dashboard.most_accessed_advertisement_title' %>
+      </div>
+      <div class="card-body">
+        <% if @most_seem_advertisements.any? %>
+          <canvas id="site_pie_chart" width="100%" height="50"></canvas>
+        <% else %>
+          <h5 class="card-title">
+            <%= t 'layout.text.dashboard.no_statistic' %>
+          </h5>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

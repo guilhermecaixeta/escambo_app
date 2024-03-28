@@ -58,6 +58,9 @@ gem "image_processing"
 # The static type checker
 gem "sorbet-static-and-runtime"
 
+# Simple, powerful, first-party analytics for Rails. Track visits and events in Ruby, JavaScript, and native apps. Data is stored in your database by default, and you can customize it for any data store as you grow.
+gem "ahoy_matey"
+
 source "https://rails-assets.org" do
 end
 
