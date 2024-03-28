@@ -1,0 +1,10 @@
+<p class="lead text-center">
+  <%= Category.model_name.human(count: 2) %>
+</p>
+<div class="list-group overflow-auto">
+  <% @categories.each do |category| %>
+    <%= link_to "#{category.description} (#{category.advertisements_count})",
+        site_category_advertisements_path(category.description),
+        class: "list-group-item" %>
+  <% end %>
+</div>

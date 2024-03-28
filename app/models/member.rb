@@ -1,34 +1,40 @@
 # typed: true
 class Member < User
+  # before_validation :add_default_role
+
   has_many :advertisements, class_name: "Advertisements"
 
-  # validate :can_change_role?, on: :update
+  validate :can_change_role?, on: :update
 
-  # define_attribute_methods
+  def add_default_role
+    self.role_ids = []
+  end
 
-  # def role_ids=(new_role_ids)
-  #   @can_change_roles = true
+  define_attribute_methods
 
-  #   member_role = Role.find_by name: Rails.configuration.default_roles.find { |r| r[:is_member] }[:name]
+  def role_ids=(new_role_ids)
+    @can_change_roles = true
 
-  #   unless new_role_ids.empty?
-  #     super [member_role.id]
-  #     return
-  #   end
+    member_role = Role.find_by name: Rails.configuration.default_roles.find { |r| r[:is_member] }[:name]
 
-  #   if new_role_ids - role_ids != 0
-  #     @can_change_roles = false
-  #     return
-  #   end
-  # end
+    unless new_role_ids.any?
+      super [member_role.id]
+      return
+    end
 
-  # private
+    if new_role_ids - role_ids != 0
+      @can_change_roles = false
+      return
+    end
+  end
 
-  # sig { void }
+  private
 
-  # def can_change_role?
-  #   return if @can_change_roles
+  sig { void }
 
-  #   errors.add(:roles, :member_roles_cannot_be_changed)
-  # end
+  def can_change_role?
+    return if @can_change_roles
+
+    errors.add(:roles, :member_roles_cannot_be_changed)
+  end
 end
