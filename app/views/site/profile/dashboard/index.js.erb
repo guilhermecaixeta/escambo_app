@@ -1,5 +1,5 @@
 // Loads the charts on the dashboard.
-on_load(() => {
+on_request_complete(() => {
     document
         .getElementById("main_section")
         .innerHTML = '<%= j render "site/profile/dashboard/index" %>'
