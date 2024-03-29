@@ -9,7 +9,7 @@
           <div class="text-center">
             <!-- Product name-->
             <h5 class="fw-bolder">
-              <%= link_to item.title, site_advertisement_path(item), class: "btn", remote: true %>
+              <%= link_to item.title, site_advertisement_path(item.id), remote: true, class: "btn" %>
             </h5>
             <!-- Product price-->
             <%= humanized_money_with_symbol item.price %>
@@ -18,7 +18,7 @@
         <!-- Product actions-->
         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
           <div class="text-center">
-            <%= link_to t('layout.action_text.view_options'), site_advertisement_path(item), class: "btn btn-outline-dark mt-auto", remote: true %>
+            <%= link_to t('layout.action_text.view_options'), site_advertisement_path(item.id), remote: true, class: "btn btn-outline-dark mt-auto" %>
           </div>
         </div>
       </div>
