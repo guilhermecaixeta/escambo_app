@@ -5,7 +5,6 @@ import "startbootstrap-shop-homepage/src/js/scripts";
 window.FroalaEditor = FroalaEditor
 
 function openSpinModal() {
-    console.log("Opening spin modal");
     let spinModalElement = document.querySelector('#app_modal_spin');
     let spinModal = bootstrap.Modal.getOrCreateInstance(spinModalElement, { backdrop: "static", focus: true, keyboard: true });
     spinModal.show();
@@ -17,7 +16,6 @@ function closeSpinModal() {
     let spinModal = bootstrap.Modal.getOrCreateInstance(spinModalElement);
     setTimeout(function () {
         spinModal.hide();
-        console.log("Closing spin modal");
     }, 500);
 }
 
