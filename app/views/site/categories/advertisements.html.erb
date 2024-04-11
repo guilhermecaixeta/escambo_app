@@ -1,15 +1,7 @@
-<section class="py-5">
-  <div class="container-fluid px-4 px-lg-5 mt-5">
-    <div class="row">
-      <div class="col-3">
-        <%= render partial: "shared/site/advertisements/sidebar" %>
-      </div>
-      <div class="col-9">
-        <p class="h1 mb-4">
-          <%= @category_description %>
-        </p>
-        <%= render partial: "shared/site/advertisements/advertisements" %>
-      </div>
-    </div>
-  </div>
-</section>
+<% content_for :content do %>
+  <p class="h1 mb-4">
+    <%= @category_description %>
+  </p>
+  <%= render partial: "shared/site/advertisements/advertisements" %>
+<% end %>
+<%= render partial: "shared/site/content" %>

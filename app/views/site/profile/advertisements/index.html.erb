@@ -5,7 +5,7 @@
 <div class="row">
   <% if policy(current_member).can_read_and_write? %>
     <div class="col-12 mp-3 pb-3">
-      <%= link_to new_site_profile_advertisement_path, class: "btn btn-primary float-start", remote: true do %>
+      <%= link_to new_site_profile_advertisement_path, class: "btn btn-primary float-start", data: { turbolinks: "true" } do %>
         <%= t('layout.text.new') %> <%= Advertisement.model_name.human %>
       <% end %>
     </div>
@@ -21,7 +21,7 @@
         <div class="card-body">
           <h4 class="card-title">
             <% if policy(current_member).can_read_and_write? && item.finish_date >= DateTime::now.to_date %>
-              <%= link_to item.title, edit_site_profile_advertisement_path(item.id), class: "btn btn-link", remote: true %>
+              <%= link_to item.title, edit_site_profile_advertisement_path(item.id), class: "btn btn-link", data: { turbolinks: "true" } %>
             <% else %>
               <%= item.title %>
             <% end %>

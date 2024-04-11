@@ -1,0 +1,38 @@
+<% content_for :content do %>
+  <section class="py-5">
+    <div class="container" id="show_advertisement">
+      <div class="row gx-4 gx-lg-5 align-items-center">
+        <div class="col-md-6">
+          <%= image_tag(@advertisement.picture.variant(resize: "600x700!"), 
+            class: "card-img-top mb-5 mb-md-0") %>
+        </div>
+        <div class="col-md-6">
+          <div class="small mb-1">SKU: BST-498</div>
+          <h1 class="display-5 fw-bolder"><%= @advertisement.title %></h1>
+          <div class="fs-5 mb-5">
+            <span class="text-decoration-line-through">
+              <%= humanized_money_with_symbol @advertisement.price %>
+            </span>
+            <span>
+              <%= humanized_money_with_symbol @advertisement.price %>
+            </span>
+          </div>
+          <p class="lead">
+            <%= @advertisement.description.html_safe %>
+          </p>
+          <div class="d-flex">
+            <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
+            <button class="btn btn-outline-dark flex-shrink-0" type="button">
+              <i class="bi-cart-fill me-1"></i>
+              Add to cart
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<% end %>
+<% content_for :bottom_content do %>
+  <%= render partial: "shared/site/advertisements/related_items" %>
+<% end %>
+<%= render partial: "shared/site/content" %>
