@@ -14,7 +14,10 @@
   </head>
   <body>
     <main id="main_scope">
-      <%= render partial: "shared/site/navigation" %>
+      <%= render partial: "shared/site/navbar" %>
+      <% if controller_path == "home_controller" %>
+        <%= render partial: 'shared/site/header' %>
+      <% end %>
       <section id="main_section">
         <%= yield %>
       </section>

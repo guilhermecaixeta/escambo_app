@@ -1,5 +1,5 @@
 <div class="row gx-2 row-cols-md-3 row-cols-lg-6 row-cols-xl-9 row-cols-xxl-12 justify-content-center">
-  <% for item in @ads %>
+  <% for item in @advertisements %>
     <div class="col mb-3">
       <div class="card h-100">
         <!-- Product image-->
@@ -9,7 +9,10 @@
           <div class="text-center">
             <!-- Product name-->
             <h5 class="fw-bolder">
-              <%= link_to item.title, site_advertisement_path(item.id), remote: true, class: "btn" %>
+              <%= link_to item.title, 
+                  site_advertisement_path(item.id), 
+                  class: "btn",
+                  data: { turbolinks: "true" } %>
             </h5>
             <!-- Product price-->
             <%= humanized_money_with_symbol item.price %>
@@ -18,7 +21,10 @@
         <!-- Product actions-->
         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
           <div class="text-center">
-            <%= link_to t('layout.action_text.view_options'), site_advertisement_path(item.id), remote: true, class: "btn btn-outline-dark mt-auto" %>
+            <%= link_to t('layout.action_text.view_options'), 
+                site_advertisement_path(item.id), 
+                class: "btn btn-outline-dark mt-auto",
+                data: { turbolinks: "true" } %>
           </div>
         </div>
       </div>

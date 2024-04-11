@@ -1,0 +1,24 @@
+<!-- Section-->
+<section class="py-5" id="content_section">
+  <div class="container-fluid px-4 px-lg-5 mt-5" id="container">
+    <div class="row">
+      <div class="col-3" id="side_menu" data-turbolinks-action="replace">
+        <% if content_for?(:sidebar) %>
+          <%= yield(:sidebar) %>
+        <% else %>
+          <%= render partial: "shared/site/advertisements/sidebar" %>
+        <% end %>
+      </div>
+      <div class="col-9" id="content" data-turbolinks-action="replace" >
+        <% if content_for?(:content) %>
+          <%= yield(:content) %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
+<% if content_for?(:bottom_content) %>
+  <section>
+    <%= yield(:bottom_content) %>
+  </section>
+<% end %>
