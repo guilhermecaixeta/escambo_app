@@ -4,19 +4,20 @@ import "startbootstrap-shop-homepage/src/js/scripts";
 
 window.FroalaEditor = FroalaEditor
 
-on_load(() => {
-    document.body.addEventListener('ajax:before', function (event) {
-        let spinModalElement = document.querySelector('#app_modal_spin');
-        let spinModal = bootstrap.Modal.getOrCreateInstance(spinModalElement, { backdrop: "static", focus: true, keyboard: true });
-        spinModal.show();
-    }, false)
-})
+function openSpinModal() {
+    let spinModalElement = document.querySelector('#app_modal_spin');
+    let spinModal = bootstrap.Modal.getOrCreateInstance(spinModalElement, { backdrop: "static", focus: true, keyboard: true });
+    spinModal.show();
+}
 
-on_request_complete(() => {
-      // must wait for at least 0.5s before update the modal otherwise the function hide does not work.
-      setTimeout(function () {
-        let spinModalElement = document.querySelector('#app_modal_spin');
-        let spinModal = bootstrap.Modal.getOrCreateInstance(spinModalElement);
+function closeSpinModal() {
+    // must wait for at least 0.5s before update the modal otherwise the function hide does not work.
+    let spinModalElement = document.querySelector('#app_modal_spin');
+    let spinModal = bootstrap.Modal.getOrCreateInstance(spinModalElement);
+    setTimeout(function () {
         spinModal.hide();
     }, 500);
-})
+}
+
+onTurboLinksLoad(() => document.body.addEventListener('turbolinks:click', openSpinModal, false));
+onTurboLinksLoad(() => document.addEventListener('turbolinks:request-end', closeSpinModal, false));

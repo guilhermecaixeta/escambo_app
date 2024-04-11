@@ -16,22 +16,9 @@
   </head>
   <body>
     <main>
-      <%= render partial: "shared/site/navigation" %>
+      <%= render partial: "shared/site/navbar" %>
       <section class="d-flex" id="wrapper">
-        <!-- Sidebar-->
-        <section class="border-end bg-dark" id="sidebar-wrapper">
-          <div class="sidebar-heading text-secondary text-center">
-            <%= t 'site.aside_menu.title' %>
-          </div>
-          <div class="list-group list-group-flush">
-            <% if policy_for(current_member, Site::Profile::DashboardController.controller_path).can_read? %>
-              <%= link_to t('site.dashboard.title'), site_profile_dashboard_index_path, remote: true, class: "list-group-item-action text-secondary p-3" %>
-            <% end %>
-            <% if policy_for(current_member, Site::Profile::AdvertisementsController.controller_path).can_read? %>
-              <%= link_to t('site.ads.title'), site_profile_advertisements_path, remote: true, class: "list-group-item-action text-secondary p-3" %>
-            <% end %>
-          </div>
-        </section>
+      <%= render partial: "shared/profile/sidebar" %>
         <!-- Page content wrapper-->
         <section id="page-content-wrapper">
           <!-- Page content-->
