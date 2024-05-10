@@ -4,7 +4,7 @@
       <div class="row gx-4 gx-lg-5 align-items-center">
         <div class="col-md-6">
           <%= image_tag(@advertisement.picture.variant(resize: "600x700!"), 
-            class: "card-img-top mb-5 mb-md-0") %>
+            class: "card-img-top img-fluid rounded mb-5 mb-md-0") %>
         </div>
         <div class="col-md-6">
           <div class="small mb-1">SKU: BST-498</div>
@@ -31,8 +31,30 @@
       </div>
     </div>
   </section>
-<% end %>
-<% content_for :bottom_content do %>
-  <%= render partial: "shared/site/advertisements/related_items" %>
-<% end %>
-<%= render partial: "shared/site/content" %>
+  <section class="well">
+    <% if member_signed_in? %>
+      <div class="text-right">
+        <div class="text-right">
+          <%= link_to t('layout.buttons.new_comment'),
+                    comments_new_site_advertisement_path(@advertisement),
+                    class:"btn btn-success",
+                    data: {"bs-toggle": "modal", "bs-target": "#app_modal" },
+                    remote: true %>
+        </div>
+      <% else %>
+        <div class="text-right">
+          <%= link_to t('layout.buttons.login_to_comment'),
+                    new_member_session_path,
+                    class:"btn btn-success",
+                    data: {"bs-toggle": "modal", "bs-target": "#app_modal" },
+                    remote: true %>
+        </div>
+      <% end %>
+      <hr>
+      <%= render 'site/comments/index' %>
+    </section>
+  <% end %>
+  <% content_for :bottom_content do %>
+    <%= render partial: "shared/site/advertisements/related_items" %>
+  <% end %>
+  <%= render partial: "shared/site/content" %>

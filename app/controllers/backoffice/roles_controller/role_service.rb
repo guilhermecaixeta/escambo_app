@@ -1,6 +1,10 @@
 # typed: true
 class Backoffice::RolesController::RoleService
-  def self.create(params)
+  def initialize(user)
+    @user = user
+  end
+
+  def create(params)
     role = Role.new(params)
 
     if role.valid?
@@ -10,7 +14,7 @@ class Backoffice::RolesController::RoleService
     role
   end
 
-  def self.update(params, role)
+  def update(params, role)
     role.assign_attributes(params)
 
     if role.valid?
@@ -20,7 +24,7 @@ class Backoffice::RolesController::RoleService
     role
   end
 
-  def self.destroy(role)
+  def destroy(role)
     role.destroy
   end
 end

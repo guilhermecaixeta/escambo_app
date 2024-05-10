@@ -1,0 +1,18 @@
+<% @advertisement.comments.each do |comment| %>
+  <div class="card mb-3">
+    <div class="card-body">
+      <div class="card-header">
+        <%= comment.title %>
+        <% if (current_member) && (comment.member.id == current_member.id) %>
+          <%# <%= rating_for_user @ad, current_member, 'quality', star_path: '/images/ratyrate' %>
+        <% end %>
+        <p>
+          <%= comment.body %>
+        </p>
+      </div>
+      <small>
+        <%= comment.member.name %> <%= time_ago_in_words(comment.created_at) %>
+      </small>
+    </div>
+  </div>
+<% end %>

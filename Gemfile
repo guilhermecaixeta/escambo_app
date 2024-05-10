@@ -61,6 +61,10 @@ gem "sorbet-static-and-runtime"
 # Simple, powerful, first-party analytics for Rails. Track visits and events in Ruby, JavaScript, and native apps. Data is stored in your database by default, and you can customize it for any data store as you grow.
 gem "ahoy_matey"
 
+# A Scope & Engine based, clean, powerful, customizable and sophisticated paginator for modern web app frameworks and ORMs
+gem 'kaminari'
+gem 'kaminari-i18n'
+
 source "https://rails-assets.org" do
 end
 

@@ -36,6 +36,8 @@ pt-BR:
       deleted: "%{object_name} '@{%{name}}' @{f:excluída|m,n:excluído} com sucesso!"
       not_authorized: Você não está autorizado a executar essa ação
     buttons:
+      new_comment: Deixe seu comentário
+      login_to_comment: Entre antes de deixar seu comentário
       profile: Perfil
       view_options: Ver opções
       save: Salvar
