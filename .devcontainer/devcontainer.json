@@ -5,7 +5,28 @@
   "workspaceFolder": "/app",
   "customizations": {
     "vscode": {
-      "extensions": ["Shopify.ruby", "sorbet.sorbet", "Cody Hoover.ruby-linter"]
+      "extensions": [
+        "Shopify.ruby-extensions-pack",
+        "sorbet.sorbet-vscode-extension",
+        "hoovercj.ruby-linter",
+        "castwide.solargraph",
+        "bung87.vscode-gemfile",
+        "hridoy.rails-snippets",
+        "aliariff.vscode-erb-beautify",
+        "noku.rails-run-spec-vscode",
+        "ldrner.rspec-snippets-vscode",
+        "Fooo.ruby-spec-runner",
+        "KoichiSasada.vscode-rdbg",
+        "jnbt.vscode-rufo",
+        "manuelpuyol.erb-linter",
+        "esbenp.prettier-vscode",
+        "mhutchie.git-graph",
+        "BIGModelingTools.erdiagram",
+        "GitHub.vscode-pull-request-github",
+        "shaharkazaz.git-merger",
+        "donjayamanne.githistory",
+        "codezombiech.gitignore"
+      ]
     }
   },
   // "remoteUser": "vscode",

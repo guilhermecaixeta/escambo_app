@@ -9,7 +9,7 @@
           <%= render partial: "shared/site/advertisements/sidebar" %>
         <% end %>
       </div>
-      <div class="col-9" id="content" data-turbolinks-action="replace" >
+      <div class="col-9" id="content" data-turbolinks-action="replace">
         <% if content_for?(:content) %>
           <%= yield(:content) %>
         <% end %>
@@ -18,7 +18,7 @@
   </div>
 </section>
 <% if content_for?(:bottom_content) %>
-  <section>
+  <section class="align-items-center justify-content-between mt-3">
     <%= yield(:bottom_content) %>
   </section>
 <% end %>

@@ -4,6 +4,12 @@ class Site::HomeController < SiteController
 
   def index
     @categories = Category.all.order(:id)
-    @advertisements = Advertisement.new_arrivals(12)
+    @advertisements = Advertisement.new_arrivals required_params, 12
+  end
+
+  private
+
+  def required_params
+    params[:page]
   end
 end

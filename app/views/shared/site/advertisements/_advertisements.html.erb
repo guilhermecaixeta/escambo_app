@@ -11,8 +11,7 @@
             <h5 class="fw-bolder">
               <%= link_to item.title, 
                   site_advertisement_path(item.id), 
-                  class: "btn",
-                  data: { turbolinks: "true" } %>
+                  class: "btn"%>
             </h5>
             <!-- Product price-->
             <%= humanized_money_with_symbol item.price %>
@@ -23,11 +22,11 @@
           <div class="text-center">
             <%= link_to t('layout.action_text.view_options'), 
                 site_advertisement_path(item.id), 
-                class: "btn btn-outline-dark mt-auto",
-                data: { turbolinks: "true" } %>
+                class: "btn btn-outline-dark mt-auto" %>
           </div>
         </div>
       </div>
     </div>
   <% end %>
 </div>
+<%= paginate @advertisements %>

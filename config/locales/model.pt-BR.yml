@@ -19,6 +19,9 @@ pt-BR:
       advertisement:
         one: Anúncio
         other: Anúncios
+      comment:
+        one: Comentário
+        other: Comentários
     attributes:
       role:
         name: Nome
@@ -44,6 +47,9 @@ pt-BR:
         price: Preço
         category: Categoria
         finish_date: Data Término
+      comment:
+        title: Título
+        body: Comentário
   errors:
       messages:
         date_must_be_greater_than: "dever ser igual ou maior à %{date}"

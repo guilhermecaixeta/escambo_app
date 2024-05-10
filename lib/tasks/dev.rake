@@ -1,5 +1,3 @@
-require "open-uri"
-
 namespace :dev do
   desc "Setup development environment"
   task setup: :environment do
@@ -78,10 +76,10 @@ namespace :dev do
 
     ads = number_of_ads.times.map { |i|
       index = i + 1
-      advertisement = {
+      {
         id: index,
         title: Faker::Commerce.product_name,
-        description: Faker::Lorem.sentence(word_count: 3, supplemental: true, random_words_to_add: 4),
+        description: Faker::Lorem.sentence(word_count: 10, supplemental: true, random_words_to_add: 5),
         price_cents: Faker::Commerce.price(range: 10..19999.99, as_string: true),
         category_id: categories.shuffle.sample.id,
         user_id: members.shuffle.sample.id,
@@ -104,7 +102,7 @@ namespace :dev do
     ads.each.with_index(1) do |ad, index|
       puts "Adding image #{index}/#{total}"
       ad.picture.attach(
-        io: open(Faker::LoremFlickr.unique.image),
+        io: URI.open(Faker::LoremFlickr.unique.image),
         filename: "#{ad.id}.jpg",
       )
       Faker::LoremFlickr.unique.clear
@@ -201,5 +199,27 @@ namespace :dev do
     member.skip_confirmation!
     member.skip_confirmation_notification!
     puts "Default member was added!"
+  end
+
+  desc "Add comments to advertisements"
+  task add_comments: :environment do
+    comments = []
+    utc_now = DateTime::now
+    members = Member.all
+
+    Advertisement.all.each do |advertisement|
+      Random.rand(5).times do
+        comments << {
+          title: Random.rand(4).odd? ? Faker::Adjective.positive : Faker::Adjective.negative,
+          body: Faker::Lorem.sentence(word_count: 10, supplemental: true, random_words_to_add: 5),
+          user_id: members.sample.id,
+          advertisement_id: advertisement.id,
+          created_at: utc_now,
+          updated_at: utc_now,
+        }
+      end
+    end
+
+    Comment.upsert_all comments
   end
 end
