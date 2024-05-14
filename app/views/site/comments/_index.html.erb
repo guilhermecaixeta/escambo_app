@@ -3,9 +3,7 @@
     <div class="card-body">
       <div class="card-header">
         <%= comment.title %>
-        <% if (current_member) && (comment.member.id == current_member.id) %>
-          <%# <%= rating_for_user @ad, current_member, 'quality', star_path: '/images/ratyrate' %>
-        <% end %>
+        <div data-read-only="true" data-score="<%= comment.member.rate_for(@advertisement)&.value %>" data-raty></div>
         <p>
           <%= comment.body %>
         </p>

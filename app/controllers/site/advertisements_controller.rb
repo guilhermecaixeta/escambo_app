@@ -33,8 +33,9 @@ class Site::AdvertisementsController < SiteController
   end
 
   def load_related_items
-    @releated_advertisements = Advertisement.related_items(params[:id],
-                                                           @advertisement.category_id,
-                                                           4)
+    @advertisements = Advertisement.related_items(params[:id],
+                                                  @advertisement.category_id,
+                                                  1,
+                                                  4)
   end
 end

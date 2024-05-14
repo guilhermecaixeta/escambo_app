@@ -12,6 +12,7 @@ namespace :dev do
     puts "Adding member\n #{%x(rails dev:members_generator)}"
     puts "Adding advertisements #{%x(rails dev:ads_generator)}"
     puts "Adding images to advertisements #{%x(rails dev:add_image_to_ads)}"
+    puts "Adding comments to advertisements #{%x(rails dev:add_comments)}"
     puts "Fixing pk sequence"
     ActiveRecord::Base.connection.tables.each do |table_name|
       ActiveRecord::Base.connection.reset_pk_sequence!(table_name)
@@ -208,15 +209,18 @@ namespace :dev do
     members = Member.all
 
     Advertisement.all.each do |advertisement|
-      Random.rand(5).times do
+      Random.rand(10).times do
+        user = members.sample
         comments << {
           title: Random.rand(4).odd? ? Faker::Adjective.positive : Faker::Adjective.negative,
           body: Faker::Lorem.sentence(word_count: 10, supplemental: true, random_words_to_add: 5),
-          user_id: members.sample.id,
+          user_id: user.id,
           advertisement_id: advertisement.id,
           created_at: utc_now,
           updated_at: utc_now,
         }
+
+        user.rate advertisement, Random.rand(5.0)
       end
     end
 

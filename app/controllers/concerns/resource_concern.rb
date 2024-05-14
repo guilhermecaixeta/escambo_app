@@ -1,3 +1,4 @@
+# typed: false
 module ResourceConcern
   extend ActiveSupport::Concern
 

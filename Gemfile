@@ -62,8 +62,11 @@ gem "sorbet-static-and-runtime"
 gem "ahoy_matey"
 
 # A Scope & Engine based, clean, powerful, customizable and sophisticated paginator for modern web app frameworks and ORMs
-gem 'kaminari'
-gem 'kaminari-i18n'
+gem "kaminari"
+gem "kaminari-i18n"
+
+# A Ruby Gem that wrap the functionality of jQuery Raty library, and provides optional IMDB style rating.
+gem "rating"
 
 source "https://rails-assets.org" do
 end

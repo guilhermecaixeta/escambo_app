@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :dashboard, only: [:index]
   end
   get "backoffice", to: "backoffice/dashboard#index"
+  get "site/profile", to: "site/profile/dashboard#index"
 
   namespace :site do
     resources :advertisements, only: [:show] do

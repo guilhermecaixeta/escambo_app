@@ -20,12 +20,15 @@
           <p class="lead">
             <%= @advertisement.description.html_safe %>
           </p>
-          <div class="d-flex">
+          <div class="d-flex mb-3">
             <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
             <button class="btn btn-outline-dark flex-shrink-0" type="button">
               <i class="bi-cart-fill me-1"></i>
               Add to cart
             </button>
+          </div>
+          <div class="d-flex mb-3">
+            <div data-read-only="true" data-score="<%= @advertisement&.rating&.estimate %>" data-raty></div>
           </div>
         </div>
       </div>

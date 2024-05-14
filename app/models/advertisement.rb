@@ -3,6 +3,7 @@ class Advertisement < ApplicationRecord
   extend T::Sig
   SEARCH_ATTRIBUTES = %i[title description]
 
+  rating
   has_many :comments
   belongs_to :category, counter_cache: :advertisements_count
   belongs_to :user
@@ -22,25 +23,26 @@ class Advertisement < ApplicationRecord
 
   scope :search_for, ->(query, page, size = 10) {
           sql_query = SEARCH_ATTRIBUTES.map { |att| "#{att} ~~* '%#{query}%'" }.join " OR "
-          before_finish_date.where(sql_query).paginate(page, size)
+          before_finish_date.where(sql_query).order_by_rating({ column: :estimate, direction: :asc }).paginate(page, size)
         }
 
   scope :new_arrivals, ->(page, size = 10) {
-          before_finish_date.limit(size).order(created_at: :desc).paginate(page, size)
+          before_finish_date.limit(size).order_by_rating({ column: :estimate, direction: :asc }).paginate(page, size)
         }
 
-  scope :related_items, ->(id, category_id, size = 10) {
+  scope :related_items, ->(id, category_id, page = 0, size = 10) {
           before_finish_date
-            .where("id != :id AND category_id = :category_id",
+            .where("advertisements.id != :id AND category_id = :category_id",
                    { id: id, category_id: category_id }).limit(size)
-            .order(created_at: :desc)
+            .order_by_rating({ column: :estimate, direction: :asc })
+            .paginate(page, size)
         }
 
   scope :by_category_description, ->(category_description, page, size = 10) {
           before_finish_date
             .joins("JOIN categories on categories.id = category_id")
             .where("categories.description = :category_description", { category_description: category_description })
-            .order(created_at: :desc)
+            .order_by_rating({ column: :estimate, direction: :asc })
             .paginate(page, size)
         }
 
@@ -87,6 +89,7 @@ class Advertisement < ApplicationRecord
                                      date: I18n.l(current_date, :format => :short))
       return false
     end
+
     return true
   end
 end

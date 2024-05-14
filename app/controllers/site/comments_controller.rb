@@ -1,5 +1,6 @@
+# typed: false
 class Site::CommentsController < SiteController
-  before_action :get_advertisement_id
+  before_action :get_advertisement
 
   def new
     super
@@ -24,7 +25,7 @@ class Site::CommentsController < SiteController
         flash[:alert] = "Errors to persist comment"
         format.js {
           render :new,
-                 :params => { id: @advertisement_id },
+                 :params => { id: @advertisement.id },
                  status: :unprocessable_entity
         }
       end
@@ -43,7 +44,7 @@ class Site::CommentsController < SiteController
     :back
   end
 
-  def get_advertisement_id
-    @advertisement_id = params[:id]
+  def get_advertisement
+    @advertisement = Advertisement.find params[:id]
   end
 end

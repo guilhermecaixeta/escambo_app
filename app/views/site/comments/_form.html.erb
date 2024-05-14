@@ -1,7 +1,10 @@
 <%= render 'shared/errors' %>
-<%= form_with scope: :comment, url: comments_site_advertisement_path(@advertisement_id), remote: true do |f| %>
+<%= form_with scope: :comment, url: comments_site_advertisement_path(@advertisement.id), remote: true do |f| %>
   <div class="modal-body">
-    <%= f.hidden_field :advertisement_id, value: @advertisement_id %>
+    <%= f.hidden_field :advertisement_id, value: @advertisement.id %>
+    <div class="mb-3">
+      <div data-raty></div>
+    </div>
     <div class="mb-3">
       <%= f.label :title, class: "form-label" %>
       <%= f.text_field :title, class: "form-control" %>
@@ -9,6 +12,9 @@
     <div class="mb-3">
       <%= f.label :body, class: "form-label" %>
       <%= f.text_area :body, class: "form-control" %>
+    </div>
+    <div class="mb-3">
+      <div user-data-raty></div>
     </div>
   </div>
   <div class="modal-footer">

@@ -10,11 +10,16 @@ class Site::CommentsController::CommentService
   sig { params(params: T.untyped).returns(Comment) }
 
   def create(params)
+    @rate = params[:member][:rating]
+    params.delete(:member)
+
     @comment = Comment.new(params)
     @comment.user_id = @user.id
-
     if @comment.valid?
+
       @comment.save!
+      advertisement = Advertisement.find @comment.advertisement_id
+      @user.rate advertisement, @rate
     end
 
     @comment
