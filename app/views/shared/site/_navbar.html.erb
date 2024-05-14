@@ -6,10 +6,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
         <li class="nav-item">
-          <%= link_to t('site.navigation_bar.home'), site_home_path, class: "nav-link text-secondary active", "aria-current": "page", data: { turbolinks: "true" } %>
+          <%= link_to t('site.navigation_bar.home'), site_home_path, class: "nav-link text-secondary active", "aria-current": "page" %>
         </li>
         <li class="nav-item">
-          <%= link_to t('site.navigation_bar.about'), site_home_path, class: "nav-link text-secondary", "aria-current": "page", data: { turbolinks: "true" } %>
+          <%= link_to t('site.navigation_bar.about'), site_home_path, class: "nav-link text-secondary", "aria-current": "page" %>
         </li>
         <li class="nav-item dropdown me-4">
           <a class="nav-link dropdown-toggle text-secondary" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -22,7 +22,7 @@
             <li><a class="dropdown-item text-secondary" href="#!"><%= t 'site.navigation_bar.new_arrivals' %></a></li>
           </ul>
         </li>
-        <% if controller_name != "member_profile" %>
+        <% unless %r{#{Site::Profile.name.underscore}}.match? controller_path %>
           <li class="nav-item">
             <%= form_with(url: search_site_advertisements_path, method: "get", class: "d-flex", role: "search") do %>
               <%= text_field_tag(:q, nil, class: "form-control me-3", type: "search", placeholder: "Search",  "aria-label": "Search") %>
@@ -40,7 +40,7 @@
       </form>
       <div class="d-flex p-2">
         <% unless member_signed_in? %>
-          <%= link_to "Login",
+          <%= link_to t("devise.title.login"),
                       new_member_session_path,
                       class: "btn text-secondary",
                       data: {"bs-toggle": "modal", "bs-target": "#app_modal" },
@@ -52,7 +52,7 @@
             </a>
             <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
               <li>
-                <%= link_to site_profile_member_profile_path(current_member), class: "dropdown-item text-secondary", data: { turbolinks: "true" } do %>
+                <%= link_to site_profile_member_profile_path(current_member), class: "dropdown-item text-secondary" do %>
                   <%= t 'layout.buttons.profile' %>
                 <% end %>
               </li>
@@ -60,7 +60,7 @@
                 <hr class="dropdown-divider text-light">
               </li>
               <li>
-                <%= link_to destroy_member_session_path, method: :delete, class: "dropdown-item text-secondary", data: { turbolinks: "true" } do %>
+                <%= link_to destroy_member_session_path, method: :delete, class: "dropdown-item text-secondary" do %>
                   <%= t 'layout.buttons.logout' %>
                 <% end %>
               </li>

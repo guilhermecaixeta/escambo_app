@@ -1,0 +1,13 @@
+document.getElementById("app_modal_title").innerHTML = '<%= t "layout.text.site.comment.title" %>';
+document.getElementById("app_modal_body").innerHTML = '<%= j render "site/comments/form" %>';
+
+<% helpers = ActionController::Base.helpers %>
+
+onTurboLinksLoad(() => {
+  let ratyEl = document.querySelector("[user-data-raty]");
+  if (ratyEl) {
+    const raty = new Raty(ratyEl, { scoreName: 'comment[member][rating]', path: '<%= helpers.asset_path('/assets') %>' });
+
+    raty.init();
+  }
+});

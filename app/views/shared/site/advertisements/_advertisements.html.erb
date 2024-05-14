@@ -1,3 +1,4 @@
+<% paginate ||= 'true' %>
 <div class="row gx-2 row-cols-md-3 row-cols-lg-6 row-cols-xl-9 row-cols-xxl-12 justify-content-center">
   <% for item in @advertisements %>
     <div class="col mb-3">
@@ -11,9 +12,11 @@
             <h5 class="fw-bolder">
               <%= link_to item.title, 
                   site_advertisement_path(item.id), 
-                  class: "btn",
-                  data: { turbolinks: "true" } %>
+                  class: "btn"%>
             </h5>
+            <small>
+              <div data-read-only="true" data-score="<%= item&.rating&.estimate %>" data-raty></div>
+            </small>
             <!-- Product price-->
             <%= humanized_money_with_symbol item.price %>
           </div>
@@ -23,11 +26,15 @@
           <div class="text-center">
             <%= link_to t('layout.action_text.view_options'), 
                 site_advertisement_path(item.id), 
-                class: "btn btn-outline-dark mt-auto",
-                data: { turbolinks: "true" } %>
+                class: "btn btn-outline-dark mt-auto" %>
           </div>
         </div>
       </div>
     </div>
+  <% end %>
+</div>
+<div class="d-flex justify-content-center mb-3 mt-3">
+  <% if paginate =='true' %>
+    <%= paginate @advertisements %>
   <% end %>
 </div>

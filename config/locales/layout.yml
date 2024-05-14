@@ -37,6 +37,8 @@ en:
       deleted: "%{object_name} '%{name}' delete successfully!"
       not_authorized: You are not authorized to perform this action.
     buttons:
+      new_comment: Let your comment
+      login_to_comment: Login before let your comment
       profile: Profile
       save: Save
       back: Back

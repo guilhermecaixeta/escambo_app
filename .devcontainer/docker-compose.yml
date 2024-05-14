@@ -1,6 +1,7 @@
-# An example docker-compose.yml for run on devcontainer.
-
 version: "3.5"
+
+name: escamboapp_devcontainer
+
 services:
   # Primary application service
   escamboapp:
@@ -13,7 +14,7 @@ services:
         - NODE_JS_VERSION=${NODE_JS_VERSION}
         - BUNDLE_VERSION=${BUNDLE_VERSION}       
     ports:
-      - 3000:3000
+      - ${APP_MAIN_PORT}:${APP_MAIN_PORT}
     volumes:
       - ..:/app:cached
       - $HOME/.ssh/:/home/vscode/.ssh/
@@ -38,7 +39,7 @@ services:
   mailcatcher:
     image: schickling/mailcatcher
     ports:
-      - 1080:1080
+      - ${MAIL_CATCHER_PORT}:1080
     networks:
       - escamboapp_network_shared
 

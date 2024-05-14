@@ -4,7 +4,7 @@
       <div class="row gx-4 gx-lg-5 align-items-center">
         <div class="col-md-6">
           <%= image_tag(@advertisement.picture.variant(resize: "600x700!"), 
-            class: "card-img-top mb-5 mb-md-0") %>
+            class: "card-img-top img-fluid rounded mb-5 mb-md-0") %>
         </div>
         <div class="col-md-6">
           <div class="small mb-1">SKU: BST-498</div>
@@ -20,19 +20,44 @@
           <p class="lead">
             <%= @advertisement.description.html_safe %>
           </p>
-          <div class="d-flex">
+          <div class="d-flex mb-3">
             <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
             <button class="btn btn-outline-dark flex-shrink-0" type="button">
               <i class="bi-cart-fill me-1"></i>
               Add to cart
             </button>
           </div>
+          <div class="d-flex mb-3">
+            <div data-read-only="true" data-score="<%= @advertisement&.rating&.estimate %>" data-raty></div>
+          </div>
         </div>
       </div>
     </div>
   </section>
-<% end %>
-<% content_for :bottom_content do %>
-  <%= render partial: "shared/site/advertisements/related_items" %>
-<% end %>
-<%= render partial: "shared/site/content" %>
+  <section class="well">
+    <% if member_signed_in? %>
+      <div class="text-right">
+        <div class="text-right">
+          <%= link_to t('layout.buttons.new_comment'),
+                    comments_new_site_advertisement_path(@advertisement),
+                    class:"btn btn-success",
+                    data: {"bs-toggle": "modal", "bs-target": "#app_modal" },
+                    remote: true %>
+        </div>
+      <% else %>
+        <div class="text-right">
+          <%= link_to t('layout.buttons.login_to_comment'),
+                    new_member_session_path,
+                    class:"btn btn-success",
+                    data: {"bs-toggle": "modal", "bs-target": "#app_modal" },
+                    remote: true %>
+        </div>
+      <% end %>
+      <hr>
+      <%= render 'site/comments/index' %>
+    </section>
+  <% end %>
+  <% content_for :bottom_content do %>
+    <%= render partial: "shared/site/advertisements/related_items" %>
+  <% end %>
+  <%= render partial: "shared/site/content" %>

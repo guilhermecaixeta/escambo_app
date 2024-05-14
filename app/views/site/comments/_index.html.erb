@@ -1,0 +1,16 @@
+<% @advertisement.comments.each do |comment| %>
+  <div class="card mb-3">
+    <div class="card-body">
+      <div class="card-header">
+        <%= comment.title %>
+        <div data-read-only="true" data-score="<%= comment.member.rate_for(@advertisement)&.value %>" data-raty></div>
+        <p>
+          <%= comment.body %>
+        </p>
+      </div>
+      <small>
+        <%= comment.member.name %> <%= time_ago_in_words(comment.created_at) %>
+      </small>
+    </div>
+  </div>
+<% end %>

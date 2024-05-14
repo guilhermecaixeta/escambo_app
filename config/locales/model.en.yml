@@ -1,5 +1,8 @@
 en:
- 
+  activerecord:
+    attributes:
+      comment:
+        body: Comment
   errors:
     messages:
       message:
