@@ -1,7 +1,7 @@
 # typed: true
 class MemberPolicy < UserPolicy
   def permitted_attributes
-    [:name, :email, advertisements: []]
+    [:name, :email, :password, :password_confirmation, advertisements: []]
   end
 
   class Scope < ApplicationPolicy::Scope

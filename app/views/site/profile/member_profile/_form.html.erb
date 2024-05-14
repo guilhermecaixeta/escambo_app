@@ -1,0 +1,40 @@
+<%= content_for :card_header do %>
+  <%= Member.model_name.human(count: 2) %>
+<% end %>
+<%= content_for :card_body do %>
+  <%= form_with(model: @object, url: site_profile_member_profile_path, remote: true, id: "site_form", multipart: true) do |f| %>
+      <div class="row-4 form-floating mb-3">
+        <%= f.text_field :name,
+              class: "form-control",
+              placeholder: "#{User.human_attribute_name(:name)}",
+              type: "name",
+              autofocus: "autofocus" %>
+        <%= f.label :name %>
+      </div>
+      <div class="row-4 form-floating mb-3">
+        <%= f.email_field :email,
+              class: "form-control",
+              placeholder: "#{User.human_attribute_name(:email)}",
+              type: "email",
+              autofocus: "autofocus" %>
+        <%= f.label :email %>
+      </div>
+      <div class="row-4 form-floating mb-3">
+        <%= f.password_field :password,
+              class: "form-control",
+              placeholder: "#{User.human_attribute_name(:password)}",
+              type: "password",
+              autofocus: "autofocus" %>
+        <%= f.label :password %>
+      </div>
+      <div class="row-4 form-floating mb-3">
+        <%= f.email_field :password_confirmation,
+                class: "form-control",
+                placeholder: "#{User.human_attribute_name(:password_confirmation)}",
+                type: "password",
+                autofocus: "autofocus" %>
+        <%= f.label :password_confirmation %>
+      </div>
+  <% end %>
+<% end %>
+<%= render partial: "shared/site/base_form", locals: { back_button_path: site_profile_dashboard_index_path, form_id: "site_form" } %>
