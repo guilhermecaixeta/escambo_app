@@ -1,7 +1,7 @@
 # typed: true
 class SiteController < ApplicationController
-  include ResourceConcern
   include AuthorizationConcern
+  include ResourceConcern
 
   layout "site"
   after_action :track_action

@@ -29,6 +29,9 @@
           </div>
           <div class="d-flex mb-3">
             <div data-read-only="true" data-score="<%= @advertisement&.rating&.estimate %>" data-raty></div>
+            <small class="d-flex justify-content-end">
+              <%= @advertisement.comments.count %> reviews
+            </small>
           </div>
         </div>
       </div>

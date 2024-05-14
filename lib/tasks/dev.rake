@@ -100,10 +100,12 @@ namespace :dev do
 
     puts "Adding images to advertisements"
     total = ads.count
+    category = %w(eletronic home car music baby clothes shoes garden tools games toys)
     ads.each.with_index(1) do |ad, index|
       puts "Adding image #{index}/#{total}"
       ad.picture.attach(
-        io: URI.open(Faker::LoremFlickr.unique.image),
+        io: URI.open(Faker::LoremFlickr.unique.image(size: "800x700",
+                                                     search_terms: [category.sample])),
         filename: "#{ad.id}.jpg",
       )
       Faker::LoremFlickr.unique.clear
